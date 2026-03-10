@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stage 1: Enterprise-Grade LLM Activation with Mule Inference Connector</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+/* Custom Sidebar Menu Styles */
+.nav-item {
+  display: flex !important;
+  align-items: flex-start;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+.nav-item i {
+  margin-top: 3px;
+  width: 24px;
+  flex-shrink: 0;
+}
+.nav-text {
+  flex-grow: 1;
+  line-height: 1.4;
+  white-space: normal;
+}
+.nav-title {
+  font-weight: bold;
+  display: block;
+}
+.nav-desc {
+  font-size: 0.85em;
+  color: #555;
+  display: block;
+}
+code {
+  background-color: #f4f4f4;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: Consolas, monospace;
+}
+pre {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-left: 4px solid #ccc;
+  overflow-x: auto;
+  font-family: Consolas, monospace;
+}
+</style>
+</head>
+<body class="w3-content" style="max-width:1600px;">
+
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3; width:300px; overflow-y:auto; padding-bottom:50px;" id="mySidebar"><br>
+  <div class="w3-container">    
+      <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <h4>Build Multi-Agent Systems with Salesforce</h4>
+    <p>Demystifying Data360, MCP, A2A, Mule Fabric Broker and Agentforce</p>
+  </div>
+  
+  <div class="w3-bar-block">
+    <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-home fa-fw w3-margin-right"></i>
+      <span class="nav-text"><span class="nav-title">Overview</span></span>
+    </a>     
+    
+    <a href="stage-0.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-wrench fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 0</span>
+        <span class="nav-desc">A Foundational Generative AI App</span>
+      </span>
+    </a>     
+    
+    <a href="stage-1.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item w3-light-grey">
+      <i class="fa fa-plug fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 1</span>
+        <span class="nav-desc">Enterprise-Grade LLM Activation with Mule Inference Connector</span>
+      </span>
+    </a> 
+    
+    <a href="stage-2.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-database fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 2</span>
+        <span class="nav-desc">Building Enterprise-Aware AI Agent Capability with Mule & MCP</span>
+      </span>
+    </a>
+    
+    <a href="stage-3.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-share-alt fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 3</span>
+        <span class="nav-desc">Build Your Own Gen AI Agents with A2A & MCP</span>
+      </span>
+    </a>
+    
+    <a href="stage-4.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-users fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 4</span>
+        <span class="nav-desc">Agentforce + Data360</span>
+      </span>
+    </a>
+    
+    <a href="stage-5.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-sitemap fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 5</span>
+        <span class="nav-desc">Mule Agent Fabric Broker for Orchestrating Multi-Agent Systems</span>
+      </span>
+    </a>
+  </div>
+
+  <hr style="margin: 20px 0;">
+
+  <div class="w3-container">
+    <h4>Customer Experience Transformation with Salesforce Data Cloud</h4>
+    <p>Hands-on Workshop and Ideation</p>
+  </div>
+  <div class="w3-bar-block">
+    <a href="http://datacloud-workshop.github.io/index.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>Get Started
+    </a> 
+    <a href="http://datacloud-workshop.github.io/insidedatacloud.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-lightbulb-o fa-fw w3-margin-right"></i>Concepts
+    </a>     
+    <a href="http://datacloud-workshop.github.io/hands-on.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-laptop fa-fw w3-margin-right"></i>Hands-on Lab
+    </a> 
+    <a href="http://datacloud-workshop.github.io/ideation.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-comments-o fa-fw w3-margin-right"></i>Ideation
+    </a>
+    <a href="http://datacloud-workshop.github.io/resources.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-book fa-fw w3-margin-right"></i>Resources
+    </a>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:300px; border-left: 1px solid #000000;">
+  
+  <header>
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container w3-padding-16">
+      </div>
+  </header>
+
+  <div class="w3-container" style="margin-top:10px; margin-bottom:30px;"> 
+    <h1><b>Stage 1: Enterprise-Grade LLM Activation with Mule Inference Connector</b></h1>
+    <p>This stage focuses on creating an enterprise-ready AI capability designed to be consumed by applications. Instead of building a UI-bound demo, we build and deploy an LLM-powered application using the Mule framework, independent of any specific user interface.</p>
+
+    <h1><b>Introduction & Technical Architecture</b></h1>
+    <div class="w3-card w3-padding w3-margin-bottom w3-center">
+      <img src="images/1-1.png" alt="Architecture Diagram" class="w3-image" style="max-width: 100%;">
+    </div>
+    
+    <p>Modern LLM-driven systems separate <b>user interaction</b>, <b>application responsibility</b>, and <b>AI execution</b> into distinct layers.</p>
+    <p>In this workshop module, we use the above generative AI application architecture as a reference point, not as something we fully implement. Rather than building a user interface, we focus on delivering a core AI capability that fits cleanly into the architecture shown at the top of this document.</p>
+    <p>In a complete LLM-driven application, the <b>user interface</b> is responsible only for interaction — collecting user input and displaying responses. This interface could be a web UI, a mobile app, a backend service, or a Python application (e.g., with a Streamlit library based UI). The choice of UI is intentionally left open in this stage.</p>
+    <p>The <b>application stack</b> sits behind the user interface and controls application behavior. This layer is responsible for structuring requests, managing conversation state if required, deciding what context is sent to the model, handling errors, and invoking downstream capabilities. In this workshop, the application stack is represented conceptually rather than implemented, because our goal is to build the AI execution layer it would call.</p>
+    <p>When the application stack requires an AI response, it does <b>not</b> call the language model directly. Instead, it sends a request to <b>Mule</b>, which acts as a <b>stateless orchestrator</b>. Mule executes inference using the <b>Mule Inference Connector</b>, applies configured model parameters, and provides secure, observable access to the underlying LLM (Groq). Mule does not manage conversational state; it executes each inference request exactly as it is received.</p>
+    <p>This separation is intentional. The user interface handles interaction, the application stack handles behavior, and Mule handles <b>AI execution</b>. By isolating inference execution behind Mule, the AI capability becomes reusable, governed, and independent of any specific application or UI technology.</p>
+    <p>At this stage, the agent has <b>intelligence but no enterprise context</b>. There is no grounding, no access to internal systems, and no business logic. This allows you to clearly observe what managed LLM inference provides on its own, and where its limitations begin.</p>
+    <p>In more advanced systems, additional architectural components are introduced — such as a task planner (reasoning engine), context data stores (for example, vector databases), and prompt management layers — along with expanded governance and observability. Those elements are intentionally deferred to later stages so the foundational execution model remains clear.</p>
+
+    <h1><b>How Mule Supports AI Development</b></h1>
+    <p>MuleSoft provides a suite of Anypoint AI Connectors that integrate Large Language Models (LLMs) and Vector Stores directly into existing business workflows. They provide a unified interface for developers to build and manage enterprise-grade AI agents that can access both Salesforce and non-Salesforce data.</p>
+    <p>By <b>abstracting the technical complexities of different AI technologies</b>, these connectors simplify the development of autonomous agents and coordinate interactions between various models and enterprise applications.</p>
+    <p>These Mule AI connectors also <b>standardize how AI components interact and collaborate, leading to more integrated and secure AI solutions</b> across the organization. This standardization ensures that agents can reliably access up-to-date data and perform consistent actions within a governed framework.</p>
+    <p>The suite available in Anypoint Exchange evolved from the MuleSoft AI Chain project, an open-source initiative that allows developers to build and manage agents natively within the Anypoint Platform. This relationship allows MuleSoft to <b>apply the same full-lifecycle management principles to AI agents</b> that it has traditionally used for APIs and integrations.</p>
+
+    <hr>
+
+    <h1><b>Hands-On: Building an Enterprise Grade Gen AI App</b></h1>
+    <div class="w3-card w3-padding w3-margin-bottom w3-center">
+      <img src="images/1-2.png" alt="Hands-On Banner" class="w3-image" style="max-width: 100%;">
+    </div>
+
+    <h2><b>Use Mule Anypoint Studio to Create a Mule Project with Inference Connector</b></h2>
+    <p>For this workshop, please sign in and start your Windows App - this app is provided to you by your instructor and contains the virtual machine with MuleSoft Anypoint Studio installed. This is the tool we shall use in this section.</p>
+    <p>In the Mule Virtual Machine, provided to you open the Mule Anypoint Studio.</p>
+    <p>To save time, instead of assembling the flows component-by-component, we’ve provided a packaged JAR file in which the key steps have already been completed. You’ll import it into Anypoint Studio, run it locally, and deploy it to CloudHub. This section walks you through the entire process end-to-end—from import to deployment and testing.</p>
+    <p>Although you are using a pre-packaged JAR rather than configuring each connector manually in Anypoint Studio, we still explain every part of it in the sections below, so you understand exactly how it works and how to apply the same approach in your own projects.</p>
+    <p>In your Mule VM (using the Chrome browser) download the following JAR file: <a href="https://drive.google.com/file/d/1ysmC5fkrDFoVUHC4Grnt9RaeP7MiKWPt/view?usp=drive_link" target="_blank">Download JAR File</a></p>
+    <p>Typically it will download the file in the following locations inside the VM: <code>C:\Users\workshop\Downloads</code></p>
+    <p>Open Mule Anypoint Studio in your VM (Windows App provided to you by your instructor).</p>
+    <p>Click on File &rarr; Import and find the downloaded JAR (stage1-lab-inference-chat.jar) on your VM.</p>
+    
+    <div class="w3-center w3-margin-bottom">
+      <img src="images/1-3.png" alt="Import Wizard" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+    
+    <p>Choose the import wizard &rarr; Anypoint Studio &rarr; Packaged Application</p>
+    <p>You can monitor the import progress in the bottom right corner of the Anypoint Studio.</p>
+    <p>Once import completes, a project gets created in Anypoint Studio with the configurations packaged in the JAR file.</p>
+    
+    <div class="w3-center w3-margin-bottom">
+      <img src="images/1-4.png" alt="Project Created" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+    
+    <div class="w3-panel w3-leftbar w3-pale-blue w3-border-blue">
+      <p><b>What is this Mule app that you just now imported?</b> In a later section in the appendix (How To Build It: Step-by-Step Guide) we have explained how you would assemble this app from scratch.</p>
+    </div>
+
+    <p>Click on <code>/src/main/resources/config.properties</code> in your project in Anypoint Studio.</p>
+    <p>Put in your Groq API key value on the first line. Then save the file (File &rarr; Save).</p>
+    
+    <div class="w3-center w3-margin-bottom">
+      <img src="images/1-5.png" alt="Config Properties" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Now let’s test your project locally. Right click on your project in the Mule Anypoint Studio and click on Run As &rarr; Mule Application.</p>
+    
+    <div class="w3-center w3-margin-bottom">
+      <img src="images/1-6.png" alt="Run as Mule Application" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+    
+    <p>You should see <b>Deployed</b> in the bottom screen in Mule Anypoint Studio.</p>
+    
+    <div class="w3-center w3-margin-bottom">
+      <img src="images/1-7.png" alt="Deployed Status" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Send a message to the LLM via your Inference Connector:</p>
+    <p>Copy paste this in your windows shell.</p>
+<pre><code>curl -X POST http://localhost:8081/chat -H "Content-Type: application/json" -d "[{\"role\":\"user\",\"content\":\"Capital of Germany?\"}]"</code></pre>
+    
+    <p>You should see the following output.</p>
+    <div class="w3-center w3-margin-bottom">
+      <img src="images/1-8.png" alt="cURL Output" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Now let’s deploy your project to CloudHub.</p>
+    <p>Right click on your project &rarr; Anypoint Platform &rarr; Deploy to CloudHub</p>
+    <p>It will bring up a browser window inside your Anypoint Studio - authenticate with your Mule trial username.</p>
+    
+    <div class="w3-center w3-margin-bottom">
+      <img src="images/1-9.png" alt="Deploy to CloudHub Auth" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+    
+    <p>Select No for creating a password hint.</p>
+    <p>After sign-in, go back to your project - Right Click &rarr; Anypoint Platform &rarr; Deploy to CloudHub - select Sandbox</p>
+    
+    <div class="w3-center w3-margin-bottom">
+      <img src="images/1-10.png" alt="Select Sandbox" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+    
+    <p>In the next page, click on Properties and put in your <code>groq.apiKey</code>, <code>groq.model</code> and <code>Connection</code>.</p>
+    
+    <div class="w3-panel w3-light-grey">
+      <code>groq.model=llama-3.3-70b-versatile<br>groq.apiKey={yourAPIKEY}<br>Connection=groq</code>
+    </div>
+    
+    <p>Following is a screenshot of the CloudHub property page.</p>
+    <div class="w3-center w3-margin-bottom">
+      <img src="images/1-11.png" alt="CloudHub Properties" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+    
+    <p>Then press <b>Deploy Application</b> button.</p>
+    <p>It takes about 10 minutes to deploy.</p>
+    
+    <div class="w3-center w3-margin-bottom">
+      <img src="images/1-12.png" alt="Deploying" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>To monitor deployment on CloudHub - go to <a href="http://mulesoft.com" target="_blank">mulesoft.com</a> and login with your trial account &rarr; Runtime Manager</p>
+    
+    <div class="w3-center w3-margin-bottom">
+      <img src="images/1-13.png" alt="Runtime Manager Menu" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+    
+    <p>You should see your application running on CloudHub Runtime Manager.</p>
+    
+    <div class="w3-center w3-margin-bottom">
+      <img src="images/1-14.png" alt="App Running in RM" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow w3-padding">
+      <p><b>Gotcha:</b> If you are not able to deploy from Anypoint Studio (possibly due to enhanced permissions requirements) - please do direct deployment from CloudHub. Go to <a href="http://mulesoft.com" target="_blank">mulesoft.com</a> (sign-in) &rarr; Runtime Manager &rarr; Deploy Application. Upload your Jar file, then choose the Properties tab and fill in the Property Values as above. Then Press Deploy Application.</p>
+    </div>
+
+    <p>Let’s test your application.</p>
+    <p>Click on your application and on your application page copy the public endpoint.</p>
+    
+    <div class="w3-center w3-margin-bottom">
+      <img src="images/1-15.png" alt="Public Endpoint" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Let’s send a question to your application via CURL from your Windows command shell. Remember to replace the URL in the following command with your public endpoint.</p>
+<pre><code>curl -X POST https://stage1-customer-inference-chat-l0r84xyz.usa-e2.cloudhub.io/chat -H "Content-Type: application/json" -d "[{\"role\":\"user\",\"content\":\"Capital of Germany?\"}]"</code></pre>
+    
+    <div class="w3-center w3-margin-bottom">
+      <img src="images/1-16.png" alt="CloudHub cURL Output" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <h4><b>We have built a UI-based client you can use to test your headless agentic capability.</b></h4>
+    
+    <div class="w3-center w3-margin-bottom">
+      <img src="images/1-17.png" alt="UI Client" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+    
+    <p><b><a href="https://thin-chat-client-085335f023d7.herokuapp.com/" target="_blank">https://thin-chat-client-085335f023d7.herokuapp.com/</a></b></p>
+    <ul class="w3-ul">
+      <li>Enter your stage1 cloudhub public endpoint in the "Agent Endpoint (CloudHub)" box.</li>
+      <li>Select Stage 1 (Inference Only) as shown in the screenshot.</li>
+    </ul>
+    <p>This GUI client lets you interact with the headless agent powered by the Mule Inference Connector on CloudHub.</p>
+
+    <hr>
+
+    <h1><b>What You Have Accomplished</b></h1>
+    <p>In this section we focused on building an enterprise-ready AI capability that applications can consume — not a UI-bound demo.</p>
+    <p>By completing Stage 1, you have built and deployed a <b>production-style, enterprise-grade LLM inference endpoint</b> using Mule.</p>
+    <p>You did not build a UI in this stage — intentionally. Instead, you focused on creating a <b>clean, reusable AI capability</b> that can be consumed by <i>any</i> application.</p>
+    <p>Specifically, you have:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>You exposed a language model as a <b>stable HTTP API</b> (<code>POST /chat</code>) hosted inside Mule. This endpoint accepts structured chat input and returns a model response, making it suitable for use by web applications, backend services, agents, or automation workflows.</li>
+      <li>You executed LLM inference using the <b>Mule Inference Connector</b>, rather than calling the LLM provider’s REST API directly. This shifts AI execution from ad-hoc application code into a managed enterprise platform.</li>
+    </ul>
+
+    <p>By doing this, you gained several concrete enterprise capabilities automatically:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b>CloudHub networking:</b> The inference endpoint runs inside Mule’s managed runtime, removing the need to design custom networking, ingress, or egress for AI traffic.</li>
+      <li><b>Secure outbound connectivity:</b> Credentials and outbound calls to the LLM provider are handled by Mule configuration and runtime controls, not embedded in client applications.</li>
+      <li><b>Enterprise authentication and isolation:</b> Access to the inference capability can be governed by environments, deployments, and platform controls rather than individual developer credentials.</li>
+      <li><b>Managed scaling:</b> Inference execution scales as part of the Mule runtime, independently of the client applications that consume it.</li>
+      <li><b>Standardized agent hosting:</b> The LLM is now hosted in a consistent execution fabric that can later support multiple agents, tools, and workflows.</li>
+      <li><b>Agentforce compatibility:</b> By running inference through Mule, this endpoint aligns with the same execution layer used by Salesforce Agentforce, enabling future multi-agent and agent-to-agent patterns without architectural rework.</li>
+      <li><b>Observability:</b> Requests, responses, latency, and failures are visible through Mule’s runtime monitoring and logging, which is difficult to achieve reliably with direct API calls.</li>
+      <li><b>Governance:</b> AI execution is now subject to enterprise deployment policies, environment separation, and operational controls.</li>
+    </ul>
+
+    <p>At this stage, the capability has <b>intelligence but no enterprise context</b>. It is not grounded in internal data, does not call backend systems, and does not execute business actions. This is intentional. You now have a clean, well-defined baseline that demonstrates what managed LLM inference provides on its own.</p>
+    <p>This endpoint can now be wrapped by <b>any application</b> — for example, a Python application with a Streamlit-based UI, a web frontend, an internal service, or another agent — without changing the Mule implementation.</p>
+    <p>This completes Stage 1 and sets the foundation for adding grounding, enterprise data, and multi-agent orchestration in the next stages.</p>
+
+    <hr>
+
+    <h1><b>How To Build It: Step-by-Step Guide</b></h1>
+    
+    <h2>Step 1 — Create your first Mule project</h2>
+    <ul>
+      <li>Open Anypoint Studio</li>
+      <li><b>File &rarr; New &rarr; Mule Project</b></li>
+      <li>Project name: inference-chat</li>
+      <li>Runtime: Mule 4.9.x (or latest available)</li>
+      <li>Click <b>Finish</b></li>
+    </ul>
+    <p>Studio will generate a project skeleton.</p>
+
+    <h2>Step 2 — Configure a Source</h2>
+    <p>In a Mule application, a <b>flow always starts with a source</b>. A source is the component that waits for an external event and starts the flow when that event occurs.</p>
+    <p>In this project, the external event is <b>an HTTP request sent by the Python application</b>.</p>
+    <p>When a user submits a message, the Python application sends an HTTP request to Mule. The <b>HTTP Listener</b> is the component that receives this request.</p>
+    <p><b>HTTP > Listener:</b></p>
+    <ul>
+      <li>Listens on a configured host and port</li>
+      <li>Starts the Mule flow execution each time an HTTP request is received</li>
+      <li>Makes the request payload available to the flow</li>
+    </ul>
+    <p>Once the HTTP Listener receives the request, the flow routes the request to the <b>Mule Inference Connector</b>, which executes the inference against the configured language model and returns the response.</p>
+    <p>In simple terms: The HTTP Listener receives the user request, and the Inference Connector handles the AI execution.</p>
+    <p>To configure an <b>HTTP > Listener</b> source, follow these steps:</p>
+    <ol>
+      <li>In <b>Mule Palette</b>, select <b>HTTP > Listener</b>.</li>
+      <li>Drag <b>Listener</b> to the Studio canvas.</li>
+      <li>On the <b>Listener</b> configuration screen, optionally change the value of the <b>Display Name</b> field.</li>
+      <li>Specify a value for the <b>Path</b> field (You can put in <b>/chat</b> as the path).</li>
+      <li>Click the plus sign (<b>+</b>) next to the <b>Connector configuration</b> field to configure a global element that can be used by all instances of the <b>HTTP > Listener</b> source in the app. Select default values if needed.</li>
+      <li>On the <b>General</b> tab, specify the connection information for the connector.</li>
+      <li>On the <b>TLS</b> tab, optionally specify the TLS information for the connector.</li>
+      <li>On the <b>Advanced</b> tab, optionally specify reconnection information, including a reconnection strategy.</li>
+      <li>Click <b>Test Connection</b> to confirm that Mule can connect with the specified server.</li>
+      <li>Click <b>OK</b>.</li>
+    </ol>
+
+    <h2>Step 3 — Select the Inference Connector for Your Mule Project</h2>
+    <div class="w3-panel w3-leftbar w3-light-grey">
+      <p><b>Nomenclature: What is Inference?</b><br> Inference is when a trained language model takes input text and computes an output using its existing training. During inference, the model does not learn, update itself, or remember previous requests.</p>
+    </div>
+    <p>To enable inference in your Mule application, add the <b>Mule Inference Connector</b> to your Mule project. When you add the connector, Anypoint Studio automatically:</p>
+    <ul>
+      <li>Adds the connector’s namespace and schema location to your Mule XML configuration</li>
+      <li>Adds the required dependencies to your project’s <code>pom.xml</code> file</li>
+    </ul>
+    <p>This allows your Mule flow to invoke a language model for inference in a managed, secure, and observable way.</p>
+    <ol>
+      <li>In <b>Mule Palette</b>, click <b>(X) Search in Exchange</b>. You may be need to authenticate to Mule using the Mule trial account you have created earlier.</li>
+      <li>In <b>Add Dependencies to Project</b>, type <code>mulesoft inference</code> in the search field.</li>
+      <li>Click <b>MuleSoft Inference Connector</b> in <b>Available modules</b>.</li>
+      <li>Click <b>Add</b>.</li>
+      <li>Click <b>Finish</b>.</li>
+    </ol>
+
+    <h2>Step 4 — Add a Connector Operation to the Flow</h2>
+    <p>When you add a connector operation to your flow, you are specifying an action for that connector to perform.<br>To add an operation for MuleSoft Inference Connector, follow these steps:</p>
+    <ol>
+      <li>In <b>Mule Palette</b>, select <b>MuleSoft Inference Connector</b> and then select the operation to add.</li>
+      <li>Drag the operation i.e., [Chat] Completions - onto the Studio canvas, next to the source (Http connector).</li>
+    </ol>
+    <p>When you configure the connector, configure a global element - configuring a global element requires you to provide the authentication credentials that the connector requires to access the target inference provider.</p>
+    <p>Following are the main values you need for global element configuration:</p>
+    <ul>
+      <li>Connection: Groq</li>
+      <li>model name: llama-3.3-70b-versatile</li>
+      <li>apiKey= your Groq api key</li>
+    </ul>
+    <p>Click on Test Connection.<br>Click Ok.</p>
+
+    <h2>Step 5 — Test locally</h2>
+    <p>What our application in Anypoint Studio does: We created an API that exposes <b><code>POST /chat</code></b> and delegates inference to the <b>Inference Connector.</b></p>
+    <p>Let’s test it now.</p>
+    <p>Select your project in the left sidebar in Mule Anypoint Studio. Then right click and select ‘Run as - Mule Application.’</p>
+    <p>In a Mac terminal window paste this curl command:</p>
+<pre><code>curl -X POST http://localhost:8081/chat \
+-H "Content-Type: application/json" \
+-d '[
+{
+"role": "user",
+"content": "What is the capital of Germany?"
+}
+]'</code></pre>
+    <p>You should see the following response: <code>{"response":"The capital of Germany is Berlin."}</code></p>
+    <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow w3-padding">
+      <p><b>Gotcha:</b> Sometimes the quotes (esp. the single quote at the end) gets corrupted when copying from this document. Just retype the quote.</p>
+    </div>
+    <p><b>Windows:</b> If you are using Windows (e.g., your Mule VM is Windows)- use the following CURL command.</p>
+<pre><code>curl -X POST http://localhost:8081/chat -H "Content-Type: application/json" -d "[{\"role\":\"user\",\"content\":\"Capital of Germany?\"}]"</code></pre>
+
+    <h2>Step 6 — Deploy to CloudHub</h2>
+    <h3>Deploy on Cloud</h3>
+    <ol>
+      <li>Right-click project &rarr; Anypoint Platform &rarr; <b>Deploy to Cloudhub</b></li>
+      <li>Confirm the username you are logged in as is your trial account username.</li>
+      <li>Select Sandbox</li>
+      <li>Choose:
+        <ul>
+          <li>Runtime: Mule 4.9+</li>
+          <li>Worker size: 0.1 vCore is enough for demo</li>
+        </ul>
+      </li>
+    </ol>
+    <p>In the Properties tab, set the environment variables as follows:</p>
+<pre><code>groq.apiKey= This is your groq api key
+Connection= Groq
+groqModelName = llama-3.3-70b-versatile</code></pre>
+
+    <div class="w3-center w3-margin-bottom">
+      <img src="images/1-18.png" alt="CloudHub Properties" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+    <p>Deploy Application</p>
+    <p>This takes time and you can monitor the progress in Anypoint Studio console.</p>
+    <p>Now login to MuleSoft using your trial account in the browser - and navigate to Runtimes &rarr; Runtime Manager &rarr; Sandbox.</p>
+    <p>Click on your application (it should say Running).</p>
+    <p>Copy the public endpoint that you see on top right of the application page, e.g., <a href="#" target="_blank">https://inference-chat-xyz111.usa-e2.cloudhub.io/</a></p>
+    <p>Test your application</p>
+    <p>In a terminal window paste this curl command:</p>
+<pre><code>curl -X POST "https://inference-chat-xyz111.usa-e2.cloudhub.io/chat" \
+-H "Content-Type: application/json" \
+-d '[
+{
+"role": "user",
+"content": "What is the capital of Germany?"
+}
+]'</code></pre>
+    <p>You should see the correct response displayed in your terminal window.</p>
+    <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow w3-padding">
+      <p><b>Gotcha:</b> Sometimes the quotes (esp. the single quote at the end) gets corrupted when copying CURL from this document. Just retype the quote.</p>
+    </div>
+    <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow w3-padding">
+      <p><b>Gotcha:</b> If you are not able to deploy from Anypoint Studio (possibly due to enhanced permissions requirements) - please do direct deployment from CloudHub. Go to <a href="http://mulesoft.com" target="_blank">mulesoft.com</a> (sign-in) &rarr; Runtime Manager &rarr; Deploy Application. Upload your Jar file, then choose the Properties tab and fill in the Property Values as above. Then Press Deploy Application.</p>
+    </div>
+
+    <h4><b>We have built a UI-based client you can use to test your headless agentic capability.</b></h4>
+    <div class="w3-center w3-margin-bottom">
+      <img src="images/1-19.png" alt="UI Client again" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+    <p><b><a href="https://thin-chat-client-085335f023d7.herokuapp.com/" target="_blank">https://thin-chat-client-085335f023d7.herokuapp.com/</a></b></p>
+    <ul class="w3-ul">
+      <li>Enter your stage1 cloudhub public endpoint in the "Agent Endpoint (CloudHub)" box.</li>
+      <li>Select Stage 1 (Inference Only) as shown in the screenshot</li>
+    </ul>
+    <p>This GUI client lets you interact with the headless agent powered by the Mule Inference Connector on CloudHub.</p>
+  </div>
+
+  <hr>
+
+  <div class="w3-container" style="margin-top:30px; margin-bottom:30px;">
+    <h1><b>Appendix</b></h1>
+    
+    <h2><b>Deploy on Cloudhub Directly from JAR File</b></h2>
+    <p>In this scenario, we completely skip the Mule Anypoint Studio tool.</p>
+    <p>We import the instructor provided JAR file directly in Cloudhub in your Mule trial account.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Runtime Manager &rarr; Deploy Application</li>
+      <li>Choose Sandbox (not Design)</li>
+      <li>Choose a name for your application e.g., stage1-inference-chat</li>
+      <li>Choose a file: Upload <code>x.jar</code> where x is the name of the jar file provided by the instructor.</li>
+      <li>In the properties tab in Cloouhub fill in the following values</li>
+    </ul>
+    <p>Set in your values for:</p>
+    <ul>
+      <li><code>groq.model=llama-3.3-70b-versatile</code></li>
+      <li><code>groq.apiKey=your_key</code></li>
+    </ul>
+    <p>Deploy.</p>
+    <p>This takes time and you can monitor the progress in Anypoint Studio console.</p>
+    <p>Now login to MuleSoft using your trial account in the browser - and navigate to Runtimes &rarr; Runtime Manager &rarr; Sandbox.</p>
+    <p>Click on your application (it should say Running).</p>
+    <p>Copy the Public Endpoint that you see on top right of the application page.<br>e.g., <a href="#" target="_blank">https://inference-chat-xyz111.usa-e2.cloudhub.io/</a></p>
+    <p>Test your application.</p>
+    <p>In a Mac terminal window paste this curl command (replace the endpoint with your own endpoint):</p>
+<pre><code>curl -X POST "https://inference-chat-xyz111.usa-e2.cloudhub.io/chat" \
+-H "Content-Type: application/json" \
+-d '[
+{
+"role": "user",
+"content": "What is the capital of Germany?"
+}
+]'</code></pre>
+    <p>You should see the correct response displayed in your terminal window.</p>
+    <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow w3-padding">
+      <p><b>Gotcha:</b> Sometimes the quotes (esp. the single quote at the end) gets corrupted when copying from this document. Just retype the quote.</p>
+    </div>
+
+    <h2><b>Misc</b></h2>
+    <h3>Export your project: Generate JAR from Anypoint Studio:</h3>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Open the <b>working project</b> in Anypoint Studio</li>
+      <li>Make sure the app:
+        <ul>
+          <li>Deploys locally</li>
+          <li>Works with <code>/chat</code> or <code>/x</code></li>
+        </ul>
+      </li>
+      <li>Right-click the project<br><b>&rarr; Export</b></li>
+      <li>In the Export screen, type Mule to ‘Select an export wizard’</li>
+      <li>Choose: Mule Deployable Archive</li>
+      <li>Click <b>Next</b></li>
+      <li>Choose output folder</li>
+      <li>Finish</li>
+    </ul>
+    <p>You will get: <code>x.jar</code> where x is the name of your current project.</p>
+
+    <h3>Import a JAR file in Anypoint Studio</h3>
+    <p>When creating a new Mule project, you can skip the build, you can simply import a JAR file from a previously completed project. E.g., your instructor may have provided you with a JAR file.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>In MuleSoft Anypoint Studio - File - Import</li>
+      <li>Search for Mule to ‘Select an import wizard’</li>
+      <li>Select ‘Packaged mule application (.jar)</li>
+      <li>Select the JAR file in your local directory.</li>
+      <li>Choose a Mule Project Name.</li>
+      <li>Click Finish.</li>
+    </ul>
+    <p>A Mule project is generated with you with all the elements you need (from the project that was bundled in the imported JAR file).</p>
+    <p>Click on Chat Completions in the Message Flow window (in the middle of the screen in Anypoint Studio.</p>
+    <p>Click on the file <code>config.properties</code> in the left sidebar (<code>/src/main/resources</code>)</p>
+    <p>Set in your values for:</p>
+    <ul>
+      <li><code>groq.model=llama-3.3-70b-versatile</code></li>
+      <li><code>groq.apiKey=your_key</code></li>
+    </ul>
+    <p>Save your project.</p>
+    <p>Now you continue with local testing and then deploying on Cloudhub from Anypoint Studio.</p>
+
+    <h1><b>Reference</b></h1>
+    <p>How to authenticate in Anypoint Studio with your Mule account: <a href="https://docs.mulesoft.com/studio/set-credentials-in-studio-to" target="_blank">https://docs.mulesoft.com/studio/set-credentials-in-studio-to</a></p>
+  </div>
+
+  <hr>
+
+  <div class="w3-container" style="margin-top:30px; margin-bottom:50px;">
+    <h1><b>Mapping Full-Cycle API Development to Our Lab Work</b></h1>
+    
+        
+    <p>Traditional enterprise API development in Mule follows a <b>deliberate, governed lifecycle</b>. Each stage has a clear purpose and associated Mule capabilities</p>
+    
+    <h2><b>The Different Stages of Full Cycle API Development</b></h2>
+    
+    <h4><b>Stage 1 — API Design (Contract First)</b></h4>
+    <p><b>What happens</b></p>
+    <ul>
+      <li>The API is designed <i>before</i> implementation.</li>
+      <li>Request/response schemas, resources, methods, and error models are explicitly defined.</li>
+    </ul>
+    <p><b>Mule features</b></p>
+    <ul>
+      <li><b>API Designer</b></li>
+      <li><b>RAML / OpenAPI (Swagger)</b></li>
+      <li><b>Anypoint Exchange</b> (to publish the spec)</li>
+    </ul>
+    <p><b>Why this matters</b></p>
+    <ul>
+      <li>The <b>API spec becomes the contract</b>.</li>
+      <li>Gateways can:
+        <ul>
+          <li>Validate payloads</li>
+          <li>Enforce schemas</li>
+          <li>Reject invalid requests <i>before they hit backend systems</i></li>
+        </ul>
+      </li>
+      <li>Consumers and providers are decoupled.</li>
+    </ul>
+    <p>This is the foundation for <b>governance, security, and reuse</b>.</p>
+
+    <h4><b>Stage 2 — Build (Implementation from Spec)</b></h4>
+    <p><b>What happens</b></p>
+    <ul>
+      <li>The API spec is imported into Anypoint Studio.</li>
+      <li>Mule flows are generated and extended.</li>
+    </ul>
+    <p><b>Mule features</b></p>
+    <ul>
+      <li><b>Anypoint Studio</b></li>
+      <li><b>APIkit</b> (auto-generates REST scaffolding from RAML/OAS)</li>
+      <li><b>DataWeave</b></li>
+      <li><b>System connectors</b> (Salesforce, DB, SAP, HTTP, etc.)</li>
+    </ul>
+    <p><b>Why this matters</b></p>
+    <ul>
+      <li>Implementation stays aligned with the contract.</li>
+      <li>Changes to business logic do not silently break consumers.</li>
+      <li>Developers focus on <b>orchestration and transformation</b>, not plumbing.</li>
+    </ul>
+
+    <h4><b>Stage 3 — Deploy & Secure</b></h4>
+    <p><b>What happens</b></p>
+    <ul>
+      <li>The API is deployed into a managed runtime.</li>
+      <li>Policies are applied at the edge.</li>
+    </ul>
+    <p><b>Mule features</b></p>
+    <ul>
+      <li><b>CloudHub / Runtime Fabric</b></li>
+      <li><b>API Manager</b></li>
+      <li><b>Policies</b> (OAuth, client-id enforcement, rate limiting, IP allowlists)</li>
+      <li><b>SLAs & tiers</b></li>
+    </ul>
+    <p><b>Why this matters</b></p>
+    <ul>
+      <li>Security is <b>not implemented in application code</b>.</li>
+      <li>Gateways enforce:
+        <ul>
+          <li>Authentication</li>
+          <li>Authorization</li>
+          <li>Throttling</li>
+        </ul>
+      </li>
+      <li>APIs can evolve internally without exposing internals.</li>
+    </ul>
+
+    <h4><b>Stage 4 — Consume & Compose (API Network)</b></h4>
+    <p><b>What happens</b></p>
+    <ul>
+      <li>APIs are combined into higher-level capabilities.</li>
+      <li>Experience, Process, and System APIs are separated.</li>
+    </ul>
+    <p><b>Mule features</b></p>
+    <ul>
+      <li><b>Experience APIs</b> (UI-specific)</li>
+      <li><b>Process APIs</b> (orchestration)</li>
+      <li><b>System APIs</b> (system of record access)</li>
+      <li><b>Exchange reuse</b></li>
+    </ul>
+    <p><b>Why this matters</b></p>
+    <ul>
+      <li>Changes in UI or business process do not ripple through systems.</li>
+      <li>Teams move faster with less coordination.</li>
+      <li>The API network becomes <b>resilient and evolvable</b>.</li>
+    </ul>
+
+    <h4><b>Stage 5 — Monitor & Operate</b></h4>
+    <p><b>What happens</b></p>
+    <ul>
+      <li>Runtime behavior is observed.</li>
+      <li>Policies, performance, and failures are monitored.</li>
+    </ul>
+    <p><b>Mule features</b></p>
+    <ul>
+      <li><b>Anypoint Monitoring</b></li>
+      <li><b>Visualizer</b></li>
+      <li><b>Analytics Manager</b></li>
+    </ul>
+    <p><b>Why this matters</b></p>
+    <ul>
+      <li>You can answer:
+        <ul>
+          <li>Who is calling what?</li>
+          <li>What is slow?</li>
+          <li>What is failing?</li>
+        </ul>
+      </li>
+      <li>Compliance and troubleshooting are possible <i>after deployment</i>.</li>
+    </ul>
+
+    <h2><b>Why Full-Cycle API Development Is Still Critical</b></h2>
+    <p>This approach matters because it gives you:</p>
+    <ul>
+      <li><b>Gateway-level enforcement</b> (possible only when contracts exist)</li>
+      <li><b>Security outside application code</b></li>
+      <li><b>Loose coupling</b> between consumers and systems</li>
+      <li><b>Faster change with lower risk</b></li>
+      <li><b>Enterprise visibility and compliance</b></li>
+    </ul>
+    <p>None of these problems disappear with AI. In fact, <b>AI increases the blast radius</b> if these controls are missing.</p>
+
+    <p><b>What Changes in an AI World (and What Does Not)</b></p>
+    <p>AI introduces a <b>new execution model</b>.</p>
+    <p><b>What changes</b></p>
+    <ul>
+      <li>The <b>consumer may be an agent</b>, not a UI.</li>
+      <li>The <b>decision of what to call</b> may be made dynamically by an LLM.</li>
+      <li>Execution becomes:
+        <ul>
+          <li>Probabilistic</li>
+          <li>Context-dependent</li>
+          <li>Non-deterministic</li>
+        </ul>
+      </li>
+    </ul>
+    <p><b>What does NOT change</b></p>
+    <ul>
+      <li>Systems still must be protected.</li>
+      <li>Traffic still must be governed.</li>
+      <li>Credentials still must not leak.</li>
+      <li>Observability is still required.</li>
+      <li>Runtime isolation still matters.</li>
+    </ul>
+    <p><b>The key architectural shift</b>: Not everything exposed to an AI agent should be a public, consumer-facing API — but everything the agent can reach must still be governed.</p>
+    <p>This is where Mule becomes <i>more important</i>, not less.</p>
+
+    <h2><b>Implementing AI Patterns Using Full-Cycle API Development Concepts</b></h2>
+    <p>Now let’s connect the full cycle API development concepts directly to our workshop lab module (<b>Stage 1: Enterprise-Grade LLM Activation with Mule Inference Connector)</b>.</p>
+
+    <h3><b>Stage 1 Pattern: Inference Connector as a System-Level Capability</b></h3>
+    <p>In Stage 1 of the workshop, we intentionally:</p>
+    <ul>
+      <li>Did <b>not</b> define a business API spec</li>
+      <li>Did <b>not</b> build an Experience API</li>
+      <li>Did <b>not</b> implement Process logic</li>
+    </ul>
+    <p>Instead, we created:</p>
+    <ul>
+      <li>A <b>headless inference endpoint</b></li>
+      <li>Executed via <b>Mule Inference Connector</b></li>
+      <li>Deployed on <b>CloudHub</b></li>
+      <li>With credentials, scaling, and observability managed by Mule</li>
+    </ul>
+    <p>This maps cleanly to <b>full-cycle concepts</b>: System API= LLM inference capability, Connector= Inference Connector (Groq), Runtime= CloudHub, Security= Environment-scoped secrets, Monitoring= Mule runtime metrics.</p>
+    <p>This is <b>Stage-0 of an API network</b>, not a violation of it.</p>
+
+    <h2><b>How Our Lab Work Becomes “Full-Cycle” in Production</b></h2>
+    <p>In a real production implementation, you would layer on full-cycle stages <i>around</i> this capability:</p>
+    
+    <h4><i>Design</i></h4>
+    <ul>
+      <li>Define:
+        <ul>
+          <li>Which inference endpoints are allowed</li>
+          <li>Input/output schemas (even if not user-facing)</li>
+        </ul>
+      </li>
+      <li>Optionally document internal contracts in Exchange.</li>
+    </ul>
+
+    <h4><i>Build</i></h4>
+    <ul>
+      <li>Wrap inference in:
+        <ul>
+          <li>Process APIs</li>
+          <li>Tool-specific flows</li>
+        </ul>
+      </li>
+      <li>Combine with:
+        <ul>
+          <li>MCP tools</li>
+          <li>System APIs</li>
+          <li>Vector stores</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h4><i>Secure</i></h4>
+    <ul>
+      <li>Apply:
+        <ul>
+          <li>Client access controls</li>
+          <li>Environment isolation</li>
+        </ul>
+      </li>
+      <li>Ensure agents never hold raw credentials.</li>
+    </ul>
+
+    <h4><i>Compose</i></h4>
+    <ul>
+      <li>Agents dynamically decide <i>when</i> to call:
+        <ul>
+          <li>Inference</li>
+          <li>Tools</li>
+          <li>APIs</li>
+        </ul>
+      </li>
+      <li>Mule enforces <i>how</i> those calls happen.</li>
+    </ul>
+
+    <h4><i>Monitor</i></h4>
+    <ul>
+      <li>Observe:
+        <ul>
+          <li>Agent behavior</li>
+          <li>Tool usage</li>
+          <li>Cost and latency</li>
+        </ul>
+      </li>
+      <li>Adjust policies without redeploying agents.</li>
+    </ul>
+
+    <p><b>Full-cycle API development is not replaced by AI.</b> It becomes the <b>governance skeleton</b> that allows AI systems to operate safely. Our workshop stages do not bypass API discipline — they <b>reorder it</b>: First, establish a governed execution fabric for AI. Then, layer contracts, orchestration, and experiences on top.</p>
+    <p>Stage 1 of our workshop highlights that AI execution itself must be treated as a first-class enterprise capability, subject to the same lifecycle thinking that made API programs successful in the first place.</p>
+
+    <div class="w3-panel w3-leftbar w3-light-grey w3-padding">
+      <p><b>Reference:</b> If you would like to explore full-cycle API led development, please refer to this workshop: <b>API Led Connectivity Workshop:</b> <a href="https://alc.workshops.mulesoft.com/general/index.html" target="_blank">https://alc.workshops.mulesoft.com/general/index.html</a></p>
+    </div>
+  </div>
+
+  <hr>
+  
+  <div class="w3-container w3-padding-32 w3-center">
+    <h1><b>Thank You.</b></h1>
+    <img src="images/1-20.png" alt="Salesforce Characters" class="w3-image" style="max-width: 100%;">
+  </div>
+</div>
+
+<script>
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>
