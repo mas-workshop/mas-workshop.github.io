@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Build Multi-Agent Systems with Salesforce Workshop</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+/* Custom Sidebar Menu Styles */
+.nav-item {
+  display: flex !important;
+  align-items: flex-start;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+.nav-item i {
+  margin-top: 3px;
+  width: 24px;
+  flex-shrink: 0;
+}
+.nav-text {
+  flex-grow: 1;
+  line-height: 1.4;
+  white-space: normal;
+}
+.nav-title {
+  font-weight: bold;
+  display: block;
+}
+.nav-desc {
+  font-size: 0.85em;
+  color: #555;
+  display: block;
+}
+</style>
+</head>
+<body class="w3-content" style="max-width:1600px;">
+
+    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3; width:300px; overflow-y:auto; padding-bottom:50px;" id="mySidebar"><br>
+  <div class="w3-container">    
+      <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <h4>Build Multi-Agent Systems with Salesforce</h4>
+    <p>Demystifying Data360, MCP, A2A, Mule Fabric Broker and Agentforce</p>
+  </div>
+  
+  <div class="w3-bar-block">
+    <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item w3-light-grey">
+      <i class="fa fa-home fa-fw w3-margin-right"></i>
+      <span class="nav-text"><span class="nav-title">Overview</span></span>
+    </a>     
+    
+    <a href="stage-0.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-wrench fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 0</span>
+        <span class="nav-desc">A Foundational Generative AI App</span>
+      </span>
+    </a>     
+    
+    <a href="stage-1.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-plug fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 1</span>
+        <span class="nav-desc">Enterprise-Grade LLM Activation with Mule Inference Connector</span>
+      </span>
+    </a> 
+    
+    <a href="stage-2.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-database fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 2</span>
+        <span class="nav-desc">Building Enterprise-Aware AI Agent Capability with Mule & MCP</span>
+      </span>
+    </a>
+    
+    <a href="stage-3.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-share-alt fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 3</span>
+        <span class="nav-desc">Build Your Own Gen AI Agents with A2A & MCP</span>
+      </span>
+    </a>
+    
+    <a href="stage-4.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-users fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 4</span>
+        <span class="nav-desc">Agentforce + Data360</span>
+      </span>
+    </a>
+    
+    <a href="stage-5.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-sitemap fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 5</span>
+        <span class="nav-desc">Mule Agent Fabric Broker for Orchestrating Multi-Agent Systems</span>
+      </span>
+    </a>
+  </div>
+
+  <hr style="margin: 20px 0;">
+
+  <div class="w3-container">
+    <h4>Customer Experience Transformation with Salesforce Data Cloud</h4>
+    <p>Hands-on Workshop and Ideation</p>
+  </div>
+  <div class="w3-bar-block">
+    <a href="http://datacloud-workshop.github.io/index.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>Get Started
+    </a> 
+    <a href="http://datacloud-workshop.github.io/insidedatacloud.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-lightbulb-o fa-fw w3-margin-right"></i>Concepts
+    </a>     
+    <a href="http://datacloud-workshop.github.io/hands-on.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-laptop fa-fw w3-margin-right"></i>Hands-on Lab
+    </a> 
+    <a href="http://datacloud-workshop.github.io/ideation.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-comments-o fa-fw w3-margin-right"></i>Ideation
+    </a>
+    <a href="http://datacloud-workshop.github.io/resources.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-book fa-fw w3-margin-right"></i>Resources
+    </a>
+  </div>
+</nav>
+
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:300px; border-left: 1px solid #000000;">
+  
+  <header>
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container w3-padding-16">
+      </div>
+  </header>
+
+  <div id="overview" class="w3-container" style="margin-top:30px; margin-bottom:30px;"> 
+    <h1><b>Overview</b></h1>
+    <h2>Build Multi-Agent Systems with Salesforce Workshop: Jan 15th 2026</h2>
+    <p>This guided hands-on workshop walks attendees through the key stages of building enterprise-grade AI systems—starting with foundational LLMs and progressing toward enterprise-aware, interoperable, and orchestrated multi-agent architectures.</p>
+    <p>In enterprises, multi-agent does not automatically mean that agents are wired together or coordinated by a broker. Multiple agents can exist independently, serve different purposes, and never interact—and this is still a valid, and often desirable, multi-agent design. Orchestration is a later-stage choice, introduced only when agents must collaborate to solve a shared problem or workflow.</p>
+    <p>In this workshop, we explore multiple architectural patterns for building realistic multi-agent strategies.</p>
+    <p>For simplicity, the workshop is modular, and each stage in the multi-agent architecture can be leveraged independently based on business requirements. The workshop is designed to provide a practical, end-to-end mental model for transforming business processes with AI.</p>
+    
+    <div class="w3-card w3-container w3-center w3-mobile w3-margin-bottom w3-padding"> 
+      <img class="w3-image" src="images/00-1.png" alt="Maturity Journey Diagram"> 
+    </div>
+    
+    <div class="w3-panel w3-leftbar w3-light-grey w3-padding-16">
+      <p>Time may not allow you to explore all workshop modules today. Each module is self-contained, so you can choose any one to explore on its own.</p>
+      <p>We recommend these modules to start with:</p>
+      <ul class="w3-ul">
+        <li><b>Stage 0:</b> This is a fun exercise and demystifies AI</li>
+        <li><b>Stage 1:</b> This is an easy and insightful exercise with Mule AI</li>
+        <li><b>Stage 4:</b> The Document AI module (Salesforce Data360 with Agentforce)</li>
+      </ul>
+    </div>
+
+    <div class="w3-margin-top">
+      <h3><b>Stage 0: Foundational Gen AI App:</b></h3>
+      <p>Build and deploy a foundational Gen AI app that talks directly to a raw LLM, with no grounding, memory, or enterprise controls. This stage clarifies what an LLM can do on its own—and, just as importantly, what it cannot. You will develop a clean mental model of <b>where “pure GenAI” ends and where real applications & platforms must begin</b>.</p>
+
+      <h3><b>Stage 1: From LLM call into an enterprise AI capability with Mule Inference Connector</b></h3>
+      <p>Build and deploy a real, production-style LLM inference endpoint in Mule, exposed as a stable HTTP API and running on CloudHub. You will see <b>how AI execution gains security, isolation, observability, and managed scaling</b> the moment it is centralized behind the platform. You leave with the steps for creating reusable enterprise inference service that any application—or future agent—can safely consume without rework.</p>
+
+      <h3><b>Stage 2: From Inference to Enterprise-Aware AI with Mule & MCP</b></h3>
+      <p>Extend the Mule-hosted inference capability so the system can <b>consult authoritative enterprise data at runtime instead of guessing</b>. You build an MCP server as a live source of truth and connect it to the LLM, making responses <b>fact-grounded, explainable, and controllable</b>. You leave with a true agent foundation—where intelligence is separated from knowledge and access is governed by the platform, not prompts.</p>
+
+      <h3><b>Stage 3: From Enterprise-Aware AI to Discoverable AI Agents (A2A + MCP)</b></h3>
+      <p>Wrap your enterprise-aware AI capability in the <b>Agent-to-Agent (A2A) protocol</b>, turning it into a standardized, discoverable service that other machines—not just humans—can call. You deploy a real A2A server on CloudHub that exposes skills via an Agent Card while hiding internal reasoning, tools, and data access. You leave with a clear mental model of how <b>AI capabilities are exposed machine-to-machine, how discovery and interoperability work</b> without tight coupling.</p>
+
+      <h3><b>Stage 4: Data Driven AI Agents with Data360 & Agentforce360</b></h3>
+      <p>Leverage Data360 to power <b>Salesforce Agentforce within real employee and customer workflows.</b> You see how enterprise agents operate with data, identity, and guardrails in place—and leave with a repeatable blueprint for embedding AI agents into Salesforce business processes.</p>
+
+      <h3><b>Stage 5: Orchestrating Multi-Agent Systems with Mule Agent Fabric Broker</b></h3>
+      <p>Explore <b>Mule Agent Fabric Broker</b> to centrally discover, govern, and orchestrate multiple specialized agents across the enterprise. You explore how routing, coordination, and policy enforcement are defined declaratively—without hardcoding agent-to-agent links. You leave with a clear model for <b>scaling from single agents to governed multi-agent systems</b> without creating agent sprawl.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <div id="environments" class="w3-container" style="margin-top:30px; margin-bottom:50px;">
+    <h1><b>Workshop Environments</b></h1>
+    
+    <p><b>1. Salesforce</b></p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Sign up using the link here: <a href="https://orgfarm.salesforce.com/signup" target="_blank">https://orgfarm.salesforce.com/signup</a> (Use this event code: <code>DXX22AQU</code>). Please sign up for only <b><i>one</i></b> org. If your login link expires you don't need to sign-up again - just use the signup page and event code to <b>retrieve (access)</b> your old org.</li>
+    </ul>
+
+    <p><b>2. Heroku:</b></p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Please create a free account at <a href="http://Heroku.com" target="_blank">Heroku.com</a></li>
+      <li>After you sign-up for a free Heroku account, add yourself to the Heroku Enterprise Workshop team: <a href="https://workshops.herokubuilder.com/join/692a4b348574" target="_blank">https://workshops.herokubuilder.com/join/692a4b348574</a> s</li>
+    </ul>
+
+    <p><b>3. GitHub:</b></p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Please sign up for a free account on GitHub (<a href="https://github.com/" target="_blank">https://github.com/</a>). Optionally, you can use your existing personal GitHub account - please do not use your company’s official GitHub account.</li>
+    </ul>
+
+    <p><b>4. Groq LLM:</b></p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Get a free Groq API key from <a href="https://console.groq.com/keys" target="_blank">https://console.groq.com/keys</a> The fastest and simplest way is to use personal gmail account to sign-up.</li>
+    </ul>
+
+    <p><b>5. MuleSoft:</b></p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Please sign up for a free 30 day trial of MuleSoft (<a href="https://www.mulesoft.com/" target="_blank">https://www.mulesoft.com/</a>)</li>
+      <li>Your workshop facilitator will send you a mail on how to use MuleSoft tools (Anypoint Studio and Anypoint Code Builder) in a lightweight ‘Windows App’ (Remote Desktop VM) if you are restricted from installing Mule tools on your laptop.</li>
+    </ul>
+    
+    <p>The instructions for Mule Remote Desktop will be sent to you via mail. However following is a summary:</p>
+    <ol>
+      <li>Install the lightweight Windows App on your laptop: <a href="https://modules-library.workshops.mulesoft.com/setups/setup/remoteDesktop.html" target="_blank">https://modules-library.workshops.mulesoft.com/setups/setup/remoteDesktop.html</a></li>
+      <li>Click the link in your mail, Restart Remote Desktop Instance</li>
+      <li>A window will pop up - as your Remote Desktop instance is restarted - after a few minutes you will see Public and Private IP address displayed in your pop up.</li>
+      <li>Copy the Public IP and use it to connect (OS specific instruction in #1 above. Your instructor will provide you with username/password).</li>
+    </ol>
+  </div>
+
+  <hr>
+  <div class="w3-container w3-padding-32">
+    <h1><b>Thank You</b></h1>
+  </div>
+</div>
+
+<script>
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>
