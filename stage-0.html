@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stage 0: A Foundational Generative AI App</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+/* Custom Sidebar Menu Styles */
+.nav-item {
+  display: flex !important;
+  align-items: flex-start;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+.nav-item i {
+  margin-top: 3px;
+  width: 24px;
+  flex-shrink: 0;
+}
+.nav-text {
+  flex-grow: 1;
+  line-height: 1.4;
+  white-space: normal;
+}
+.nav-title {
+  font-weight: bold;
+  display: block;
+}
+.nav-desc {
+  font-size: 0.85em;
+  color: #555;
+  display: block;
+}
+</style>
+</head>
+<body class="w3-content" style="max-width:1600px;">
+
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3; width:300px; overflow-y:auto; padding-bottom:50px;" id="mySidebar"><br>
+  <div class="w3-container">    
+      <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <h4>Build Multi-Agent Systems with Salesforce</h4>
+    <p>Demystifying Data360, MCP, A2A, Mule Fabric Broker and Agentforce</p>
+  </div>
+  
+  <div class="w3-bar-block">
+    <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-home fa-fw w3-margin-right"></i>
+      <span class="nav-text"><span class="nav-title">Overview</span></span>
+    </a>     
+    
+    <a href="stage-0.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item w3-light-grey">
+      <i class="fa fa-wrench fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 0</span>
+        <span class="nav-desc">A Foundational Generative AI App</span>
+      </span>
+    </a>     
+    
+    <a href="stage-1.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-plug fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 1</span>
+        <span class="nav-desc">Enterprise-Grade LLM Activation with Mule Inference Connector</span>
+      </span>
+    </a> 
+    
+    <a href="stage-2.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-database fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 2</span>
+        <span class="nav-desc">Building Enterprise-Aware AI Agent Capability with Mule & MCP</span>
+      </span>
+    </a>
+    
+    <a href="stage-3.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-share-alt fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 3</span>
+        <span class="nav-desc">Build Your Own Gen AI Agents with A2A & MCP</span>
+      </span>
+    </a>
+    
+    <a href="stage-4.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-users fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 4</span>
+        <span class="nav-desc">Agentforce + Data360</span>
+      </span>
+    </a>
+    
+    <a href="stage-5.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-sitemap fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 5</span>
+        <span class="nav-desc">Mule Agent Fabric Broker for Orchestrating Multi-Agent Systems</span>
+      </span>
+    </a>
+  </div>
+
+  <hr style="margin: 20px 0;">
+
+  <div class="w3-container">
+    <h4>Customer Experience Transformation with Salesforce Data Cloud</h4>
+    <p>Hands-on Workshop and Ideation</p>
+  </div>
+  <div class="w3-bar-block">
+    <a href="http://datacloud-workshop.github.io/index.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>Get Started
+    </a> 
+    <a href="http://datacloud-workshop.github.io/insidedatacloud.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-lightbulb-o fa-fw w3-margin-right"></i>Concepts
+    </a>     
+    <a href="http://datacloud-workshop.github.io/hands-on.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-laptop fa-fw w3-margin-right"></i>Hands-on Lab
+    </a> 
+    <a href="http://datacloud-workshop.github.io/ideation.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-comments-o fa-fw w3-margin-right"></i>Ideation
+    </a>
+    <a href="http://datacloud-workshop.github.io/resources.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-book fa-fw w3-margin-right"></i>Resources
+    </a>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:300px; border-left: 1px solid #000000;">
+  
+  <header>
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container w3-padding-16">
+      </div>
+  </header>
+
+  <div class="w3-container" style="margin-top:10px; margin-bottom:30px;"> 
+    <h1><b>Stage 0: A Foundational Generative AI App</b></h1>
+    <p><b>Building and Running an LLM-Powered Service</b></p>
+    
+    <h2><b>A Practical Map of the Gen AI Landscape</b></h2>
+    <p>The current Gen AI landscape consists of four distinct layers. Understanding where a tool sits tells you exactly what it is—and isn't—capable of.</p>
+    
+    <div class="w3-margin-top">
+      <div class="w3-card w3-padding w3-margin-bottom">
+        <h4><b>Layer 1: The Model Architects (The Brains)</b></h4>
+        <p>Companies like <b>OpenAI, Anthropic, Google,</b> and <b>Meta</b> build the core engines.</p>
+        <p>These core engines (Gen AI models) have advanced a lot. We have moved from "Chat" models (GPT-4) to <b>"Reasoning" models</b> (OpenAI o1, DeepSeek R1). However, at their core, these are still <b>Token Predictors</b>. They don't see "words"; they see mathematical chunks.</p>
+      </div>
+
+      <div class="w3-card w3-padding w3-margin-bottom">
+        <h4><b>Layer 2: The Model Hubs (The Library)</b></h4>
+        <p>This is the <b>Distribution Layer</b>.</p>
+        <p>An example of this layer is <b>Hugging Face</b>. Think of Hugging Face as the Registry & Tooling layer.</p>
+        <p>Just as GitHub hosts code, Hugging Face hosts the actual "weights" (the brain files) of open models. If a company like Meta releases Llama 3, they put it here so the rest of the world can download it, test it, and build on it. It is the "Town Square" of the AI world.</p>
+        <p>Other examples in this layer 2: ModelScope (Alibaba ecosystem), OpenModel registries inside cloud platforms and of course the internal enterprise registries (private Layer 2s)</p>
+      </div>
+
+      <div class="w3-card w3-padding w3-margin-bottom">
+        <h4><b>Layer 3: The Inference Providers (The Engines)</b></h4>
+        <p>Organizations like <b>Groq, AWS Bedrock, and Azure AI</b> specialize in <i>running</i> the models. As an example, in our workshop we use <b>llama-3.3-70b-versatile</b> - this is not an LLM created by Groq. It is an LLM created by <b>Meta</b>, hosted and optimized on Groq's hardware.</p>
+        <div class="w3-panel w3-leftbar w3-light-grey">
+          <p><b>Important Distinction: Groq vs. Grok</b> Please do not confuse <b>Groq</b> (ending in 'Q') with <b>Grok</b> (ending in 'K').</p>
+          <ul>
+            <li><b>Grok</b> is the chatbot developed by xAI (Elon Musk’s company).</li>
+            <li><b>Groq</b> is the high-speed hardware platform we are using today to run our models.</li>
+          </ul>
+        </div>
+        <p><b>The Role of Groq:</b> Think of the LLM (like Llama-3) as the "brain," and Groq as the "nervous system." Meta designed the brain, but Groq provides the specialized hardware that allows that brain to think and respond instantly.</p>
+        <p>The Role of Layer 3<b>:</b> They don't design the brains; they provide the high-speed hardware to make the brains respond instantly. The same model might take 10 seconds to respond on one platform and 0.1 seconds on another (like Groq).</p>
+      </div>
+
+      <div class="w3-card w3-padding w3-margin-bottom">
+        <h4><b>Layer 4: The Enterprise Platforms (The Guardrails)</b></h4>
+        <p>This is where <b>Salesforce Agentforce</b> operates. An LLM is like a genius with no access to your office. The Platform Layer "grounds" the model by giving it:</p>
+        <ul class="w3-ul">
+          <li><b>Data (Unified Context):</b> It goes far beyond just Salesforce records. Through <b>Data Cloud</b> and <b>Zero Copy</b> technology, the agent can securely access your external data lakes (like Snowflake or AWS) and unstructured files (PDFs, emails) without ever moving the data—giving the model a complete 360-degree view of the customer.</li>
+          <li><b>Actions (Reasoning & Automation):</b> It doesn't just trigger a simple Flow; it uses the <b>Atlas Reasoning Engine</b> to plan and execute complex workflows. It can autonomously decide to update a CRM record, send an email, or even reach into external systems (via APIs) to check inventory or process refunds—all without human hand-holding.</li>
+          <li><b>Trust (The Einstein Trust Layer):</b> A sophisticated "Security Shield" that protects your business at every step. This includes:
+            <ul>
+              <li><b>Zero Data Retention:</b> Your data is never stored by the LLM provider.</li>
+              <li><b>PII Masking:</b> Sensitive info is scrubbed before it leaves your environment.</li>
+              <li><b>Hallucination Detection:</b> The system scans answers for accuracy before showing them to the user.</li>
+              <li><b>Audit Trails:</b> Every decision and action is logged for full compliance and transparency.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <h4><b>Summary</b></h4>
+    <p>In the real world, players often operate in multiple layers. For example, Layer 2 and Layer 3 can feel very similar. For clarity, you can think of Layer 2 as Model Hubs (where models live), while Layer 3 as Inference Providers (where models run). Some companies do both, which is why the boundary feels fuzzy. Hugging Face is one such example. While primarily the Layer 2 Registry (The Library), they also operate in <b>L</b>ayer 3 (Inference). They offer an "Inference API" that lets you run models directly from their site.</p>
+
+    <hr>
+    
+    <p><b>Why this Workshop starts at Layer 1:</b> We are starting "under the hood" at the <b>Raw Model</b> layer below the platform layer (e.g., Agentforce). Before introducing agents, orchestration, or enterprise integration, you will interact directly with a raw LLM. Seeing its strengths and limitations in isolation makes the purpose of the later stages concrete rather than conceptual.</p>
+    <p>You will see the "Reasoning" happen in real-time and understand why—without the <b>Platform Layer (Agentforce)</b>—even the smartest model can't actually run your business.</p>
+  </div>
+
+  <div class="w3-container" style="margin-top:30px; margin-bottom:30px;">
+    <h1><b>Workshop Project</b></h1>
+    
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/0-1.png" alt="Architecture" class="w3-image show-border" style="max-width: 100%;">
+    </div>
+
+    <h2><b>Hands-On: Deploy a Custom Gen AI App on Heroku</b></h2>
+    
+    <p>Get your starter app</p>
+    <p>After you have created a free GitHub account, copy the application for this module by forking the workshop repo.</p>
+    <p>Navigate to the following link and click on Fork: <a href="https://github.com/mas-workshop/mas_workshop_foundation_agent" target="_blank">https://github.com/mas-workshop/mas_workshop_foundation_agent</a></p>
+    
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/0-2.png" alt="GitHub Fork Button" class="w3-image show-border" style="max-width: 100%;">
+    </div>
+    
+    <p>In the next page, select default values and press ‘Create Fork’ button. The repo containing the application will be copied into your GitHub account.</p>
+    
+    <p>Let’s now deploy your app.</p>
+    <p>Login to your Heroku account and navigate to Enterprise Accounts & Teams</p>
+    
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/0-3.png" alt="Heroku Enterprise Teams" class="w3-image show-border" style="max-width: 100%;">
+    </div>
+    
+    <p>Select the enterprise account created by your instructor.</p>
+    <p>Create a new app.</p>
+    
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/0-4.png" alt="Create New Heroku App" class="w3-image show-border" style="max-width: 100%;">
+    </div>
+    
+    <p>Put in an app name, select all default values and press ‘Create App’ button at the bottom.</p>
+    
+    <p>Connect your app to GitHub.<br>We have prepared a python app on GitHub that you can immediately deploy and explore in Heroku.</p>
+    <p>In your Heroku app dashboard &rarr; Deploy &rarr; Github &rarr; Connect to GitHub.</p>
+    
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/0-5.png" alt="Connect Heroku to GitHub" class="w3-image show-border" style="max-width: 100%;">
+    </div>
+    
+    <p>You will be prompted to Authorize Heroku. Click the button to authorize.<br>Type in foundation in the search box. Then click the Connect button.<br>Click Enable Automatic Deploys. Now when you make a change to your GitHub repository, it will be automatically pushed to Heroku.</p>
+    <p>Click Deploy Branch.</p>
+    
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/0-6.png" alt="Deploy Branch" class="w3-image show-border" style="max-width: 100%;">
+    </div>
+    
+    <p>In your Heroku app dashboard, go to settings &rarr; Reveal Config Vars</p>
+    
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/0-7.png" alt="Reveal Config Vars" class="w3-image show-border" style="max-width: 100%;">
+    </div>
+    
+    <p>Put in your Groq API key (GROQ_API_KEY) and the value. Click Add.</p>
+    
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/0-8.png" alt="Enter API Key" class="w3-image show-border" style="max-width: 100%;">
+    </div>
+    
+    <p>Refresh your browser and navigate to the “Resources” tab. In your Heroku dashboard, you should see a basic dyno (processor) assigned to your app.</p>
+    <p>Click on Open app.</p>
+    
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/0-9.png" alt="Open Heroku App" class="w3-image show-border" style="max-width: 100%;">
+    </div>
+    
+    <p>If in the resources tab, you don’t see a dyno - then in your GitHub repo, add a file with any few random values. This will trigger a push to Heroku from your repo and assign a ‘dyno’ (i.e., a processor) to your app.</p>
+    <p>When you press Open app on your Heroku dashboard, it should open up a the app for you.</p>
+    
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/0-10.png" alt="Deployed Application Interface" class="w3-image show-border" style="max-width: 100%;">
+    </div>
+    
+    <h2><b>Architecture & Logic in Your Gen AI App</b></h2>
+    
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/0-11.png" alt="App Architecture" class="w3-image show-border" style="max-width: 100%;">
+    </div>
+    
+    <p>This application written in python is a <b>very easy to understand web app</b> that lets you type a question into a browser and see a response from a Large Language Model.</p>
+    <p>There is no hidden logic, no framework, and no automation behind the scenes. When you type something and press Enter, the app sends your text directly to the Groq LLM and displays whatever comes back.</p>
+    <p>This is a Python application that uses the Streamlit open source library to render a web interface and capture user input. Streamlit handles displaying text, input fields, and sidebar controls, and reruns the Python script whenever the user interacts with the page. The Python logic loads the Groq API key, sends the system prompt and user question to Groq, and displays the returned response. There is no memory or state: each request is independent, and Groq only sees the messages sent in that call.</p>
+    <p>This is the python file that gets deployed and executed on Heroku: <a href="https://github.com/mas-workshop/mas_workshop_foundation_agent/blob/main/foundation_agent.py" target="_blank">https://github.com/mas-workshop/mas_workshop_foundation_agent/blob/main/foundation_agent.py</a> The other files in your repo are simply configuration files (e.g., Procfile, requirements.txt) or miscellaneous optional lab files.</p>
+    <p>That’s the entire system.</p>
+    
+    <h3>Why this app is intentionally easy to understand</h3>
+    <p>This app is designed to be easy to reason about. Every major step is visible in the code, and nothing is abstracted away.</p>
+    <ul>
+      <li>There is <b>no memory</b> — each question is handled independently</li>
+      <li>There is <b>no data retrieval</b> — the model only uses what you type</li>
+      <li>There are <b>no actions or workflows</b> — it only generates text</li>
+      <li>There is <b>no enterprise framework</b> managing behavior</li>
+    </ul>
+    <p>This makes it a good starting point, because you can clearly see what a raw LLM does on its own before adding any platform capabilities later.</p>
+    
+    <h3>Challenge: Optional</h3>
+    <p>How about adding some context to your agent?</p>
+    <p>You would observe in your app that your Gen AI app only sees what it is sent at that moment and does not remember past conversations by itself.</p>
+    <p>We fix this by <b>explicitly storing the conversation inside the application</b> and <b>resending it on every request</b>.</p>
+    <p>First, we create a place in the app to store messages. This is done once, near the top of the <code>main()</code> function. If the list does not already exist, we create it. If it already exists, we keep it. This prevents earlier questions and answers from being erased each time the app runs.</p>
+    <p>Next, each time the user asks a question, we add that question to the list. We then send Groq a combined list that includes:</p>
+    <ul>
+      <li>the system instructions,</li>
+      <li>all earlier user questions,</li>
+      <li>all earlier Groq responses,</li>
+      <li>and the new question.</li>
+    </ul>
+    <p>After Groq replies, we also add its response to the same list. This ensures that both sides of the conversation are preserved and sent again the next time.</p>
+    
+    <h3>Solution to the Challenge</h3>
+    <p>In the interest of time we have created a file with all these changes. We have also annotated the solution file with comments and reading it will give you a clear understanding of the changes we have made.</p>
+    <p>Simply replace the entire contents of <code>foundation_agent.py</code> in your GitHub repository with the contents of the solution file named <code>foundation_agent_with_memory_annotations.py</code>.</p>
+    <p>Once you update the file in GitHub, Heroku will automatically rebuild the app. You can monitor the progress of this deployment in your Heroku apps’ dashboard &rarr; Activities tab.</p>
+    <p>After a few minutes, open the app again from the Heroku dashboard and you will see the updated behavior.</p>
+    <p>Note: Your original minimal app is preserved as <code>foundation_agent_bkp.py</code> in your forked repo, in case you want to go back to it in the future</p>
+    
+    <h3>What You See Immediately</h3>
+    <ul>
+      <li>Before this change, you can ask a follow-up question and the model will forget what you were talking about.</li>
+      <li>After this change, you can ask something like <i>“Can you explain that again more simply?”</i> and the model understands what <i>“that”</i> refers to.</li>
+    </ul>
+    
+    <h3>Why This Change Is Deeply Meaningful</h3>
+    <p>This single change teaches several foundational truths about Generative AI systems.</p>
+    <ul>
+      <li>First, <b>language models do not have memory</b>. They forget everything after each response. Any sense of continuity comes from the application, not the model.</li>
+      <li>Second, <b>memory is external</b>. It lives outside the model, in your code. The program decides what to store and what to send again.</li>
+      <li>Third, <b>context must be resent every time</b>. Nothing is carried over automatically. If something is not included in the request, the model cannot use it.</li>
+      <li>Fourth, <b>conversation is an illusion</b>. It works only because earlier messages are replayed. The model is not “remembering” — it is re-reading.</li>
+    </ul>
+    <p>This also shows that <b>state lives in the application, not the model</b>.</p>
+    <p>In this app, Streamlit’s (python library) session state acts as a simple memory layer. What you choose to keep, what you leave out, and what you later summarize are all design decisions.</p>
+    <p><b>Understanding this prepares you directly for more advanced systems such as Agentforce conversation context, Retrieval-Augmented Generation (RAG), Model Context Protocol (MCP), and multi-agent handoffs</b>.</p>
+    
+    <h3><b>Congratulations!</b></h3>
+    <p>You now have a <b>solid Generative AI application</b>.</p>
+    <p>It is simple, but it already demonstrates the most important boundary in GenAI systems: <b>models generate text, applications provide memory, data and context</b>.</p>
+    <p>Everything that comes next builds on this idea.</p>
+    
+    <h2><b>Discussion</b></h2>
+    <p>Commercial Generative AI applications (such as ChatGPT) do not rely on the model to remember conversations because it is not technically possible for the model to do so.</p>
+    <p>Conversation history is stored outside the model and reconstructed on every request.</p>
+    <ul>
+      <li>When a response is generated, the server sends recent questions and answers again in full, while older parts of the conversation are often shortened into summaries so the request does not grow endlessly.</li>
+      <li>In production systems, this context is also kept on the server - browser caching is typically not used because browsers are unreliable: users refresh pages, open new tabs, switch devices, or lose local state).</li>
+    </ul>
+    <p>This hybrid approach keeps responses relevant without resending everything forever.</p>
+    <p>What these systems are not doing is caching conversations inside the model, relying on hidden memory, or skipping context entirely. Regardless of where conversation state is stored, the model only sees the text explicitly sent to it at that moment.</p>
+    <p>All this makes production AI applications inherently complex, because developers must manage context, memory, security, scaling, monitoring, and governance in addition to calling the model itself.</p>
+    <p>Platforms such as Agentforce simplify this complexity by handling conversation context, data access, permissions, and orchestration for you, while still allowing flexibility in how models, prompts, actions, and integrations are used.</p>
+    
+    <h2><b>Environment Details</b></h2>
+    <ul>
+      <li>Sign up for a free Heroku account: <a href="https://signup.heroku.com/" target="_blank">https://signup.heroku.com/</a></li>
+      <li>Add your free Heroku account to an Enterprise account team. Use the Heroku Enterprise account sign-up page provided by your instructor.</li>
+      <li>Sign up for a free Groq LLM API key: <a href="https://console.groq.com/keys" target="_blank">https://console.groq.com/keys</a></li>
+      <li>Sign up for a GitHub account: <a href="http://github.com" target="_blank">github.com</a></li>
+    </ul>
+    
+    <h2><b>Reference</b></h2>
+    <ul>
+      <li>Grant Heroku access to your GitHub repo: <a href="https://docs.github.com/en/organizations/managing-oauth-access-to-your-organizations-data/approving-oauth-apps-for-your-organization" target="_blank">https://docs.github.com/en/organizations/managing-oauth-access-to-your-organizations-data/approving-oauth-apps-for-your-organization</a></li>
+      <li>GitHub Integration (Heroku GitHub Deploys): <a href="https://devcenter.heroku.com/articles/github-integration" target="_blank">https://devcenter.heroku.com/articles/github-integration</a></li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <div class="w3-container" style="margin-top:30px; margin-bottom:50px;">
+    <h1><b>Appendix</b></h1>
+    
+    <h2><b>Predictive AI vs Generative AI (Why the Distinction Exists)</b></h2>
+    <p>You will often hear AI divided into <i>predictive</i> and <i>generative</i>. This distinction is useful, but it can also be misleading if taken too literally.</p>
+    <p>It is important to clarify two foundational categories that shape modern enterprise AI systems: Predictive AI and Generative AI. While they are often discussed together, they serve different purposes, operate under different constraints, and are designed to answer different kinds of questions.</p>
+    
+    <p><b>Predictive AI</b> is about estimating an outcome from known patterns. Given past data, it predicts a value, a class, or a probability: fraud or not, churn risk, demand forecast, next best offer. These systems usually produce structured outputs and are evaluated on accuracy, precision, and recall. Most enterprise machine learning over the past decade falls into this category.</p>
+    
+    <p><b>Generative AI</b> produces new content rather than a score or label. Instead of predicting <i>which bucket</i> something belongs to, it generates text, images, code, or plans. Large Language Models fall into this category because their output is free-form and open-ended.</p>
+    
+    <p>Here’s the important nuance: <b>both are predictive at their core</b>.</p>
+    
+    <p>A generative model is still making predictions — just at a much finer level. Instead of predicting a churn score or a category, it predicts the <i>next token</i> (piece of text) repeatedly, guided by probability. The “generation” emerges from a long sequence of tiny predictions.<br>So the difference is not that one predicts and the other doesn’t. The difference is:</p>
+    <ul>
+      <li>Predictive AI predicts <b>a value</b></li>
+      <li>Generative AI predicts <b>a sequence</b></li>
+    </ul>
+    <p>This is why generative systems feel flexible and conversational, but also why they can be confidently wrong. They optimize for <i>plausibility</i>, not truth.</p>
+    <p>In enterprise systems, the two are often combined. Predictive models determine <i>what should happen</i> (risk, priority, eligibility), while generative models determine <i>how it is communicated</i> (explanations, summaries, instructions).<br>Understanding this division is key to designing systems that are both powerful and reliable.</p>
+
+    <h3><b>Why Predictive AI Remains Essential (and Coexists with Generative AI)</b></h3>
+    <p>Generative AI can approximate some predictive tasks, but it does not replace predictive models for core scoring and classification use cases. These problems require statistical rigor, stability, and governance that Large Language Models are not designed to provide.</p>
+    <p>For example, <b>lead or opportunity scoring</b> is not appropriate for Generative AI. LLMs do not optimize for calibration, repeatability, or statistical validity. Predictive scoring models, by contrast, are explicitly trained on labeled historical data, validated against measurable accuracy metrics, monitored for drift, and governed over time.</p>
+    <p>Similarly, using Generative AI to estimate <b>churn or renewal likelihood</b> is architecturally incorrect. This is a probability estimation problem across large populations, where consistent outputs and confidence calibration are essential. Predictive models are designed to produce these probabilities reliably. Generative AI may surface churn-related signals from unstructured text, but it cannot replace the probability itself.</p>
+    <p>In these scenarios, Generative AI and Predictive AI work best together. Predictive models determine <i>what is likely to happen</i>, while Generative AI–based applications such as Agentforce retrieve those scores and use them to produce contextual explanations, recommendations, and next-best actions in natural language.</p>
+    <p>This workshop focuses on Generative AI so you can see its strengths and limitations clearly before it is combined with predictive logic (for example, Agentforce actions that consume predictive model outputs), data grounding (such as Retrieval-Augmented Generation in Data360), and enterprise controls provided by platforms like Agentforce and MuleSoft.</p>
+
+  </div>
+
+  <hr>
+  <div class="w3-container w3-padding-32">
+    </div>
+</div>
+
+<script>
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>
