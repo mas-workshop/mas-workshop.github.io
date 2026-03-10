@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stage 5: Mule Agent Fabric Broker for Orchestrating Multi-Agent Systems</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+/* Custom Sidebar Menu Styles */
+.nav-item {
+  display: flex !important;
+  align-items: flex-start;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+.nav-item i {
+  margin-top: 3px;
+  width: 24px;
+  flex-shrink: 0;
+}
+.nav-text {
+  flex-grow: 1;
+  line-height: 1.4;
+  white-space: normal;
+}
+.nav-title {
+  font-weight: bold;
+  display: block;
+}
+.nav-desc {
+  font-size: 0.85em;
+  color: #555;
+  display: block;
+}
+code {
+  background-color: #f4f4f4;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: Consolas, monospace;
+}
+pre {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-left: 4px solid #ccc;
+  overflow-x: auto;
+  font-family: Consolas, monospace;
+}
+</style>
+</head>
+<body class="w3-content" style="max-width:1600px;">
+
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3; width:300px; overflow-y:auto; padding-bottom:50px;" id="mySidebar"><br>
+  <div class="w3-container">    
+      <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <h4>Build Multi-Agent Systems with Salesforce</h4>
+    <p>Demystifying Data360, MCP, A2A, Mule Fabric Broker and Agentforce</p>
+  </div>
+  
+  <div class="w3-bar-block">
+    <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-home fa-fw w3-margin-right"></i>
+      <span class="nav-text"><span class="nav-title">Overview</span></span>
+    </a>     
+    
+    <a href="stage-0.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-wrench fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 0</span>
+        <span class="nav-desc">A Foundational Generative AI App</span>
+      </span>
+    </a>     
+    
+    <a href="stage-1.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-plug fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 1</span>
+        <span class="nav-desc">Enterprise-Grade LLM Activation with Mule Inference Connector</span>
+      </span>
+    </a> 
+    
+    <a href="stage-2.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-database fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 2</span>
+        <span class="nav-desc">Building Enterprise-Aware AI Agent Capability with Mule & MCP</span>
+      </span>
+    </a>
+    
+    <a href="stage-3.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-share-alt fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 3</span>
+        <span class="nav-desc">Build Your Own Gen AI Agents with A2A & MCP</span>
+      </span>
+    </a>
+    
+    <a href="stage-4.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-users fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 4</span>
+        <span class="nav-desc">Agentforce + Data360</span>
+      </span>
+    </a>
+    
+    <a href="stage-5.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item w3-light-grey">
+      <i class="fa fa-sitemap fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 5</span>
+        <span class="nav-desc">Mule Agent Fabric Broker for Orchestrating Multi-Agent Systems</span>
+      </span>
+    </a>
+  </div>
+
+  <hr style="margin: 20px 0;">
+
+  <div class="w3-container">
+    <h4>Customer Experience Transformation with Salesforce Data Cloud</h4>
+    <p>Hands-on Workshop and Ideation</p>
+  </div>
+  <div class="w3-bar-block">
+    <a href="http://datacloud-workshop.github.io/index.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>Get Started
+    </a> 
+    <a href="http://datacloud-workshop.github.io/insidedatacloud.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-lightbulb-o fa-fw w3-margin-right"></i>Concepts
+    </a>     
+    <a href="http://datacloud-workshop.github.io/hands-on.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-laptop fa-fw w3-margin-right"></i>Hands-on Lab
+    </a> 
+    <a href="http://datacloud-workshop.github.io/ideation.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-comments-o fa-fw w3-margin-right"></i>Ideation
+    </a>
+    <a href="http://datacloud-workshop.github.io/resources.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-book fa-fw w3-margin-right"></i>Resources
+    </a>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:300px; border-left: 1px solid #000000;">
+  
+  <header>
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container w3-padding-16">
+      </div>
+  </header>
+
+  <div class="w3-container" style="margin-top:10px; margin-bottom:30px;"> 
+    <h1><b>Stage 5: Mule Agent Fabric Broker for Orchestrating Multi-Agent Systems</b></h1>
+    
+    <h1><b>Introduction</b></h1>
+    <p>In this workshop module we explore how multiple agents in an enterprise can be orchestrated using Mule Agent Fabric.</p>
+
+    <h1><b>What is Mule Agent Fabric?</b></h1>
+    <p>MuleSoft Agent Fabric is a central platform for managing AI agents. It brings together agents built on different systems so they can be discovered, secured, and coordinated from one place. This stops "agent sprawl" by giving you a single control point for your entire AI network.</p>
+    <p>The platform handles four main tasks:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b>Discover (MuleSoft Agent Registry):</b> It uses a central registry where you can find and reuse any agent in the company. It enables the registration and versioning of all agentic assets for developers to find and reuse existing capabilities.</li>
+      <li><b>Orchestrate (MuleSoft Agent Broker):</b> It uses an intelligent broker to connect agents and tools to complete complex, multi-step business processes. It evaluates incoming prompts and delegates tasks to the specific agent best suited for the requirement. These processes are defined through easy configurations rather than complex manual coding.</li>
+      <li><b>Govern (MuleSoft Agent Governance):</b> It applies security guardrails and data masking to agent interactions to keep them compliant. This layer enforces security policies such as authentication, rate limiting, and PII detection to ensure that all autonomous workflows remain compliant with enterprise standards.</li>
+      <li><b>Observe (MuleSoft Agent Visualizer):</b> It provides a visual map of how agents make decisions, so you can see exactly what is happening in real-time. It gives visibility into the dependencies and performance of multi-agent workflows to identify bottlenecks or errors in real-time.</li>
+    </ul>
+    <p>In this module we take a closer look at Mule Agent Broker.</p>
+
+    <hr>
+
+    <h1><b>Mule Fabric Broker Anatomy: Design & Configure a Multi-Agent System</b></h1>
+    <p>In this section we examine how to design a multi-agent system orchestration with Mule Fabric Agent Broker.</p>
+    <div class="w3-panel w3-leftbar w3-light-grey w3-padding">
+      <p><i>Due to constraints of the Mule trial account, you will not be able to actually deploy your Mule Fabric Broker on CloudHub. In this module, we shall step through a working Mule Broker configuration for a Multi-Agent system. We shall also examine how to adapt it for different requirements.</i></p>
+    </div>
+
+    <h2><b>Explore the Mule Broker Configuration</b></h2>
+    <p><b>Configuring & deploying the Mule Broker is very straightforward.</b></p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>The Mule Broker itself is a Gen AI agent.</li>
+      <li>The instructions (Prompts) to this Broker agent for orchestrating a multi-agent system are provided in the <code>agent-network.yaml</code> file.</li>
+      <li>The property values (e.g., the API key for the Gen AI agent powering Mule Broker) are kept in a file called <code>exchange.json</code>.</li>
+      <li>The Mule Fabric Broker configuration and deployment (on CloudHub) is done through Mule Anypoint Code Builder (ACB) tool.</li>
+      <li>MuleSoft ACB also provides a generative option for development & configuration of Mule apps using MuleSoft Dev Agent.</li>
+    </ul>
+
+    <p><b>Let’s explore a working Broker Configuration.</b></p>
+    <p>Let’s open VS Code. The Mule ACB tool is embedded in VS Code.</p>
+    <p>Let’s type in the command palette: <code>MuleSoft: Create an Agent Network Project</code></p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/5-1.png" alt="VS Code Command Palette" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>You may be asked to authenticate via embedded browser. Use your Mule trial account to authenticate.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/5-2.png" alt="Authenticate Browser" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/5-3.png" alt="Creating Project" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>In your project, Mule ACB will create two files.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/5-4.png" alt="Project Files" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Click view canvas to view your skeleton file.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/5-5.png" alt="Canvas View" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/5-6.png" alt="Canvas View Details" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Now we will replace this skeleton with a working broker configuration. Replace the contents of the <code>agent-network.yaml</code> file with the file provided to you as follows.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Delete the <i>contents</i> of the skeleton <code>agent-network.yaml</code> that has been automatically generated for you. Don’t delete the file itself.</li>
+      <li>Download the <code>agent-network.yaml</code> file: <a href="https://drive.google.com/file/d/18rqrHp6gsB2EZ2yM3nwEHMBOA22lHZ7G/view?usp=drive_link" target="_blank">Download File</a> By default the file gets downloaded to <code>C:\Users\workshop\Downloads</code></li>
+    </ul>
+
+    <p>In VS Code open the downloaded file and copy the contents of the file and paste it over the now empty <code>agent-network.yaml</code> file.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/5-7.png" alt="Agent Network YAML File" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Now you can examine this working example of how we provide instructions to the Mule Fabric Orchestrator to manage agents and MCP servers.</p>
+
+    <hr>
+
+    <h1><b>Our Use Case: Architecture</b></h1>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/5-8.png" alt="Use Case Architecture" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <h2><b>Understanding the Broker Configuration: <code>agent-network.yaml</code></b></h2>
+    <p>This broker configuration has been created to orchestrate two agents that collaboratively serve a website visitor. When the visitor on the website clicks on the agent, he/she is greeted by the Mule Broker.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>If the user asks a general question, he/she is routed to a Custom Agent powered by Groq LLM.</li>
+      <li>If the user asks questions related to service cases, he/she is routed to Salesforce Agentforce Service Agent.</li>
+    </ul>
+    <p>This logic for this orchestration is defined in the <code>agent-network.yaml</code> file.</p>
+    <p>Think of this file as the <b>DNA of your Broker</b>. It tells the MuleSoft engine three things:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b>Who</b> the broker is (Identity).</li>
+      <li><b>How</b> it thinks (Brain/LLM & Instructions).</li>
+      <li><b>What</b> tools it can use (Limbs/Sub-Agents).</li>
+    </ul>
+
+    <p>Here is the breakdown of the key sections from your specific <code>Support Orchestration Broker</code> file.</p>
+
+    <h3><b>1. The Identity Section (<code>card</code>)</b></h3>
+    <p>It describes the broker to the outside world so other systems know what it does.</p>
+<pre><code>brokers:
+  support-orchestration-broker:
+    card:
+      name: Support Orchestration Broker
+      description: This broker orchestrates multi-turn conversations...
+      skills:
+        - id: multi-agent-support-orchestration
+          examples:
+            - What is the headquarters of Google?
+            - Can you check the status of my support case #12345?</code></pre>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b><code>name</code> & <code>description</code>:</b> These must be clear. In your file, the description explicitly states it routes between a "custom agent" and a "Salesforce agent".</li>
+      <li><b><code>skills</code>:</b> This is crucial for discovery. The <code>examples</code> list helps the AI understand <i>intent</i>. If a user asks "Check my support case," the system matches it to this broker because of the examples provided here.</li>
+    </ul>
+
+    <h3><b>2. The Brain (<code>spec</code>)</b></h3>
+    <p>This is the most critical part. The spec defines the intelligence.</p>
+
+    <p><b>2A. The LLM Configuration</b></p>
+<pre><code>spec:
+  llm:
+    ref:
+      name: azure-open-ai
+    configuration:
+      model: gpt-5-mini</code></pre>
+    <p>What it does: This tells the broker which brain to use. You are using <code>azure-open-ai</code> with the model <code>gpt-5-mini</code>. This model will process every user prompt to decide what to do next.</p>
+
+    <p><b>2B. The System Instructions (<code>instructions</code>)</b></p>
+    <p>This is the <b>System Prompt</b>. It is the set of rules the Broker <i>must</i> follow for "Multi-Agent Orchestration"</p>
+    <ul>
+      <li><b>Routing Logic:</b> We explicitly tell the brain how to choose a path:</li>
+    </ul>
+    <div class="w3-panel w3-leftbar w3-light-grey w3-padding">
+      <p><i>"If the user's message is general &rarr; route to custom-agent. If support-related &rarr; route to agentforce-agent."</i></p>
+    </div>
+    
+    <ul>
+      <li><b>Strict Pass-Through:</b></li>
+    </ul>
+    <div class="w3-panel w3-leftbar w3-light-grey w3-padding">
+      <p><i>"DO NOT modify the user message... Simply pass messages back and forth verbatim."</i></p>
+    </div>
+    <ul>
+      <li><i>Why this matters:</i> This prevents the Broker from summarizing or "hallucinating" on top of the sub-agent's answer. It acts as a pure pipe.</li>
+    </ul>
+
+    <ul>
+      <li><b>Agent Lock Rule:</b></li>
+    </ul>
+    <div class="w3-panel w3-leftbar w3-light-grey w3-padding">
+      <p><i>"Remain with the currently active agent until... The agent explicitly fails... or The user clearly changes topic."</i></p>
+    </div>
+    <ul>
+      <li><i>Why this matters:</i> This prevents "context switching" fatigue. If you are fixing a ticket, you don't want the broker to suddenly jump to the General Agent just because you said "Thanks."</li>
+    </ul>
+
+    <ul>
+      <li><b>Labeling:</b>
+        <ul>
+          <li><i>"Prefix each final response with... (Handled by Custom Agent)"</i></li>
+          <li><i>Why this matters:</i> This provides transparency to the user so they know <i>who</i> is answering.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <p><b>C. The Limbs (<code>links</code>)</b></p>
+<pre><code>links:
+  - agent:
+      ref:
+        name: custom-agent
+  - agent:
+      ref:
+        name: agentforce-agent</code></pre>
+    <p><b>What it does:</b> These are the only two "tools" the Broker is allowed to touch. If it's not listed here, the Broker cannot access it.</p>
+
+    <p><b>3. The Inventory (<code>agents</code> & <code>llmProviders</code>)</b></p>
+    <p>This section registers the components referenced above.</p>
+<pre><code>agents:
+  custom-agent:
+    label: Custom General Purpose Agent
+    metadata:
+      protocol: a2a
+      platform: a2a-SDK</code></pre>
+    <p><b>Concept:</b> This defines <i>what</i> "custom-agent" actually is (in this case, an Agent-to-Agent (A2A) compatible service).</p>
+
+    <p><b>4. The Wiring (<code>connections</code>)</b></p>
+    <p>This is where the rubber meets the road. It maps the abstract names to actual URLs and Credentials.</p>
+<pre><code>connections:
+  custom-agent:
+    spec:
+      url: https://customagent-a2a-ce169bafb6d6.herokuapp.com/
+
+  azure-open-ai-connection:
+    spec:
+      configuration:
+        apiKey: ${openai.apiKey}</code></pre>
+    <ul>
+      <li><b>URLs:</b> You can see the <code>custom-agent</code> lives on Heroku (<code>herokuapp.com</code>).</li>
+      <li><b>Security:</b> Notice <code>${openai.apiKey}</code>. <b>Never hardcode passwords in YAML.</b> This syntax tells the Broker to look in a secure configuration file (or environment variable) for the actual key. This api key is stored in a separate file <code>exchange.json</code></li>
+    </ul>
+
+    <h3><b>How can we change or add to the Fabric Broker Configuration</b></h3>
+    <p>Let’s say, that in addition to the two A2A agents, we want to add a MCP server in the broker configuration.</p>
+    <p>We have two options.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>We can manually edit the <code>agent-network.yaml</code>.</li>
+      <li>We can ask the Mule Dev Agent to help in this.</li>
+    </ul>
+    <p>Note: The Mule Dev Agent may not be available to workshop participants as it requires you to authenticate with a Mule Enterprise licensed account. However following is a screenshot of how we interact with the Mule Dev Agent.</p>
+
+    <h2><b>MuleSoft Dev Agent</b></h2>
+    <p>Mule Dev Agent is available within Mule Anypoint Code Builder (ACB). Mule ACB lives within VS Code as a set of extensions.</p>
+    <p>Following is a quick example of how MuleSoft facilitates generative development (in addition to point and click and programmatic options)</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/5-9.png" alt="Mule Dev Agent UI" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>MuleSoft Dev Agent is a LLM powered Gen AI agent. It can understand your question and optionally update the files in your folder. As an example in our configuration if we would like to include a MCP server, we could ask the Mule Dev Agent.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/5-10.png" alt="Mule Dev Agent Prompt" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <hr>
+
+    <h1><b>Summary</b></h1>
+    <p>Mule Agent Fabric Broker is a centralized orchestration framework that intelligently routes user requests to specialized "Limbs" (sub-agents) like Salesforce or Custom Agents instead of processing everything itself.</p>
+    <p>Defined declaratively in an <code>agent-network.yaml</code> file, the Broker uses an LLM (such as Azure OpenAI) combined with strict system instructions (e.g., "Routing," "Pass-Through," and "Agent Lock" protocols) to detect intent and delegate tasks without hallucinating or losing context.</p>
+    <p>To implement this, developers use Anypoint Code Builder (ACB) to follow a standardized lifecycle: establishing a secure Ingress Gateway, creating the Agent Network Project to define tools and logic, publishing the asset to Anypoint Exchange, and finally deploying & monitoring the active Broker to a cloud runtime for governed external access.</p>
+  </div>
+
+  <hr>
+
+  <div class="w3-container" style="margin-top:30px; margin-bottom:30px;">
+    <h1><b>Appendix</b></h1>
+    
+    <h1><b>Sequence of Tasks for Configuring & Deploying a Mule Agent Fabric Broker</b></h1>
+    <p><i>Perform these steps in exactly this order to configure and deploy a Fabric Agent Broker using Mule Anypoint Code Builder.</i></p>
+
+    <h3><b>Step 1: Setup Infrastructure</b></h3>
+    <p><i>Prepare the secure gateway in your private cloud space.</i></p>
+    <p><b>Command:</b> <code>CMD</code> + <code>SHIFT</code> + <code>P</code><br><b>Select:</b> <code>MuleSoft: Set Up Agent Network Gateways</code></p>
+
+    <h3><b>Step 2: Create Project</b></h3>
+    <p><i>Initialize the local project structure.</i></p>
+    <p><b>Command:</b> <code>CMD</code> + <code>SHIFT</code> + <code>P</code><br><b>Select:</b> <code>MuleSoft: Create an Agent Network Project</code></p>
+
+    <h3><b>Step 3: Publish Assets</b></h3>
+    <p><i>Upload the Broker definition to Anypoint Exchange.</i></p>
+    <p><b>Command:</b> <code>CMD</code> + <code>SHIFT</code> + <code>P</code><br><b>Select:</b> <code>MuleSoft: Publish Agent Network Assets</code></p>
+
+    <h3><b>Step 4: Deploy & Connect</b></h3>
+    <p><i>Push the Broker to the runtime environment.</i></p>
+    <p><b>Command:</b> <code>CMD</code> + <code>SHIFT</code> + <code>P</code><br><b>Select:</b> <code>MuleSoft: Deploy Agent Network</code></p>
+    <p><b>Final Action:</b> Once deployed, <b>copy the public endpoint</b> (the URL ending in your project name) to begin using your agent.</p>
+    <p>When you run <code>MuleSoft: Deploy Agent Network</code>, you are taking the Agent Network Project (the <code>agent-network.yaml</code> definition file where you listed your tools and LLM) and deploying it as a running Mule Application.</p>
+    <p>This application acts as the Broker. It sits online, receives user prompts, and uses the logic defined in your "Agent Network" to decide which tools to call.</p>
+
+    <h2><b>Intro to the Mule Anypoint Code Builder</b></h2>
+    <p>The Mule Agent Fabric Broker configuration is done in the Mule Anypoint Code Builder tool.</p>
+    <p>Mule Anypoint Code Builder (ACB) is based on VS Code. You execute tasks using the <b>Command Palette</b>:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b>Shortcut:</b> Press <code>CMD</code> + <code>SHIFT</code> + <code>P</code> (Mac) or <code>CTRL</code> + <code>SHIFT</code> + <code>P</code> (Windows).</li>
+      <li><b>Action:</b> Type <code>MuleSoft</code> into the search bar to filter for Fabric commands, then select the specific command you need.</li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <div class="w3-container w3-padding-32">
+    <h1><b>Thank You</b></h1>
+  </div>
+</div>
+
+<script>
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>
