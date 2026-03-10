@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stage 4: Agentforce + Data360</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+/* Custom Sidebar Menu Styles */
+.nav-item {
+  display: flex !important;
+  align-items: flex-start;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+.nav-item i {
+  margin-top: 3px;
+  width: 24px;
+  flex-shrink: 0;
+}
+.nav-text {
+  flex-grow: 1;
+  line-height: 1.4;
+  white-space: normal;
+}
+.nav-title {
+  font-weight: bold;
+  display: block;
+}
+.nav-desc {
+  font-size: 0.85em;
+  color: #555;
+  display: block;
+}
+code {
+  background-color: #f4f4f4;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: Consolas, monospace;
+}
+pre {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-left: 4px solid #ccc;
+  overflow-x: auto;
+  font-family: Consolas, monospace;
+}
+</style>
+</head>
+<body class="w3-content" style="max-width:1600px;">
+
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3; width:300px; overflow-y:auto; padding-bottom:50px;" id="mySidebar"><br>
+  <div class="w3-container">    
+      <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <h4>Build Multi-Agent Systems with Salesforce</h4>
+    <p>Demystifying Data360, MCP, A2A, Mule Fabric Broker and Agentforce</p>
+  </div>
+  
+  <div class="w3-bar-block">
+    <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-home fa-fw w3-margin-right"></i>
+      <span class="nav-text"><span class="nav-title">Overview</span></span>
+    </a>     
+    
+    <a href="stage-0.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-wrench fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 0</span>
+        <span class="nav-desc">A Foundational Generative AI App</span>
+      </span>
+    </a>     
+    
+    <a href="stage-1.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-plug fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 1</span>
+        <span class="nav-desc">Enterprise-Grade LLM Activation with Mule Inference Connector</span>
+      </span>
+    </a> 
+    
+    <a href="stage-2.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-database fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 2</span>
+        <span class="nav-desc">Building Enterprise-Aware AI Agent Capability with Mule & MCP</span>
+      </span>
+    </a>
+    
+    <a href="stage-3.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-share-alt fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 3</span>
+        <span class="nav-desc">Build Your Own Gen AI Agents with A2A & MCP</span>
+      </span>
+    </a>
+    
+    <a href="stage-4.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item w3-light-grey">
+      <i class="fa fa-users fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 4</span>
+        <span class="nav-desc">Agentforce + Data360</span>
+      </span>
+    </a>
+    
+    <a href="stage-5.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-sitemap fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 5</span>
+        <span class="nav-desc">Mule Agent Fabric Broker for Orchestrating Multi-Agent Systems</span>
+      </span>
+    </a>
+  </div>
+
+  <hr style="margin: 20px 0;">
+
+  <div class="w3-container">
+    <h4>Customer Experience Transformation with Salesforce Data Cloud</h4>
+    <p>Hands-on Workshop and Ideation</p>
+  </div>
+  <div class="w3-bar-block">
+    <a href="http://datacloud-workshop.github.io/index.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>Get Started
+    </a> 
+    <a href="http://datacloud-workshop.github.io/insidedatacloud.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-lightbulb-o fa-fw w3-margin-right"></i>Concepts
+    </a>     
+    <a href="http://datacloud-workshop.github.io/hands-on.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-laptop fa-fw w3-margin-right"></i>Hands-on Lab
+    </a> 
+    <a href="http://datacloud-workshop.github.io/ideation.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-comments-o fa-fw w3-margin-right"></i>Ideation
+    </a>
+    <a href="http://datacloud-workshop.github.io/resources.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-book fa-fw w3-margin-right"></i>Resources
+    </a>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:300px; border-left: 1px solid #000000;">
+  
+  <header>
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container w3-padding-16">
+      </div>
+  </header>
+
+  <div class="w3-container" style="margin-top:10px; margin-bottom:30px;"> 
+    <h1><b>Stage 4: Agentforce + Data360</b></h1>
+    
+    <h1><b>Workshop Architecture</b></h1>
+    
+    <div class="w3-center w3-margin-bottom w3-padding w3-margin-top">
+      <img src="images/4-1.png" alt="Workshop Architecture Data360" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <h1><b>01. Foundational</b></h1>
+    <p>If you are not familiar with Data360 and/or Agentforce360, the following workshop would be the best place to start.</p>
+    <p><a href="https://developer.salesforce.com/workshops/agentforce-workshop/data-cloud/5-create-unified-profile" target="_blank">https://developer.salesforce.com/workshops/agentforce-workshop/data-cloud/5-create-unified-profile</a></p>
+
+    <hr>
+
+    <h1><b>02. Integrated: Data360 + Agentforce360</b></h1>
+    <p><b>Document AI: Structure from Chaos</b>: <a href="" target="_blank">Your facilitator will prrovide the link for this module.</a></p>
+    
+ 
+
+    <p><b>Data 360 + Agentforce + Google BigQuery</b>: <a href="#" target="_blank">
+    Your facilitator will prrovide the link for this module</a></p>
+
+  </div>
+
+  <hr>
+
+  <div class="w3-container w3-padding-32">
+    </div>
+</div>
+
+<script>
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>
