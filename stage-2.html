@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stage 2 — Building Enterprise-Aware AI Agent Capability with Mule & MCP</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+/* Custom Sidebar Menu Styles */
+.nav-item {
+  display: flex !important;
+  align-items: flex-start;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+.nav-item i {
+  margin-top: 3px;
+  width: 24px;
+  flex-shrink: 0;
+}
+.nav-text {
+  flex-grow: 1;
+  line-height: 1.4;
+  white-space: normal;
+}
+.nav-title {
+  font-weight: bold;
+  display: block;
+}
+.nav-desc {
+  font-size: 0.85em;
+  color: #555;
+  display: block;
+}
+code {
+  background-color: #f4f4f4;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: Consolas, monospace;
+}
+pre {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-left: 4px solid #ccc;
+  overflow-x: auto;
+  font-family: Consolas, monospace;
+}
+</style>
+</head>
+<body class="w3-content" style="max-width:1600px;">
+
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3; width:300px; overflow-y:auto; padding-bottom:50px;" id="mySidebar"><br>
+  <div class="w3-container">    
+      <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <h4>Build Multi-Agent Systems with Salesforce</h4>
+    <p>Demystifying Data360, MCP, A2A, Mule Fabric Broker and Agentforce</p>
+  </div>
+  
+  <div class="w3-bar-block">
+    <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-home fa-fw w3-margin-right"></i>
+      <span class="nav-text"><span class="nav-title">Overview</span></span>
+    </a>     
+    
+    <a href="stage-0.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-wrench fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 0</span>
+        <span class="nav-desc">A Foundational Generative AI App</span>
+      </span>
+    </a>     
+    
+    <a href="stage-1.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-plug fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 1</span>
+        <span class="nav-desc">Enterprise-Grade LLM Activation with Mule Inference Connector</span>
+      </span>
+    </a> 
+    
+    <a href="stage-2.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item w3-light-grey">
+      <i class="fa fa-database fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 2</span>
+        <span class="nav-desc">Building Enterprise-Aware AI Agent Capability with Mule & MCP</span>
+      </span>
+    </a>
+    
+    <a href="stage-3.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-share-alt fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 3</span>
+        <span class="nav-desc">Build Your Own Gen AI Agents with A2A & MCP</span>
+      </span>
+    </a>
+    
+    <a href="stage-4.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-users fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 4</span>
+        <span class="nav-desc">Agentforce + Data360</span>
+      </span>
+    </a>
+    
+    <a href="stage-5.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-sitemap fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 5</span>
+        <span class="nav-desc">Mule Agent Fabric Broker for Orchestrating Multi-Agent Systems</span>
+      </span>
+    </a>
+  </div>
+
+  <hr style="margin: 20px 0;">
+
+  <div class="w3-container">
+    <h4>Customer Experience Transformation with Salesforce Data Cloud</h4>
+    <p>Hands-on Workshop and Ideation</p>
+  </div>
+  <div class="w3-bar-block">
+    <a href="http://datacloud-workshop.github.io/index.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>Get Started
+    </a> 
+    <a href="http://datacloud-workshop.github.io/insidedatacloud.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-lightbulb-o fa-fw w3-margin-right"></i>Concepts
+    </a>     
+    <a href="http://datacloud-workshop.github.io/hands-on.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-laptop fa-fw w3-margin-right"></i>Hands-on Lab
+    </a> 
+    <a href="http://datacloud-workshop.github.io/ideation.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-comments-o fa-fw w3-margin-right"></i>Ideation
+    </a>
+    <a href="http://datacloud-workshop.github.io/resources.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-book fa-fw w3-margin-right"></i>Resources
+    </a>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:300px; border-left: 1px solid #000000;">
+  
+  <header>
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container w3-padding-16">
+      </div>
+  </header>
+
+  <div class="w3-container" style="margin-top:10px; margin-bottom:30px;"> 
+    <h1><b>Stage 2 — Building Enterprise-Aware AI Agent Capability with Mule & MCP</b></h1>
+    
+    <h1><b>Introduction: Unpacking MCP</b></h1>
+    <p>In this workshop module, you will give your LLM powered AI agent access to real-time enterprise data by implementing Model Context Protocol (MCP) integrations.</p>
+    <p>The Model Context Protocol (MCP) is an open standard that allows AI agents to interact with external databases, APIs, and business systems in a structured way.</p>
+    <p>MuleSoft MCP Connector uses this standard to expose existing Anypoint Platform integrations as actionable resources for AI. By using the MCP Connector and its associated Listener, developers can transform their current APIs into tools that agents can understand and invoke directly. This is especially useful for giving an agent "live" capabilities, such as allowing it to check a shipping status or update a customer record through a pre-existing MuleSoft flow.</p>
+    <p>Large Language Models include a feature called <b>Function Calling</b>. Function calling allows an LLM to step outside its static training by signaling the need for a specific "tool," such as a database query or an API call. Because the model cannot physically execute these actions itself, it instead signals its intent by including specific instructions in its response - developers must run the requested action and return the result to the model.</p>
+    <p>This concept is the technical foundation for how the Model Context Protocol (MCP) functions. <b>While the Large Language Model provides the reasoning to decide which tool is needed, the Mule MCP connector allows those APIs to communicate using the protocol,</b> effectively turning business logic into an actionable tool. This setup ensures that when an agent expresses the intent to perform a specific business action, the system can use the underlying MuleSoft integration to execute that task and return the result to the model.</p>
+
+    <h1><b>Our Workshop Project</b></h1>
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-1.png" alt="Workshop Project Architecture" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+    <p>In this stage, you will build a <b>core agentic capability</b> using MuleSoft—not a fully autonomous agent. The focus is on implementing the <b>reasoning and grounding mechanism</b> that modern AI agents rely on, in a way that can later be embedded into different architectures and user experiences.</p>
+    <p>You will create a Mule-based capability that combines:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>A Groq-hosted large language model (LLM)</li>
+      <li>The MuleSoft Inference Connector (using its chat and MCP client features)</li>
+      <li>A Mule MCP Connector that exposes an enterprise knowledge source as an MCP server</li>
+    </ul>
+    <p>In Stage 1, you implemented an LLM-powered capability that can reason over prompts and generate responses, but which relies entirely on pre-trained model knowledge and prompt context. In Stage 2, you take the next maturity step by <b>grounding that reasoning in authoritative, external knowledge</b>.</p>
+    <p>This stage introduces the concept of <b>authoritative knowledge sources</b> and demonstrates how AI-driven systems dynamically consult them at runtime, rather than attempting to “remember” or embed all information inside the model itself. The capability you build will decide when external information is required, retrieve it through MCP, and incorporate it into the final response.</p>
+    <p>By the end of Stage 2, you will have implemented the <b>foundational building block of a real agent</b>: a reusable, headless reasoning-and-action capability that can answer questions using live, authoritative enterprise information—rather than relying solely on static training data, web searches, or general reasoning.</p>
+
+    <hr>
+
+    <h1><b>Hands-on: Building the MCP powered Agent</b></h1>
+    <p>To save time, instead of assembling the flows component-by-component, we’ve provided packaged JAR files in which the key steps have already been completed. You’ll import it into Anypoint Studio, run it locally, and deploy it to CloudHub. This section walks you through the entire process end-to-end—from import to deployment and testing.</p>
+    <p>Although you are using a pre-packaged JAR rather than configuring each connector manually in Anypoint Studio, we still explain every part of it in the sections below, so you understand exactly how it works and how to apply the same approach in your own projects.</p>
+
+    <h2><b>Stage 2a — Build the Knowledge Authority (MCP Server)</b></h2>
+    <p>The first step is to build and deploy a <b>Model Context Protocol (MCP) server</b>. The MCP server represents an authoritative knowledge source that lives outside the agent. It exposes information such as advisories, updates, notices, or reference catalogs that may change frequently and should not be statically indexed.</p>
+    <p>In this workshop, the MCP server is backed by a simple Gist document and deployed to CloudHub. The key idea is not the data itself, but the pattern: the MCP server exists independently, can be queried on demand, and acts as a source of truth for <b>latest or real-time information</b>.</p>
+    <p>At this point, no agent is involved yet. You are intentionally building the knowledge authority first.</p>
+    <p>Open up your VM (instructions provided by your instructor). All the following hands-on steps are to be completed inside the VM.</p>
+
+    <h3><b>MCP Server</b></h3>
+    <p>Download the packaged JAR file (use chrome browser): <a href="https://drive.google.com/file/d/1l2-C_XnqlhPGHlFeY_98SxCC1x1MKysH/view?usp=drive_link" target="_blank">Download MCP Server JAR</a></p>
+    <p>Typically it will download the file in the following locations inside the VM: <code>C:\Users\workshop\Downloads</code></p>
+    <p>Click on File &rarr; Import and find the downloaded JAR (<code>stage2_customer_mcp-server-v1.jar</code>) on your VM.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-2.png" alt="Import JAR" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Choose the import wizard &rarr; Anypoint Studio &rarr; Packaged Application</p>
+    <p>You can monitor the import progress in the bottom right corner of the Anypoint Studio.</p>
+    <p>Once import completes, a project gets created in Anypoint Studio with the configurations packaged in the JAR file.</p>
+    <p>In Mule Anypoint Studios’ left sidebar, find the file <code>src/main/mule/mcp-server-v1.xml</code> as shown in the diagram below.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-3.png" alt="Main Flow XML" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>It will open the main flow of this stage 2a MCP Server Mule ‘app.'</p>
+    <p>How is this Mule app calling the source database so it can expose it as a MCP server? Click on the Request element in the flow as shown in the following screenshot.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-4.png" alt="Request Element" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>You will see the referenced URL that points to our Gist document source database.</p>
+    <p>When a user makes a request to an agent (i.e., the MCP client), this inference connector’s HTTP Request connector makes a REST call to the GIST document, fetches the content and serves it back.</p>
+    <p>Right click on the project in the left sidebar &rarr; Run As &rarr; Mule Application</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-5.png" alt="Run As Mule Application" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>When the run completes successfully you should see a ‘Deployed’ message in the bottom screen.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-6.png" alt="Deployed Message" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Test your locally deployed MCP server using a Windows shell:</p>
+<pre><code>curl http://localhost:8082/health</code></pre>
+    <p>Expected response:</p>
+<pre><code>{ "status": "ok", "service": "mcp-authoritative-server"}</code></pre>
+
+<pre><code>curl -N http://localhost:8081/sse</code></pre>
+    <p>This should establish an SSE connection (Server-Sent Events). You'll see a hanging connection - that's normal for SSE.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-7.png" alt="Hanging Connection SSE" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Now that we know the MCP server is working great locally, let’s now deploy the MCP Server to Mule CloudHub.</p>
+    <p>In Mule Anypoint Studio, in left sidebar, right click your project &rarr; Anypoint Platform &rarr; Deploy to CloudHub</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-8.png" alt="Deploy to CloudHub" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>It will bring up a browser window inside your Anypoint Studio - authenticate with your Mule trial username. Select No for creating a password hint.</p>
+    <p>After sign-in, go back to your project - Right Click &rarr; Anypoint Platform &rarr; Deploy to CloudHub - select Sandbox</p>
+    <p>In the Runtime Manager dialog box, change the name to “stage2-customer-mcp-server” so it conforms to CloudHub requirements.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-9.png" alt="Runtime Manager Dialog" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Press Deploy Application button.</p>
+    <p>Now go to <a href="http://MuleSoft.com" target="_blank">MuleSoft.com</a> sign-in with your Mule trial account. Click on Runtime Manager.</p>
+    <p>When the deployment finishes, you should see your MCP server status as running.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-10.png" alt="MCP Server Running" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Click on your application and copy the public endpoint (top right on the application page).</p>
+
+    <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow w3-padding">
+      <p><b>Gotcha:</b> If you are not able to deploy from Anypoint Studio (possibly due to enhanced permissions requirements) - please do direct deployment from CloudHub. Go to <a href="http://mulesoft.com" target="_blank">mulesoft.com</a> (sign-in) &rarr; Runtime Manager &rarr; Deploy Application. Upload your Jar file, then choose the Properties tab and fill in the Property Values as above. Then Press Deploy Application.</p>
+    </div>
+
+    <p>Test your deployed MCP server using the following tester: <a href="https://mcp-client-tester-fa6774d469ee.herokuapp.com/" target="_blank">https://mcp-client-tester-fa6774d469ee.herokuapp.com/</a></p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-11.png" alt="Tester UI" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Let’s also test your MCP server from CURL.</p>
+    <p>From your Windows shell, test your MCP server deployed on Mule Cloudhub (replace the URL with your public endpoint in the following commands).</p>
+
+<pre><code>curl -N https://your-app-name.us-e1.cloudhub.io/sse</code></pre>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-12.png" alt="CURL Output SSE" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>This should establish an SSE connection (Server-Sent Events). You'll see a hanging connection - that's normal for SSE.</p>
+    <p>Monitor in CloudHub: Navigate to Runtime Manager &rarr; Your Application &rarr; Logs. Review the logs to confirm the application has started successfully and to check for any errors or connection issues.</p>
+
+
+    <h2><b>Stage 2b — Connect the Agent to Real-Time Authority</b></h2>
+    <p>Next, you upgrade the <b>custom agent from Stage 1</b> by wiring it to the MCP server using the Mule Inference Connector’s MCP client. The agent itself does not change its role — it still reasons, synthesizes, and responds — but it now has the ability to <b>ask an external authority for fresh information when needed</b>.</p>
+    <p>When a user asks a question that implies <i>latest</i>, <i>current</i>, or <i>recent</i> information, the agent queries the MCP server and incorporates that response into its answer. This happens dynamically at runtime, ensuring that answers reflect the most up-to-date context available.</p>
+    <p>The following few steps of downloading and then importing the JAR file are very similar to what you did for the previous stage 2a above.</p>
+    <p>Download the packaged JAR file (use chrome browser): <a href="https://drive.google.com/file/d/1c0VSof1YyIoddmM0ofNCb2_HPwg6bmie/view?usp=drive_link" target="_blank">Download Client JAR</a></p>
+    <p>Typically it will download the file in the following locations inside the VM: <code>C:\Users\workshop\Downloads</code></p>
+    <p>Click on File &rarr; Import and find the file the downloaded JAR (<code>stage2b-customer-inference-chat-mcpclient.jar</code>) on your VM.</p>
+    <p>Choose the import wizard &rarr; Anypoint Studio &rarr; Packaged Application</p>
+    <p>You can monitor the import progress in the bottom right corner of the Anypoint Studio.</p>
+    <p>Once import completes, a project gets created in Anypoint Studio with the configurations packaged in the JAR file.</p>
+    <p>In your Anypoint Studio left sidebar, navigate to the <code>src/main/mule</code> and click on the xml file.<br>Click on Message Flow tab in the center screen.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-13.png" alt="Message Flow" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-14.png" alt="Message Flow Diagram" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>In your new project that got created (default name: <code>stage2b-customer-inference-mcpclient</code>) - we need to update two variables.</p>
+    <p>In the left sidebar, click on <code>/src/main/resources/config.properties</code></p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-15.png" alt="Config Properties View" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Update the value of 4 property values:</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-16.png" alt="Update Properties" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Put in the <code>groq.timeout</code> and <code>mcp.timeout</code> values as shown above.</li>
+      <li>The value for <code>groq.api.key</code> is the api key that you got when you had signed up in groq.</li>
+      <li>The value of the variable <code>mcp.server.url</code> is the public endpoint of your mcp server that you deployed on CloudHub in the Stage 2a above. Note: please do not include forward slash at the end.</li>
+    </ul>
+
+    <p>After you have updated the property values - File &rarr; Save</p>
+    <p>In Anypoint Studio, right click on your project (Stage2b....) in the left sidebar &rarr; Run As &rarr; Mule Application</p>
+    <p>Once the build and run completes in the Anypoint Studio, you should see the following screen.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-17.png" alt="Deployed Application Stage 2b" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Your Inference Connector with MCP client is live locally. Let’s fine tune it - see the challenge section below.</p>
+
+
+    <h3><b>Challenge: Controlling When the Agent Uses MCP</b></h3>
+    <p>Fine-tune your Gen AI capability so that:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Parts / Inventory / status / availability questions always use MCP</li>
+      <li>General or creative questions never use MCP</li>
+    </ul>
+
+    <p><b>Update the system instructions</b> in the element <code>[MCP] Tooling</code> so the agent follows explicit rules, for example:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>If the user asks about <i>inventory, stock, availability, status, parts, materials</i> &rarr; <b>must use MCP</b></li>
+      <li>If the question is general knowledge, creative, or explanatory &rarr; <b>must not use MCP</b></li>
+    </ul>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-18.png" alt="System Instructions" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p><b>Hint:</b> Click on the <code>[MCP]Tooling</code> element - replace the current text in the Instructions field (not the template field) with this block to enforce your rules:</p>
+
+<pre><code>You are an enterprise AI assistant.
+
+You MUST follow these rules exactly:
+
+1. If the user question involves parts, inventory, availability, status, stock levels, recalls, or operational data:
+   - You MUST use an MCP tool to retrieve authoritative information.
+   - Do NOT answer from general knowledge or assumptions.
+
+2. If the user question is general, conceptual, explanatory, or creative:
+   - You MUST NOT use MCP tools.
+   - Answer directly using your model knowledge.
+
+3. MCP tools are ONLY for authoritative, enterprise, or up-to-date information.
+   Never use MCP for opinions, explanations, examples, or creative writing.
+
+4. Tool usage must be invisible to the user unless explicitly requested.
+
+Follow these rules strictly.</code></pre>
+
+    <p>Test the different scenarios - however first we need to ‘compile’ our application again:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>You also need to go to CloudHub and stop/start the MCP server that you deployed there in Stage 2a. The MCP server needs about 5 minutes to stop and then 5 minutes to start. Please wait for the MCP server to start before deploying Stage 2b.</li>
+      <li>In Anypoint Studio, right click on your project (Stage2b....) in the left sidebar &rarr; Run As &rarr; Mule Application.</li>
+    </ul>
+
+    <p>Once the MCP server starts in CloudhHub and your Stage2b app gets deployed in Anypoint Studio, in your windows shell, run the following two commands:</p>
+    <p>Local test (LLM only – no MCP should run):</p>
+<pre><code>curl -X POST http://localhost:8081/prompt -H "Content-Type: application/json" -d "{\"prompt\":\"Write a short haiku about integration.\"}"</code></pre>
+    
+    <p>Local test (forces MCP tool invocation):</p>
+<pre><code>curl -X POST http://localhost:8081/prompt -H "Content-Type: application/json" -d "{\"prompt\":\"Check the inventory status for Heat Resistant polymer housing.\"}"</code></pre>
+
+    <p><b>What we learned:</b> We learned to shape agent behavior using precise prompts and enforce the use of authoritative enterprise data for sensitive queries. By implementing a smart routing pattern, you also prevented unnecessary tool executions, ensuring your agent remains both grounded and performant.</p>
+
+    <p><b>Let’s now deploy your Stage2b app to CloudHub.</b></p>
+    <p>Right click your project &rarr; Anypoint Platform &rarr; Deploy to CloudHub</p>
+    <p>You may be asked to authenticate in an embedded browser that opens in Anypoint Studio. Sign in with your Mule trial account.</p>
+    <p>Select Sandbox when asked in the next screen after authentication</p>
+    <p>Click the Properties tab and fill in the values as in your <code>config.properties</code> file in your project - except for <code>http.port</code>.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-19.png" alt="CloudHub Properties Stage 2b" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+<pre><code>groq.api.key={your key here}
+groq.model=llama-3.3-70b-versatile
+groq.timeout=120000
+groq.max.tokens=2000
+mcp.server.url={your MCP Server URL here}
+mcp.timeout=120000</code></pre>
+
+    <p>Please see screenshot below.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Please especially note the url format for the <code>mcp.server.url</code> property. There is no forward slash at the end.</li>
+      <li>Please make sure both <code>mcp.timeout</code> and <code>groq.timeout</code> are set to 120000</li>
+    </ul>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-20.png" alt="Deploy to CloudHub Button" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Press Deploy Application.</p>
+
+    <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow w3-padding">
+      <p><b>Gotcha:</b> If you are not able to deploy from Anypoint Studio (possibly due to enhanced permissions requirements) - please do direct deployment from CloudHub. Go to <a href="http://mulesoft.com" target="_blank">mulesoft.com</a> (sign-in) &rarr; Runtime Manager &rarr; Deploy Application. Upload your Jar file, then choose the Properties tab and fill in the Property Values as above. Then Press Deploy Application.</p>
+    </div>
+
+    <p>Now go to <a href="http://mulesoft.com" target="_blank">mulesoft.com</a> &rarr; sign in &rarr; Runtime Manager - You would see your newly deployed application running there.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-21.png" alt="Running Application Stage 2b" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Let’s test your CloudHub deployment.</p>
+    <p>Click on your application and then in the application’s page - copy the Public Endpoint (top right on the application’s page).</p>
+    <p>Replace the url in the following command with your Public Endpoint.</p>
+    <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow w3-padding">
+      <p>Please remember to include the <code>/prompt</code> as in the following commands when you replace endpoint.</p>
+    </div>
+
+    <p><b>CloudHub test (LLM only – no MCP should run):</b></p>
+<pre><code>curl -X POST https://stage2b-customer-inference-chat-mcpclient-xyz.5sc6y6-4.usa-e2.cloudhub.io/prompt -H "Content-Type: application/json" -d "{\"prompt\":\"Write a short haiku about integration.\"}"</code></pre>
+
+    <p>Replace the url in the following commands with your Public Endpoint.</p>
+    <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow w3-padding">
+      <p>Please remember to include the <code>/prompt</code> as in the following commands when you replace endpoint.</p>
+    </div>
+
+    <p><b>CloudHub test (forces MCP tool invocation):</b></p>
+<pre><code>curl -X POST https://stage2b-customer-inference-chat-mcpclient-xyz6-4.usa-e2.cloudhub.io/prompt -H "Content-Type: application/json" -d "{\"prompt\":\"Check the inventory status for Heat Resistant polymer housing.\"}"</code></pre>
+
+    <p>If you see errors - please restart on CloudHub both your servers - your mcp server (deployed in Stage 2a) and your Inference Connector’s MCP client (deployed in Stage 2b).</p>
+
+    <p><b>We have built a UI-based client you can use to test your headless agentic capability.</b></p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-22.png" alt="Thin Chat Client" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p><b><a href="https://thin-chat-client-085335f023d7.herokuapp.com/" target="_blank">https://thin-chat-client-085335f023d7.herokuapp.com/</a></b></p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Enter your stage2b cloudhub public endpoint in the "Agent Endpoint (CloudHub)" box.</li>
+      <li>Select Stage 2b (MCP Powered) as shown in the screenshot.</li>
+    </ul>
+
+    <p>If you ask a generic question (“Tell me about my parts inventory“) the agent transparently fetches the parts inventory from the MCP server database and serves it to you. If you ask a general question (”Tell me a joke“) - the agent responds without making a call to the MCP server.</p>
+    <p>This app written in Python (and using Streamlit library for UI) is intentionally a thin client: it performs no reasoning, does not invoke MCP, and contains no agent logic of its own. Its sole responsibility is to send a simple <code>{ "prompt": "…" }</code> request, receive a fully formed response, and present it conversationally.</p>
+    <p>All intelligence and decision-making remain centralized in the Stage 2b capability—specifically within the Mule Inference Connector (which includes a MCP client), the Groq LLM, and the MCP server. This clean separation reinforces a key architectural principle for customers and attendees: the UI is fully interchangeable (Streamlit, Slack, Salesforce, mobile, and more), while agentic behavior and enterprise grounding live entirely within Mule and the AI infrastructure.</p>
+    <p>What we explored today is the core of every serious AI system: a reasoning layer that knows when it does not know, and knows how to ask the right system for truth.</p>
+
+
+    <h2><b>What You Accomplished</b></h2>
+    <p>We built a <b>foundational agentic capability</b> that can be embedded into different architectures and user experiences.</p>
+    <p>Specifically, we implemented a <b>reasoning-and-action capability</b> using MuleSoft that combines a large language model (Groq) with optional access to external, authoritative data sources via the Model Context Protocol (MCP). This capability can receive a user question, evaluate whether the answer can be generated from the model’s knowledge alone, and—when required—retrieve up-to-date or enterprise-specific information from external systems.</p>
+    <p>When external data is needed, the capability dynamically invokes an MCP server, retrieves the relevant information (for example, documents hosted in a GitHub Gist or other enterprise repositories), and feeds that information back into the language model to produce a final, grounded response. The result is a single, coherent answer returned to the caller, without exposing the underlying tool calls or data-fetching steps unless explicitly required.</p>
+    <p>This module uses MCP as a required dependency for clarity. Production agents invoke MCP on demand and degrade gracefully when grounding services are unavailable.</p>
+    <p>At this stage, the work demonstrates <b>agent-like behavior</b>, but it is intentionally delivered as a <b>headless capability</b>, not a full agent. There is no long-term memory, goal management, user identity, or autonomous task loop. Those elements can be added later by embedding this capability inside a chat UI, workflow engine, digital agent platform, or multi-agent system.</p>
+    <p>In short, we built the <b>core reasoning, tool-selection, and grounding mechanism</b> that real-world AI agents rely on—cleanly separated from presentation, orchestration, and experience layers. This separation is what makes the capability reusable, testable, and production-ready.</p>
+
+    <p><b>How This Fits into the Bigger System</b></p>
+    <p>In the full architecture, different responsibilities are clearly separated:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b>Agents</b> reason and act.</li>
+      <li><b>MCP servers</b> provide real-time or frequently changing authoritative knowledge.</li>
+      <li><b>RAG (via Data 360 and Agentforce)</b> provides governed enterprise memory and operational data.</li>
+      <li><b>Mule Agent Fabric</b> decides which agent or knowledge source to use and in what order.</li>
+    </ul>
+    <p>Stage 2 focuses only on the first half of this picture: grounding an agent using MCP. Later stages will show how this connects to Agentforce and full multi-agent orchestration.</p>
+  </div>
+
+  <hr>
+
+  <div class="w3-container" style="margin-top:30px; margin-bottom:30px;">
+    <h1><b>Appendix - I</b></h1>
+    
+    <h1><b>Anatomy Of Our Mule Gen AI Agentic Application</b></h1>
+    
+    <h2><b>Stage 2a: Anatomy of the Mule MCP Server</b></h2>
+    <p>This Mule application represents the <b>"Hands"</b> of your agentic system. It does not "think" or "reason." Its sole purpose is to expose a specific capability (a Tool) that an AI agent can discover and execute on demand.</p>
+    <p>Here is the breakdown of the two distinct flows.</p>
+    
+    <div class="w3-panel w3-leftbar w3-light-grey">
+      <p><b>Note:</b> We built these as two separate <b>Flows</b> rather than Subflows because Subflows cannot contain Event Sources (Triggers) and therefore cannot listen for external traffic. Both of our flows are designed to be entry points: the <code>health-check-flow</code> requires an HTTP Listener to actively wait for web requests on port 8082, and the <code>mcp-tool-flow</code> requires an MCP Tool Listener to wait for specific commands from the Agent. Since Subflows are passive chains that must be called by a parent flow, they would not be able to host these listeners or initiate these transactions independently.</p>
+    </div>
+
+    <h4><b>1. The Health Check Flow (<code>health-check-flow</code>)</b></h4>
+    <p>This is a standard DevOps pattern. It provides a dedicated endpoint (<code>/health</code>) on port <b>8082</b>. This allows monitoring tools or a human operator to verify the Mule app is running without triggering the complex MCP protocol logic.</p>
+    <p><b>Components:</b></p>
+    <ul class="w3-ul">
+      <li><b>HTTP Listener:</b> configured to listen on port <code>8082</code>.</li>
+      <li><b>Transform Message:</b> Hardcoded to return a simple JSON status: <code>{"status": "ok", "service": "mcp-authoritative-server"}</code></li>
+    </ul>
+
+    <h4><b>2. The MCP Tool Flow (<code>mcp-tool-flow</code>)</b></h4>
+    <p>This flow defines the <b>"Tool"</b> pattern we discussed. It fetches live data from an external system (GitHub Gist) and serves it to the Agent.</p>
+
+    <h3><b>Key Components:</b></h3>
+    <p><b>MCP Tool Listener (The Trigger):</b></p>
+    <ul class="w3-ul">
+      <li><b>What it does:</b> This is the most critical element. Unlike a standard API that waits for a GET/POST request, this listener registers a tool named <code>get_authoritative_live_reference</code> with the MCP Server.</li>
+      <li><b>The "Contract":</b> It includes a <b>Description</b> field ("Fetches the real-time Authoritative Live Reference..."). The AI reads this description to decide <i>when</i> to call this tool.</li>
+    </ul>
+
+    <p><b>HTTP Request (The Action):</b></p>
+    <ul class="w3-ul">
+      <li><b>What it does:</b> When the tool is triggered, this component performs the actual work. It makes a <code>GET</code> request to the raw Gist URL. This ensures we are always fetching the absolute latest version of the data, satisfying our "freshness" requirement.</li>
+    </ul>
+
+    <p><b>Transform Message (The Output):</b></p>
+    <ul class="w3-ul">
+      <li><b>What it does:</b> It converts the raw data (which might be JSON, Markdown, or HTML) into <code>text/plain</code>. This plain text format is optimized for the LLM to read and synthesize into an answer.</li>
+    </ul>
+
+
+    <h2><b>How We Built the MCP Server with MuleSoft</b></h2>
+    <p>While the workshop provides a pre-packaged JAR to save time, understanding how to build this from scratch is essential if you want to apply this design to your own enterprise systems.</p>
+    <p>When designing an MCP Server (Stage 2a), shift your mindset from <b>orchestrating workflows</b> to <b>exposing capabilities</b>.</p>
+    <p>Instead of predicting the user's journey and building an API to match it (Outside-In), we wrap our backend's atomic functions in clearly described Tools (Inside-Out). We provide the raw "lego blocks" of your system—like "Fetch Reference" or "Check Health"—and trust the AI Agent to decide how and when to assemble them to solve the user's problem.</p>
+    <p>The fundamental shift in Agentic design (including MCP server design) is moving from a <b>Syntactic Contract</b> to a <b>Semantic Contract</b>. In traditional integration, you define the syntax (endpoints and data structures) and rely on human developers to read documentation to understand the business logic. In an MCP-based design, you embed that meaning directly into the interface via natural language descriptions, enabling the AI Agent to autonomously understand not just how to call a service, but why and when it is appropriate to use it.</p>
+
+    <h4><b>Step 1: Configure Global Elements</b></h4>
+    <p>Before building the flows, you must set up the connections.</p>
+    <ul>
+      <li><b>HTTP Listeners:</b>
+        <ul>
+          <li>Create a listener config named <code>HTTP_Listener_MCP</code> on port <b>8081</b> (This will carry the SSE traffic).</li>
+          <li>Create a listener config named <code>HTTP_Listener_Health</code> on port <b>8082</b> (For the health check).</li>
+        </ul>
+      </li>
+      <li><b>MCP Server Config:</b>
+        <ul>
+          <li>Search for "MCP" in the palette and add the <b>MCP Server Configuration</b>.</li>
+          <li><b>Link it:</b> Set the <code>Listener Config</code> to <code>HTTP_Listener_MCP</code>. This tells the MCP server to use port 8081 for its <code>sse</code> handshake.</li>
+          <li><b>Name it:</b> Set the Server Name to <code>authoritative-ref-server</code> and version to <code>1.0.0</code>.</li>
+        </ul>
+      </li>
+      <li><b>HTTP Request Config:</b>
+        <ul>
+          <li>Set up a configuration pointing to <code>gist.githubusercontent.com</code> on port 443 (HTTPS).</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h4><b>Step 2: Build the Health Check Flow</b></h4>
+    <ul>
+      <li>Drag an <b>HTTP Listener</b> to the canvas.
+        <ul>
+          <li><b>Connector Config:</b> Select <code>HTTP_Listener_Health</code>.</li>
+          <li><b>Path:</b> Set to <code>/health</code>.</li>
+        </ul>
+      </li>
+      <li>Drag a <b>Transform Message</b> component after the listener.
+        <ul>
+          <li><b>Output:</b> Paste the JSON payload: <code>{"status": "ok", ...}</code>.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h4><b>Step 3: Build the MCP Tool Flow (The Core Logic)</b></h4>
+    <ul>
+      <li><b>Add the Trigger:</b>
+        <ul>
+          <li>Drag the <b>MCP Tool Listener</b> (from the MCP module in the palette) to the source section of a new flow.</li>
+          <li><b>Config Reference:</b> Select the <code>MCP_Server</code> global config you created in Step 1.</li>
+          <li><b>Tool Name:</b> Enter <code>get_authoritative_live_reference</code>. (Note: Use snake_case as this is standard for LLM tool naming).</li>
+          <li><b>Description:</b> Enter: <i>"Fetches the real-time Authoritative Live Reference Database (Status, Recalls, Inventory) directly from the system of record."</i> (Be precise; this is the prompt the AI reads).</li>
+          <li><b>Parameters:</b> Leave the schema as an empty object <code>{}</code> because this tool requires no input arguments.</li>
+        </ul>
+      </li>
+      <li><b>Add the Action:</b>
+        <ul>
+          <li>Drag an <b>HTTP Request</b> component.</li>
+          <li><b>Method:</b> <code>GET</code>.</li>
+          <li><b>URL:</b> Paste the full raw Gist URL: <code>https://gist.githubusercontent.com/lightningexperience/1ad6005e89b050b1d0ab2e5de1350bb1/raw/</code></li>
+        </ul>
+      </li>
+      <li><b>Format the Output:</b>
+        <ul>
+          <li>Drag a <b>Transform Message</b> component to the end.</li>
+          <li><b>Script:</b></li>
+        </ul>
+      </li>
+    </ul>
+<pre><code>%dw 2.0
+output text/plain
+---
+payload</code></pre>
+    <p>Once deployed, this application will wait silently. It does not do anything until an Agent connects via SSE on port 8081 and explicitly requests the <code>get_authoritative_live_reference</code> tool.</p>
+
+
+    <h2><b>Stage 2b: Anatomy of the Mule Inference Connector & MCP Client</b></h2>
+    <p>This stage represents the transition from a simple chatbot (Stage 1) to a <b>Grounded Agent</b>. The flow connects the LLM (Groq) to an MCP Server, allowing the AI to fetch real-time data before answering the user.</p>
+
+    <h3><b>The Grounded Agent Flow</b></h3>
+    <p>In this stage, the application doesn't just "imagine" answers; it has access to tools. The logic introduces a <b>decision branch</b>: did the AI use a tool to get data, or did it answer from general knowledge?</p>
+
+    <h4><b>1. The Core Logic: "Groq Agent with MCP Tools"</b></h4>
+    <p>This is the heart of the flow (labeled <code>ms-inference:mcp-tools-native-template</code> in the XML).</p>
+    <ul>
+      <li><b>What it does:</b> It sends the user prompt to the LLM (Groq) along with a list of available tools from the <code>MCP_Client_CloudHub</code> config.</li>
+      <li><b>The "Brain":</b> The LLM decides intelligently:
+        <ul>
+          <li><i>Does this question require live data?</i> (e.g., "Check inventory for part X"). &rarr; <b>Call the MCP Tool.</b></li>
+          <li><i>Is this general chit-chat?</i> (e.g., "Write a poem"). &rarr; <b>Answer directly.</b></li>
+        </ul>
+      </li>
+    </ul>
+
+    <h4><b>2. The Decision Router (Choice)</b></h4>
+    <p>Immediately after the agent runs, the flow hits a <b>Choice Router</b> (<code>doc:name="Did Tools Run?"</code>). This is critical for handling the response format.</p>
+<pre><code>#[payload.toolsExecutionReport? and sizeOf(payload.toolsExecutionReport) > 0]</code></pre>
+    <p>This Mule DataWeave expression checks if the payload contains a "tools execution report." If it does, it means the AI accessed external data.</p>
+    <p>Note: DataWeave is MuleSoft's scripting language designed specifically for querying and transforming data between different formats, such as JSON, XML, and CSV.</p>
+
+
+    <h3><b>Path A: When Tools Are Used (The "Summarize" Path)</b></h3>
+    <p>If the condition is <b>True</b> (top path in the screenshot), the flow performs a <b>Retrieval-Augmented Generation (RAG)</b> pattern:</p>
+    <ul>
+      <li><b>Prepare Summary Prompt:</b> The flow takes the raw, ugly JSON data returned by the tool and wraps it in a new prompt for the AI.
+        <ul>
+          <li><i>System Instruction:</i> "You are a helpful assistant. You have just retrieved data from a tool... answer the User's original Question concisely."</li>
+        </ul>
+      </li>
+      <li><b>Summarize Answer:</b> It calls the LLM (<code>ms-inference:chat-completions</code>) a second time. This time, the AI reads the raw data and converts it into a human-friendly sentence.</li>
+      <li><b>Format Final Answer:</b> Cleans up the result into a standard JSON response for the API caller.</li>
+    </ul>
+
+    <p><b>DataWeave Explanation (<code>Prepare Summary Prompt</code>)</b><br>
+    This script is the "bridge" between the raw data the tool found and the AI's brain. It formats the data so the AI can read it.</p>
+<pre><code>%dw 2.0
+output application/json
+
+[
+{
+"role": "system",
+"content": "You are a helpful assistant. You have just retrieved data from a tool. Use the provided Tool Data to answer the User's original Question concisely. Do not mention the JSON structure."
+},
+{
+"role": "user",
+"content": "User Question: " ++ vars.userPrompt ++ "\n\nTool Data: " ++ write(payload, "application/json")
+}
+]</code></pre>
+
+    <p><b>Line-by-Line Breakdown:</b></p>
+    <p><b><code>output application/json</code></b>: This tells Mule to output a JSON object, which is exactly what the <code>Chat Completions</code> connector expects as input.</p>
+    <p><b>The Array <code>[...]</code></b>: We are building a list of messages to send to the AI. This follows the standard "Chat History" format (System message first, then User message).</p>
+    <p><b>The System Role</b>:</p>
+    <ul>
+      <li><code>"role": "system"</code>: Defines the persona.</li>
+      <li><b>Why strict instructions?</b> The text <i>"Do not mention the JSON structure"</i> prevents the AI from saying awkward things like "According to the JSON object key 'price'..." instead of just "The price is $10."</li>
+    </ul>
+    <p><b>The User Role</b>:</p>
+    <ul>
+      <li><code>"role": "user"</code>: Represents the current query.</li>
+      <li><b>The Concatenation (<code>++</code>)</b>: This is the magic part. It stitches together two things:
+        <ul>
+          <li><code>vars.userPrompt</code>: The question the user originally asked (e.g., "What is the status of order 123?").</li>
+          <li><code>write(payload, "application/json")</code>: The <code>payload</code> currently holds the raw answer from the MCP Tool. The <code>write()</code> function turns that raw object into a text string so it can be inserted into the prompt.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h3><b>Path B: Default (The "Direct" Path)</b></h3>
+    <p>If the condition is <b>False</b> (bottom path in the screenshot):</p>
+    <ul>
+      <li><b>Format Direct Answer:</b> The AI didn't need tools. It simply passes the AI's direct textual response back to the user without any extra processing.</li>
+    </ul>
+
+
+    <h2><b>How We Built This Flow: Stage 2b: Mule Inference Connector + MCP Client</b></h2>
+    <p>This guide reconstructs the <b>Stage 2b</b> flow.</p>
+
+    <h4><b>Prerequisites</b></h4>
+    <p>Make sure your Anypoint Studio palette has the following modules installed (visible in your screenshot):</p>
+    <ul>
+      <li><b>MuleSoft Inference</b> (for Groq/LLM)</li>
+      <li><b>MCP</b> (Model Context Protocol)</li>
+      <li><b>HTTP</b> (Standard)</li>
+    </ul>
+
+    <h4><b>Step 1: Configure Global Elements</b></h4>
+    <p>Before building the flow, set up the connections.</p>
+    <ul>
+      <li><b>HTTP Listener Config:</b> Set simple host <code>0.0.0.0</code> and port <code>${http.port}</code>.</li>
+      <li><b>Groq Inference Config:</b>
+        <ul>
+          <li>Add a <code>Text Generation Config</code>.</li>
+          <li>Select <b>Groq Connection</b>.</li>
+          <li>Set API Key to <code>${groq.api.key}</code> and Model Name to <code>${groq.model}</code>.</li>
+        </ul>
+      </li>
+      <li><b>MCP Client Config:</b>
+        <ul>
+          <li>Search for "MCP Client Config".</li>
+          <li>Set Client Name to <code>mule-inference-client</code>.</li>
+          <li>Connection Type: <b>SSE Client Connection</b>.</li>
+          <li>Server URL: <code>${mcp.server.url}</code> (This points to your external Python/Node MCP server).</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h4><b>Step 2: Build the Main Flow</b></h4>
+    <ul>
+      <li><b>HTTP Listener:</b>
+        <ul>
+          <li>Drag into canvas. Path: <code>/prompt</code>. Method: <code>POST</code>.</li>
+        </ul>
+      </li>
+      <li><b>Set Variable:</b>
+        <ul>
+          <li>Name: <code>userPrompt</code>.</li>
+          <li>Value: <code>#[payload.prompt]</code>. (This saves the user's question for later use in the DataWeave script above).</li>
+        </ul>
+      </li>
+      <li><b>Groq Agent with MCP Tools:</b>
+        <ul>
+          <li>Drag in the component <code>mcp-tools-native-template</code> from the <b>MuleSoft Inference</b> palette.</li>
+          <li><b>Config Ref:</b> Select your <code>Groq_Text_Generation_Config</code>.</li>
+          <li><b>MCP Config:</b> Add a reference to your <code>MCP_Client_CloudHub</code>.</li>
+          <li><b>Instructions:</b> Paste: <i>"Answer the user's question... If answering requires company-specific live parts information use the available MCP tools."</i>.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h4><b>Step 3: The Logic Router</b></h4>
+    <ul>
+      <li><b>Choice Router:</b>
+        <ul>
+          <li>Drag a <b>Choice</b> component after the Groq Agent.</li>
+          <li><b>Top Path (When) Expression:</b></li>
+        </ul>
+      </li>
+    </ul>
+<pre><code>#[payload.toolsExecutionReport? and sizeOf(payload.toolsExecutionReport) > 0]</code></pre>
+    <p><i>(This logic means: "Did we actually run a tool?")</i>.</p>
+
+    <h4><b>Step 4: The "Tools Used" Path (Top Branch)</b></h4>
+    <ul>
+      <li><b>Transform Message (Prepare Summary):</b>
+        <ul>
+          <li>Paste the DataWeave script explained in <b>Part 1</b> here.</li>
+        </ul>
+      </li>
+      <li><b>Chat Completions (Summarize):</b>
+        <ul>
+          <li>Drag in <code>Chat completions</code> from the Inference palette.</li>
+          <li>Set <b>Messages</b> to <code>#[payload]</code> (passing the script output to the AI).</li>
+        </ul>
+      </li>
+      <li><b>Logger (Optional):</b>
+        <ul>
+          <li>Log the raw response: <code>#['Groq Raw Response: ' ++ write(payload, 'application/json')]</code>.</li>
+        </ul>
+      </li>
+      <li><b>Transform Message (Final Format):</b>
+        <ul>
+          <li>Clean up the AI's response to valid JSON:</li>
+        </ul>
+      </li>
+    </ul>
+<pre><code>%dw 2.0
+output application/json
+{ "answer": payload.choices[0].message.content default "Error" }</code></pre>
+
+    <h4><b>Step 5: The "Direct Answer" Path (Default Branch)</b></h4>
+    <ul>
+      <li><b>Transform Message:</b>
+        <ul>
+          <li>Just pass the payload through:</li>
+        </ul>
+      </li>
+    </ul>
+    <p><i>Note:</i> In the "Default" case, the payload from the Groq Agent is already the plain text answer because no tools were triggered.</p>
+
+    <h3><b>Summary</b></h3>
+    <p>This stage transforms our standard chatbot into an intelligent "Grounded Agent" capable of accessing real-time business data to solve actual customer problems. By integrating with the Model Context Protocol (MCP), the system now autonomously decides whether to answer a general question instantly or reach into our backend systems to retrieve specific, live information (like inventory or order status). This logic ensures that AI responses are not just conversational but factually accurate and based on current company records, automatically converting complex system data into clear, human-friendly answers for the user.</p>
+  </div>
+
+  <hr>
+
+  <div class="w3-container" style="margin-top:30px; margin-bottom:30px;">
+    <h1><b>APPENDIX - II</b></h1>
+    
+    <h1><b>How Our Work Here Fits in With Broker Orchestrated Multi-Agent System</b></h1>
+    <p>RAG provides enterprise memory, MCP provides real-time authority, agents reason and act — and Mule Fabric decides who speaks, when, and why.</p>
+    <p>Typically, Agents do not own corporate knowledge. They consult authoritative systems (e.g., RAG (Vector Databases), MCP) when they need the latest truth.</p>
+
+    <h3>01. Architecture Plan — System Structure Plan</h3>
+    <p>In our envisioned architecture, <b>Mule Agent Fabric (Broker)</b> is the central orchestration layer that coordinates two specialized agents, each with a clearly bounded responsibility.</p>
+    <p>The <b>Custom Agent</b> is optimized for fast reasoning and external intelligence. It is integrated with an <b>MCP client</b>, which allows it to query an <b>MCP server</b> that exposes authoritative, frequently changing information (for example, live advisories, updates, or reference catalogs). The MCP server is treated as a real-time source of truth and is queried on demand rather than indexed (in a vector database).</p>
+    <p>The <b>Agentforce Agent</b> is optimized for enterprise operations. It is connected to <b>Data 360 (formerly Data Cloud)</b> and uses <b>RAG</b> to reason over governed, indexed enterprise knowledge such as documents, historical records, and operational data. It is also responsible for taking Salesforce actions (cases, updates, workflows) in a policy-safe way.</p>
+    <p>Importantly, the agents do <b>not</b> coordinate with each other directly. All routing, sequencing, and authority decisions are handled by the Mule broker.</p>
+    <p><b>Comparison of the MCP Client - Server-LLM Flow with Mule Agent Fabric Broker Orchestration</b></p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b>Planning in design occurs <i>within</i> a single agent and is limited to deciding whether external data or tools are required to answer the current request.</b> It is a short-lived, per-request reasoning step executed by the LLM through the Inference Connector, with no persistent memory, no authority to route work, and no awareness of other agents.</li>
+      <li><b>Fabric Broker planning operates at a fundamentally different level</b>: it coordinates <i>between</i> multiple autonomous agents, makes durable routing and delegation decisions, applies policy and governance, and manages long-lived, cross-agent workflows.</li>
+    </ul>
+    <p>In short, <b>Inference-based planning decides how one agent should act right now, while Fabric Broker decides which agent should act and how work flows across an agent ecosystem.</b></p>
+
+    <hr>
+
+    <h3>02. Use Case Plan — Why MCP and RAG Both Exist</h3>
+    <p>Enterprises typically have two different kinds of knowledge needs:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b>Enterprise memory</b> — stable, historical, and governed information such as manuals, policies, contracts, and operational records. This is best handled through <b>RAG</b> inside Agentforce, where data is indexed, secured, and audited.</li>
+      <li><b>Real-time or latest authority</b> — information that changes frequently or is owned by an external system, such as advisories, updates, notices, or live reference data. This should <b>not</b> be indexed or cached. Instead, it must be queried at the moment it is needed. This is where <b>MCP servers</b> are used.</li>
+    </ul>
+    <p>In this use case, when a user asks questions like <i>“Are there any latest updates?”</i> or <i>“Has anything changed recently?”</i>, the system treats that as a <b>freshness requirement</b>, not just a data source question. The MCP server provides the authoritative answer, while Agentforce remains the system of record for enterprise data and actions.</p>
+    <p>This pattern is universal and applies across industries (manufacturing, finance, healthcare, telecom), regardless of the specific data being queried.</p>
+    <p><b>MCP works only when three conditions align</b>:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>a system of record exists,</li>
+      <li>the question maps to a precise query,</li>
+      <li>and the answer is a retrievable fact—making it mandatory for runtime verification needs like "Can I ship this order?" or "What is the current balance?" where exactness, freshness, and action-driving answers are critical.</li>
+    </ul>
+    <p>However, when response requires <b>understanding and interpretation</b> rather than lookup—such as synthesizing themes across 50 contracts, summarizing customer complaints, or discovering what questions to ask—RAG is necessary because no single retrievable fact exists, and the goal is faithful representation without hallucination.</p>
+    <p><b>The clean rule</b>: use MCP when correctness depends on data being <b>current and authoritative</b> (checking the live system before acting), and use RAG when correctness depends on data being <b>understood and interpreted</b> (reading the policy manual carefully)—both are forms of correct response serving different needs, and enterprise AI systems typically need both.</p>
+
+    <h3>03. Orchestration Logic Plan — How Decisions Are Made</h3>
+    <p>How MCP & RAG fit in with the Mule Broker Orchestration.</p>
+    <p>The key orchestration concept is <b>temporal authority</b>. The Mule broker does not simply route based on “general vs support.” Instead, it evaluates whether the user’s question requires <b>latest or real-time information</b>.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>If the user explicitly or implicitly asks for <i>latest, current, recent, updated, or real-time</i> information, the broker routes the request to the <b>Custom Agent</b>, which queries the <b>MCP server</b>.</li>
+      <li>If the user asks about enterprise records, historical knowledge, or needs an operational action (cases, updates, workflows), the broker routes the request to <b>Agentforce</b>.</li>
+      <li>If both are required, the broker <b>sequences</b> the interaction:
+        <ul>
+          <li>First, retrieve authoritative real-time context via MCP.</li>
+          <li>Then, pass that context to Agentforce to reason over enterprise data or take action.</li>
+        </ul>
+      </li>
+    </ul>
+    <p>This orchestration logic lives entirely in the <b>Mule broker instructions</b>, not inside agent prompts or code. As a result, behavior can be changed, extended, or audited without redeploying agents.</p>
+
+    <h1><b>Understanding MCP: Beyond API Wrappers</b></h1>
+    <p>While MCP can be thought of as "REST with a standardized contract," its real power lies in how it transforms tool integration from procedural function calls into declarative capabilities that AI agents can discover and orchestrate autonomously.</p>
+    <p>Unlike traditional APIs, which expose fixed endpoints for specific user flows (for example, <code>GET /inventory</code>), an MCP server exposes <b>tools</b> instead of endpoints. In this module, we exposed a single tool that fetches a document from a GitHub Gist. We did not define a workflow or prescribe when the tool should be used; we only declared the capability.</p>
+    
+    <p><b>How the data flow happens in our Flow: MCP Client-Server-LLM interaction</b></p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Before any user prompt is processed, the client application (the Mule inference connector acting as the MCP client) already knows where the MCP server is, but it does not know what tools it exposes.</li>
+      <li>To learn that, the client establishes an MCP session by opening the /sse connection to the MCP server.</li>
+      <li>As part of that SSE handshake, the MCP server immediately sends protocol events that describe its capabilities — including the list of available tools, their names, and their input/output schemas — and also provides the session-specific message endpoint. The client caches this tool metadata for the lifetime of the session.</li>
+      <li>Later, if a user asks “give me parts information,” the client includes those tool descriptions in the context it sends to the Groq LLM.</li>
+      <li>The LLM does not discover tools dynamically on its own; it reasons over the tool descriptions that the client has already obtained from the MCP server via SSE, decides whether a tool is relevant, and signals back to the client which tool to invoke.</li>
+    </ul>
+
+    <p><b>How do you add multiple MCP tools to the MCP client?</b></p>
+    <p>Multiple MCP servers are wired by adding parallel MCP Tooling elements at the same decision point — not by adding routes, subflows, or orchestration logic.</p>
+    <p>In context of our project app, the second MCP server is added by placing a second <code>[MCP] Tooling</code> element in the <i>same flow</i>, immediately after the same “Set User Prompt” step, exactly as shown in the diagram. Both MCP Tooling components consume the <b>same input context</b> (the prepared user prompt) and both write their results back into the same payload structure that is later evaluated by the <b>“Did Tools Run?” Choice</b>.</p>
+    <p>The only difference between the two tooling elements is that <b>each one references a different MCP Client global configuration</b>, pointing to a different MCP server. There is no subflow, no chaining between tooling elements, and no sequencing logic added.</p>
+    <p>At runtime, the agent reasons over the <i>combined tool registry</i> exposed by all MCP servers, decides which specific tool to invoke, and Mule executes the corresponding MCP Tooling call; the Choice router then behaves exactly as before, checking whether any tool was executed and continuing downstream unchanged.</p>
+    <p>In the following diagram, only one MCP Tooling element is executed per request; the agent selects which tool to invoke at runtime.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-23.png" alt="Multiple MCP Tools diagram" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Commercial MCP clients (such as Cursor or Claude) abstract this wiring entirely by exposing MCP server configuration through their settings UI. For example, in Cursor, adding another MCP server (such as the one built in this workshop) is done by updating the MCP configuration in Cursor Settings. In our Mule-based implementation, this same configuration is expressed explicitly in the flow by adding another MCP client configuration and tooling element, making the wiring visible and fully governed.</p>
+
+    <p><b>What happens when there are multiple MCP servers and multiple tools registered with a MCP client?</b></p>
+    <p>Unlike traditional API design, there is no equivalent of “Mule APIkit path routing” for tools; <b>tool selection is entirely <i>semantic</i></b> and occurs at runtime inside the LLM’s reasoning step.</p>
+    <p>In practice, adding multiple MCP tools does not require additional routing logic or orchestration flows.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Each tool is exposed by defining an additional MCP Tool Listener, typically as its own Mule flow, with a unique Tool Name and a clear natural-language Description.</li>
+      <li>All tools registered by the MCP server are automatically discovered by the MCP client during the SSE handshake and presented to the LLM as a list of available capabilities.</li>
+      <li>The agent does not select tools based on URLs, priorities, or conditional routing; instead, the LLM chooses which tool to invoke at runtime by reasoning over the tool descriptions and the user’s intent.</li>
+      <li>Mule’s role is simply to expose these tools reliably and execute them when called. This means scaling from one tool to many is additive rather than architectural: you add new tools as independent capabilities, and the agent dynamically decides when and whether to use them without any changes to the orchestration logic.</li>
+    </ul>
+
+    <p>The protocol standardizes everything - from JSON-RPC request/response formats to tool discovery patterns - meaning you write one MCP client that works with any MCP server, whether it's providing weather data, database queries, or file operations. For example any MCP client (e.g., Cursor AI Agent) can talk to the MCP server you deployed in this workshop.</p>
+    <p>MCP uses persistent bidirectional communication (Server-Sent Events) rather than REST's request-response model.</p>
+    <p>In Stage 2a you will see this difference vividly during the testing phase.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>When you use curl to test a standard REST API, you get a response and the connection closes.</li>
+      <li>In this lab, when you target the <code>/sse</code> endpoint, your terminal will appear to "hang". This is not a bug; it is the SSE handshake in action. You will see the server verify the connection and issue a sessionId. This open channel is the "persistent connection" that allows the server to push updates and maintain the conversational state required for agentic workflows.</li>
+    </ul>
+
+    <p><b>What Makes MCP Special for AI Workflows</b></p>
+    <p>Instead of writing custom glue logic with hardcoded decision trees, MCP enables the LLM to reason about tools.</p>
+    <p>Every MCP server <b>self-describes its capabilities through a mandatory tools/list discovery method</b>, declaring available tools with precise schemas that tell clients exactly what parameters are needed without parsing separate documentation.</p>
+    <p>This <b>schema-driven interaction, combined with MCP's persistent bidirectional communication pattern</b> (unlike REST's request-response), <b>creates an environment optimized for how LLMs actually work</b> - they've been trained on millions of function call examples and reliably generate structured tool calls when presented with clear schemas. The result is true reasoning-driven automation where AI agents can reflect on their tool usage, chain multiple calls together, and adapt their strategy dynamically rather than following predetermined workflows.</p>
+    <p>In the section 2a - we build and deploy a MCP server. While you won't see the LLM read the schema until Stage 2b, you will deploy the MCP server with a pre-packaged JAR that contains the <code>mcp:tool-listener</code>. This listener automatically handles the tools/list discovery requests mentioned in your text.</p>
+    <p>By deploying your MCP server to CloudHub, you are creating a "live" authority that conforms to the JSON-RPC standard, ready to be discovered by any compliant client—whether it's the Mule Agent you build next, or a desktop app like Claude.</p>
+
+
+    <h1><b>MCP Server: Tools & Resources</b></h1>
+    <p>In developing an MCP server, you must decide on the appropriate design pattern, as the protocol allows data sources to be exposed as Tools and/or Resources. In our project, we implemented the Gist data source specifically as an MCP Tool</p>
+    <p>Implementing our MCP server with <b>Tools</b> instead of Resources was a deliberate architectural choice to prioritize immediate freshness, but it represents just one valid design pattern for this use case.</p>
+    <p>Alternatively, we could have exposed the Gist document as a <b>Resource</b>—passive background context that the client preloads and caches—paired with a separate <b>Search Tool</b> to filter that content based on specific user queries.</p>
+    <p>While that hybrid approach is powerful for managing stable reference data, our tool-only design enforces a strict "live query" model, ensuring the agent retrieves the absolute latest advisories on-demand without the complexity of managing client-side state or deciding when to refresh cached resources.</p>
+
+
+    <h1><b>Interacting with MCP Server: MCP Client Architecture</b></h1>
+    <p>In a traditional REST API, the client already knows everything it needs up front: the endpoint URL, the request shape, and the response pattern. That’s why a single <code>curl</code> or a GET/POST command works—you are calling a fixed, globally addressable endpoint.</p>
+    <p>MCP deliberately does not work this way. An MCP server does not expose a permanent “tool endpoint” that you can call directly.</p>
+    <p>Instead, MCP is a <b>two-step protocol</b>.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>First, the client opens a <b>Server-Sent Events (SSE)</b> connection. This is not just a transport detail—it is the protocol’s handshake. Through this live connection, the MCP server announces what it can do and, crucially, returns a <b>session-specific message endpoint</b> (for example <code>/message?sessionId=abc123</code>).</li>
+      <li>Only after this step can the client invoke tools, and those tool calls must be sent to the dynamically issued endpoint. You cannot guess this endpoint, hardcode it, or skip the SSE step—the server will correctly reject such calls.</li>
+    </ul>
+
+    <p>Remember the command we gave to our MCP CloudHub endpoint and the response we got (it seemed to be hanging).</p>
+    
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/2-24.png" alt="Hanging Response Command" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>What this does:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><code>-N</code> flag keeps the connection open for SSE streaming</li>
+      <li>Calls the <code>/sse</code> endpoint</li>
+      <li>Sends MCP JSON-RPC request to list available tools</li>
+    </ul>
+
+    <p>What we get back from the MCP server is not a tool response; it's the protocol handshake. The server is telling us it has created a session for this connection (event: endpoint) and it returns a session-specific message endpoint (data: <code>/message?sessionId=19991db7-...</code>). That endpoint did not exist before the SSE connection, it is unique to this session, and it is the only place where tool invocations must be sent.</p>
+    <p>At this stage, the server does not list tools or capabilities yet—tool discovery and invocation happen only after the client sends an initialize request with the provided session ID, and then in the third step, sends tools/list or tools/call messages to the issued endpoint.</p>
+    <p>The MCP protocol's multi-step handshake (SSE connection &rarr; session creation &rarr; initialize &rarr; tool operations) requires a stateful SSE client that maintains persistent connections with active event listeners. The Mule MCP Connector uses asynchronous SSE client libraries that hold the connection open, register event handlers, and process incoming SSE events as they arrive on the stream.</p>
+    <p>We can not directly use REST paradigms or tools - for example curl is fundamentally synchronous and stateless - while MCP server expects all requests and responses to flow through the same persistent SSE connection with proper event-driven handling, which curl's request-response model cannot replicate. In short, REST lets you call a known endpoint once. MCP requires you to first establish a live session, then act within it. That extra step is not overhead—it’s the foundation that makes MCP dynamic, safe, and agent-native.</p>
+    <p>Server-Sent Events (SSE) is a protocol built on top of HTTP. SSE is used in MCP because the protocol is not just about sending requests; it's about maintaining a live conversational context between client and server. SSE allows the server to push structured events to the client over time: capability announcements, session state, and other protocol-level signals.</p>
+    <p>MCP Transport Options: MCP supports three transport mechanisms for client-server communication.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>SSE (Server-Sent Events) establishes an HTTP connection to a remote server's <code>/sse</code> endpoint, where the server pushes JSON-RPC responses as events over a persistent HTTP stream—this is used for network-deployed servers like CloudHub or web-accessible MCP servers.</li>
+      <li>stdio (Standard Input/Output) spawns the MCP server as a local subprocess and exchanges JSON-RPC messages through stdin/stdout pipes, enabling the client to directly control the server process lifecycle—this is used by desktop applications like Claude Desktop to connect to locally-installed MCP servers (e.g., filesystem tools, local databases).</li>
+      <li>Streamable is a framework-specific abstraction layer (like the Mule MCP Connector's internal interface) that provides a unified streaming API over either SSE or stdio, allowing application code to interact with MCP servers through a consistent event-driven interface regardless of the underlying transport.</li>
+    </ul>
+    <p>The choice between SSE and stdio is deployment-driven: remote servers require SSE for network communication, while local servers use stdio for inter-process communication on the same machine.</p>
+  </div>
+
+  <hr>
+
+  <div class="w3-container" style="margin-top:30px; margin-bottom:30px;">
+    <h1><b>APPENDIX - III</b></h1>
+    
+    <h2><b>Resources</b></h2>
+    <p>Mule MCP Connector on Exchange: <a href="https://www.mulesoft.com/exchange/com.mulesoft.connectors/mule-mcp-connector/minor/1.3/pages/home/" target="_blank">https://www.mulesoft.com/exchange/com.mulesoft.connectors/mule-mcp-connector/minor/1.3/pages/home/</a></p>
+    <p>Mule MCP Connector documentation: <a href="https://docs.mulesoft.com/mcp-connector/latest/mcp-connector-studio" target="_blank">https://docs.mulesoft.com/mcp-connector/latest/mcp-connector-studio</a></p>
+    
+    <h2><b>Technical Design</b></h2>
+    
+    <h3>Use Case</h3>
+    <p>We are building <b>a single, real-world AI agent</b> that:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Answers general questions using an LLM (Groq)</li>
+      <li>Decides <b>at runtime</b> whether the answer can be generated from model knowledge alone</li>
+      <li>If external or up-to-date information is required, retrieves it from enterprise data sources (for example, documents in a GitHub Gist)</li>
+      <li>Incorporates that retrieved information into the final answer</li>
+      <li>Responds to the user as a <b>single continuous conversation</b></li>
+    </ul>
+    <p>From the user’s perspective, there is <b>one agent</b>. Tool usage is invisible unless explicitly requested.</p>
+
+    <hr>
+
+    <h3>Design Overview</h3>
+    <p>The solution consists of <b>two Mule applications</b>:</p>
+
+    <h4>A. Agent Application (Stage 2b – Real Agent)</h4>
+    <p>This application <b>is the agent</b>. It contains:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Mule Inference Connector (calling Groq)</li>
+      <li>Decision logic to determine whether tools are needed</li>
+      <li>MCP <b>client</b> to invoke tools when required</li>
+      <li>Orchestration logic to combine reasoning and tool results</li>
+      <li>A single <code>/prompt</code> entry point for users</li>
+    </ul>
+    <p>The agent performs three reasoning steps using the same LLM:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b>Planning</b> – Decide whether external data is required</li>
+      <li><b>Action</b> – Select and execute MCP tools (if needed)</li>
+      <li><b>Response</b> – Generate the final answer using tool results or general knowledge</li>
+    </ul>
+    <p>There is <b>no separate orchestration service</b> and no agent-to-agent routing at this stage.</p>
+
+    <hr>
+
+    <h4>B. MCP Server Application (Stage 2a – Tools)</h4>
+    <p>This application hosts enterprise tools and data access:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Exposes tools using MCP (<code>mcp:tool-listener</code>)</li>
+      <li>Encapsulates access to systems such as documents, APIs, or ERP systems</li>
+      <li>Has no knowledge of prompts, LLMs, or reasoning</li>
+      <li>Is stateless and reusable across agents</li>
+    </ul>
+    <p>The agent application calls this app <b>only when grounding is required</b>.</p>
+
+    <hr>
+
+    <h3>Key Architectural Principle</h3>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>The Inference Connector performs reasoning.</li>
+      <li>The MCP Server performs actions.</li>
+      <li>Mule flows orchestrate when and how they interact.</li>
+    </ul>
+    <p>This separation keeps the design deterministic, auditable, and extensible.</p>
+
+  </div>
+
+  <hr>
+
+  <div class="w3-container" style="margin-top:30px; margin-bottom:30px;">
+    <h1><b>Environments</b></h1>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Latest/real-time advisory data source. Typically a data source like this would be updated frequently by the corporation.: Public REST endpoint (GIST) for the workshop: <a href="https://gist.github.com/lightningexperience/1ad6005e89b050b1d0ab2e5de1350bb1" target="_blank">https://gist.github.com/lightningexperience/1ad6005e89b050b1d0ab2e5de1350bb1</a></li>
+      <li>Mule trial account</li>
+      <li>Mule VM for Anypoint Studio tools access</li>
+      <li>Heroku trial account</li>
+    </ul>
+
+    <h1><b>Gotchas</b></h1>
+    <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow w3-padding">
+      <p>If you are not able to deploy from Anypoint Studio (possibly due to enhanced permissions requirements) - please do direct deployment from CloudHub. Go to <a href="http://mulesoft.com" target="_blank">mulesoft.com</a> (sign-in) &rarr; Runtime Manager &rarr; Deploy Application. Upload your Jar file, then choose the Properties tab and fill in the Property Values as above. Then Press Deploy Application.</p>
+    </div>
+    
+    <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow w3-padding">
+      <p>You may need to repeatedly restart your MCP server and Inference Connector deployed on CloudHub as part of stage 2a and stage 2b of this workbook. This is because the Mule trial account has very limited outbound resources available and gets exhausted quickly with incoming requests.</p>
+    </div>
+    
+    <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow w3-padding">
+      <p>When you deploy the MCP server on CloudHub, you will not get a response for <code>/health</code> endpoint.</p>
+      <code>curl https://your-app-name.us-e1.cloudhub.io/health</code>
+    </div>
+
+    <p>This is fully expected in your implementation.</p>
+    <p>Your MCP server is fully functional as deployed. MCP clients interact exclusively through the <code>/sse</code> endpoint, which is working correctly on CloudHub. The <code>/health</code> endpoint is not part of the MCP protocol and is only provided as a convenience for local monitoring and debugging.</p>
+    <p>Locally, <code>/health</code> is accessible on port 8082, but CloudHub does not expose that port externally, which is why the remote health check fails. Since MCP clients never call <code>/health</code>, no changes are required.</p>
+    <p>If you later decide to support remote health monitoring, you can expose the <code>/health</code> endpoint on port 8081 so it shares the same HTTP listener as <code>/sse</code>.</p>
+  </div>
+
+  <hr>
+
+  <div class="w3-container w3-padding-32">
+    <h1><b>Thank You</b></h1>
+    
+    <h2><b>Discussion</b></h2>
+    <p>This workshop demonstrated the architecture of a <b>Distributed Agentic System</b>. We moved away from traditional "Request-Response" integration (where you hard-code every step) to "Reasoning-Action" integration (where the system decides the steps).</p>
+    <p>Here is the exact technical flow of the system we built:</p>
+    
+    <p><b>1. The Trigger (The Client)</b> It starts when you send a <code>curl</code> request to your local Mule app. This hits the <b>HTTP Listener</b> on port 8081. At this point, the Mule flow is just a "dumb pipe"—it has the user's question ("Check inventory"), but it has no idea what it means or how to answer it.</p>
+    
+    <p><b>2. The Inference Connector: </b>The flow passes the question to the <b>MuleSoft Inference Connector</b>. This connector is the bridge to the LLM (Large Language Model) hosted by Groq.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b>The Prompt:</b> The connector sends your text to Groq along with a list of definitions: <i>"Here is the user's question, and by the way, I have a tool called <code>get_inventory</code> available if you need it."</i></li>
+      <li><b>The Reasoning:</b> Groq analyzes the intent. It realizes, <i>"I don't know the inventory count, so I must use that tool."</i> Instead of answering the user, Groq sends a <b>Tool Call Request</b> back to MuleSoft.</li>
+    </ul>
+
+    <p><b>3. MCP:</b> This is where the magic happens. The Inference Connector sees Groq's request to run <code>get_inventory</code>.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>It doesn't run code locally or within it's training data or on the general web.</li>
+      <li>Instead, it looks at your <b>MCP Client Configuration</b>.</li>
+      <li>It uses a specialized protocol called <b>Server-Sent Events (SSE)</b> to securely "tunnel" that command over the internet to your remote Mule application running on CloudHub. This is the <b>Model Context Protocol (MCP)</b> in action—a standardized way for the "Brain" (Local) to control the "Hands" (Cloud).</li>
+    </ul>
+
+    <p><b>4. The CloudHub Server: </b>Your CloudHub server receives the signal. It executes the specific flow defined for <code>get_inventory</code> (which, in your case, retrieved the mock data file). It packages the result into a standardized JSON format (the "Tool Execution Report") and streams it back down the SSE tunnel to your local machine.</p>
+
+    <p><b>5. The Synthesis: </b> Finally, your local Mule app has the raw data (the JSON dump). But it doesn't send that to the user.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b>The Loop:</b> Your flow detects the tool data and runs the <b>Inference Connector a second time</b>.</li>
+      <li><b>The Context:</b> It says to Groq: <i>"Here is the user's original question, and here is the data the tool found. Please write the final answer."</i></li>
+      <li><b>The Output:</b> Groq reads the data, extracts the relevant facts ("95 units"), and generates the natural language sentence you see in your terminal.</li>
+    </ul>
+
+    <p>You successfully built a loop where an AI model on one server "drove" a business process on a completely different server, using MuleSoft as the secure nervous system connecting them.</p>
+  </div>
+
+</div>
+
+<script>
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>
