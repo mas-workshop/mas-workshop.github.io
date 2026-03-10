@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stage 3: Build Your Own Gen AI Agents with A2A & MCP</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+/* Custom Sidebar Menu Styles */
+.nav-item {
+  display: flex !important;
+  align-items: flex-start;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+.nav-item i {
+  margin-top: 3px;
+  width: 24px;
+  flex-shrink: 0;
+}
+.nav-text {
+  flex-grow: 1;
+  line-height: 1.4;
+  white-space: normal;
+}
+.nav-title {
+  font-weight: bold;
+  display: block;
+}
+.nav-desc {
+  font-size: 0.85em;
+  color: #555;
+  display: block;
+}
+code {
+  background-color: #f4f4f4;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: Consolas, monospace;
+}
+pre {
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-left: 4px solid #ccc;
+  overflow-x: auto;
+  font-family: Consolas, monospace;
+}
+</style>
+</head>
+<body class="w3-content" style="max-width:1600px;">
+
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3; width:300px; overflow-y:auto; padding-bottom:50px;" id="mySidebar"><br>
+  <div class="w3-container">    
+      <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding w3-hover-grey" title="close menu">
+      <i class="fa fa-remove"></i>
+    </a>
+    <h4>Build Multi-Agent Systems with Salesforce</h4>
+    <p>Demystifying Data360, MCP, A2A, Mule Fabric Broker and Agentforce</p>
+  </div>
+  
+  <div class="w3-bar-block">
+    <a href="index.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-home fa-fw w3-margin-right"></i>
+      <span class="nav-text"><span class="nav-title">Overview</span></span>
+    </a>     
+    
+    <a href="stage-0.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-wrench fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 0</span>
+        <span class="nav-desc">A Foundational Generative AI App</span>
+      </span>
+    </a>     
+    
+    <a href="stage-1.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-plug fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 1</span>
+        <span class="nav-desc">Enterprise-Grade LLM Activation with Mule Inference Connector</span>
+      </span>
+    </a> 
+    
+    <a href="stage-2.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-database fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 2</span>
+        <span class="nav-desc">Building Enterprise-Aware AI Agent Capability with Mule & MCP</span>
+      </span>
+    </a>
+    
+    <a href="stage-3.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item w3-light-grey">
+      <i class="fa fa-share-alt fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 3</span>
+        <span class="nav-desc">Build Your Own Gen AI Agents with A2A & MCP</span>
+      </span>
+    </a>
+    
+    <a href="stage-4.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-users fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 4</span>
+        <span class="nav-desc">Agentforce + Data360</span>
+      </span>
+    </a>
+    
+    <a href="stage-5.html" onclick="w3_close()" class="w3-bar-item w3-button nav-item">
+      <i class="fa fa-sitemap fa-fw w3-margin-right"></i>
+      <span class="nav-text">
+        <span class="nav-title">Stage 5</span>
+        <span class="nav-desc">Mule Agent Fabric Broker for Orchestrating Multi-Agent Systems</span>
+      </span>
+    </a>
+  </div>
+
+  <hr style="margin: 20px 0;">
+
+  <div class="w3-container">
+    <h4>Customer Experience Transformation with Salesforce Data Cloud</h4>
+    <p>Hands-on Workshop and Ideation</p>
+  </div>
+  <div class="w3-bar-block">
+    <a href="http://datacloud-workshop.github.io/index.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-th-large fa-fw w3-margin-right"></i>Get Started
+    </a> 
+    <a href="http://datacloud-workshop.github.io/insidedatacloud.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-lightbulb-o fa-fw w3-margin-right"></i>Concepts
+    </a>     
+    <a href="http://datacloud-workshop.github.io/hands-on.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-laptop fa-fw w3-margin-right"></i>Hands-on Lab
+    </a> 
+    <a href="http://datacloud-workshop.github.io/ideation.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-comments-o fa-fw w3-margin-right"></i>Ideation
+    </a>
+    <a href="http://datacloud-workshop.github.io/resources.html" target="_blank" onclick="w3_close()" class="w3-bar-item w3-button w3-padding">
+      <i class="fa fa-book fa-fw w3-margin-right"></i>Resources
+    </a>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:300px; border-left: 1px solid #000000;">
+  
+  <header>
+    <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
+    <div class="w3-container w3-padding-16">
+      </div>
+  </header>
+
+  <div class="w3-container" style="margin-top:10px; margin-bottom:30px;"> 
+    <h1><b>Stage 3: Build Your Own Gen AI Agents with A2A & MCP</b></h1>
+    
+    <h2><b>Introduction</b></h2>
+    <p>In this stage, we shift our focus from simple "chatbots" to <b>standardized, discoverable agent services</b>. You will explore how to take a self-contained GenAI system and wrap it in the <b>Agent-to-Agent (A2A) Protocol</b>.</p>
+    <p>The goal here isn't just to build an AI that <i>you</i> can talk to, but to build an AI that <i>other machines</i> can discover, trust, and interact with. By the end of this module, you will have a deployed, functioning A2A Server that exposes your GenAI reasoning as a reusable capability.</p>
+    <p>The <b>Agent2Agent (A2A) protocol</b> is an open standard that enables different AI agents to communicate and work together, creating a multi-agent ecosystem.</p>
+    <p>The technical structure of this protocol involves several key components, including the A2A Client and the A2A Host.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>The A2A Client is the agent that initiates a call, while the A2A Host is the target agent that accepts the prompt, processes it, and returns a response.</li>
+      <li>Discovery is handled through an Agent Card, which is a metadata file describing an agent's skills and authentication requirements.</li>
+      <li>Communication is managed through "Tasks," which serve as the central unit of work and move through various states such as submitted, working, or completed.</li>
+    </ul>
+    <p>MuleSoft A2A Connector allows you to turn your existing APIs and integrations into tools for AI agents through the A2A Connector and Listener.</p>
+
+    <h1><b>The Workshop Project Architecture</b></h1>
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-1.png" alt="Workshop Project Architecture" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+    <p>The application you are about to deploy has a specific architecture designed to separate <b>Communication</b>, <b>Reasoning</b>, and <b>Action</b>. If you look at the flow design (see the provided diagram), you will see three distinct responsibilities:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b>The Reasoning Layer: </b>Uses the <b>MuleSoft Inference Connector</b> to talk to <b>Groq</b>, an open-source Large Language Model (LLM). This is where the actual "thinking" happens—natural language understanding, context processing, and decision-making.</li>
+      <li><b>The Tooling Layer: </b>The inference layer is equipped with an <b>MCP (Model Context Protocol) Client</b>. By connecting LLM to the MCP Server your agent can reach out and fetch authoritative, <b>real-time data</b> (like inventory status or technical specs) before answering.</li>
+      <li><b>The Protocol Layer: </b>The entire flow is wrapped in the <b>MuleSoft A2A Connector</b>. This layer hides the complexity of the AI. It exposes a standardized contract (the "Agent Card") so that any A2A-compliant client can discover your agent, understand its skills, and send it tasks without needing to know specifically how Groq or MCP works.</li>
+    </ul>
+    <p>This module is intentionally designed to stand on its own. In later stages, it can be orchestrated by brokers, combined with other agents, or integrated into larger systems. But here, the focus is precise: turn a GenAI agent into an A2A-ready building block.</p>
+
+    <hr>
+
+    <h1><b>Hands-on Workshop Activity: Deploy & Explore</b></h1>
+    <p>Instead of assembling the flows component-by-component, we’ve provided packaged JAR files in which the key steps have already been completed. You’ll import it into Anypoint Studio, examine it and deploy it to CloudHub.</p>
+    <p>Due to environment constraints (version difference) with Anypoint Studio in attendee VMs, you would not be able to test it locally or deploy using Anypoint Studio. However you can deploy the JAR file on CloudHub using Mule Runtime manager and interact with it using an A2A application that we provide.</p>
+    <p>Although you are using a pre-packaged JAR rather than configuring each connector manually in Anypoint Studio, we still explain every part of it in the sections below, so you understand exactly how it works and how to apply the same approach in your own projects.</p>
+    <p>This artifact contains the fully assembled flows described above.</p>
+    <p><b>Your Mission:</b></p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Import the provided JAR file into Mule Anypoint Studio.</li>
+      <li><b>Explore</b> the logic: We will review the Mule Flow configuration to understand how the <i>A2A Task Listener</i> passes the user's prompt into the <i>Agent Brain</i> sub-flow.</li>
+      <li><b>Deploy</b> the provided JAR file to <b>CloudHub Runtime Manager</b>.</li>
+      <li><b>Interact</b>: Once running, you will query your new Agent using an A2A Client to see how it dynamically decides when to answer directly and when to call your MCP tools.</li>
+    </ul>
+
+    <hr>
+
+    <h2><b>Designing the A2A + MCP Mule Flow</b></h2>
+    <p>When you review the flow design, you will see two main sections:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b>Top Flow (<code>answer_question</code>):</b> This is the <b>A2A Interface</b>. It listens for incoming standardized tasks, extracts the user's prompt, and hands it off to the logic layer. Once the logic is done, it packages the result back into a compliant A2A JSON response.</li>
+      <li><b>Bottom Sub-Flow (<code>agent-brain-logic-flow</code>):</b> This is the <b>Logic Core</b>. It sends the prompt to the AI, executes MCP tools if the AI requests them, and summarizes the final answer.</li>
+    </ul>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-2.png" alt="Flow Design Top and Bottom" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <h2><b>Hands-On: Anatomy of an A2A Agent</b></h2>
+    
+    <h3><b>Download & import the packaged Mule flow</b></h3>
+    <p>Open up your VM (instructions provided by your instructor). All the following hands-on steps are to be completed inside the VM.</p>
+    <p>Download the packaged JAR file (use chrome browser): <a href="https://drive.google.com/file/d/1PR_IRnUF1ZCZqQFMzPjvw0GVw2fGrZfx/view?usp=drive_link" target="_blank">Download JAR File</a> </p>
+    <p>Typically it will download the file in the following locations inside the VM: <code>C:\Users\workshop\Downloads</code> </p>
+    <p>Click on File &rarr; Import and find the file the downloaded JAR (<code>stage3-a2a-v2.jar</code>) on your VM.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-3.png" alt="Import Packaged Application" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Choose the import wizard &rarr; Anypoint Studio &rarr; Packaged Application </p>
+    <p>You can monitor the import progress in the bottom right corner of the Anypoint Studio.</p>
+    <p>Once import completes, a project gets created in Anypoint Studio with the configurations packaged in the JAR file.</p>
+
+    <h3><b>Let’s explore the Mule Flow for A2A server</b></h3>
+    <p>In the left sidebar of the Anypoint Studio, find the file <code>stage3-a2a.xml</code> (<code>src/main/mule</code> folder) and click on it. It will open up the Message Flow in the center window.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-4.png" alt="Message Flow Overview" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>The Mule app flow has two perspectives - as you see in the above screenshot.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>the visual perspective accessed via the Message Flow tab </li>
+      <li>the programmatic perspective accessed via the Configuration XML tab </li>
+    </ul>
+
+    <p>Let’s examine this flow - following is a bigger screenshot of what you should see on your screen.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-5.png" alt="Detailed Flow Screenshot" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <h3><b>The Wiring: How It All Connects</b></h3>
+    <p>Before we look at the individual icons, let's understand the data pipeline shown in the diagram.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b>The Top Flow (<code>answer_question</code>)</b> is the <b>Manager</b>. It receives the A2A request, rips open the envelope to find the user's question, hands it to the generic "Brain" for processing, and then packages the answer back into an official A2A response.</li>
+      <li><b>The Bottom Flow (<code>agent-brain-logic-flow</code>)</b> is the <b>Worker</b>. It receives a simple text question, uses AI and Tools to find the answer, and returns the result. It doesn't care about protocols or JSON-RPC; it just cares about logic.</li>
+    </ul>
+
+    <h3><b>Step-by-Step Walkthrough</b></h3>
+    
+    <h3><b>Phase 1: The "Face" (Top Flow: <code>answer_question</code>)</b></h3>
+    <p><i>Locate the top flow in the canvas. Follow the path of the request from left to right.</i></p>
+    <p>The flow begins at the <b>A2A Server - Task Listener</b>. This blue link icon is the entry point that triggers the entire process whenever an A2A agent sends a task to our specific skill ("answer_question").</p>
+    <p>Immediately following the listener are four <b>Logger</b> components. These blue icons are used for debugging, printing the incoming payload and attributes to the console so we can verify the A2A request structure.</p>
+    <p>Next is the <b>Set Variable (Save Task ID)</b> component. This green icon extracts the unique <code>taskId</code> from the request header and saves it. We need this identifier later to tag the outgoing response so the requester knows which task is being answered.</p>
+    <p>Moving to the right, we reach <b>Set Variable (Get User Prompt)</b>. Since the A2A request is a complex JSON object, this step extracts just the human text (e.g., <i>"What is the status of part 4417-K?"</i>) and saves it as a variable for easier processing.</p>
+    <p>The flow then hits the <b>Flow Reference (Call Brain)</b>. This component pauses the current flow and sends the user prompt down to the <i>agent-brain-logic-flow</i> (the bottom flow). The process waits here until the "Brain" returns with an answer.</p>
+    <p>Once the Brain returns, the <b>Logger (Pre-Response Log)</b> prints the final text answer to the console for verification.</p>
+    <p>The flow concludes at the <b>Transform Message (A2A Response)</b>. This final step takes the raw text from the Brain and uses DataWeave to wrap it into the strict JSON-RPC format required by the A2A protocol, adding the necessary message and context IDs.</p>
+
+    <hr>
+
+    <h3><b>Phase 2: The "Brain" (Bottom Flow: <code>agent-brain-logic-flow</code>)</b></h3>
+    <p><i>Locate the bottom flow. This is where the intelligent processing happens.</i></p>
+    <p>This sub-flow starts with the <b>Logger (Log Input)</b>, which confirms that the prompt was received correctly from the main flow.</p>
+    <p>Next is the <b>[MCP] Tooling (Groq + MCP)</b> component. This is the engine of the agent. It sends the prompt to the Groq LLM and automatically checks if the LLM wants to call a tool. If a tool is needed, it calls your CloudHub MCP Server, retrieves the data, and outputs a report containing the results.</p>
+    <p>The <b>Logger (Log Raw Output)</b> then prints the raw, often messy result from the AI and Tool interaction.</p>
+    <p>The flow then enters the <b>Choice (Process Results)</b> router, which splits the path based on the previous outcome:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b>The Top Route (Tool Used):</b> If the agent called a tool, the flow moves to <b>Set Variable (Extract Tool Result)</b> to get the raw data. It then passes through a <b>Logger (Log Tool Result)</b> before hitting <b>[Chat] Completions (Summarize)</b>. This component asks the AI to rewrite the raw data into a polite sentence. The result is logged by <b>Logger (Log Summarization)</b> and finally saved by <b>Set Variable (Set Summary Answer)</b>.</li>
+      <li><b>The Bottom Route (Default):</b> If no tool was called (e.g., the user asked for a joke), the flow simply uses <b>Set Variable (Set Direct Answer)</b> to capture the AI's direct chat response.</li>
+    </ul>
+    <p>Both paths converge at the final <b>Logger (Log Final Answer)</b>, which confirms a clean answer is ready before returning control to the top flow.</p>
+
+    <h2><b>Launch & Interact: Seeing Your Agent in Action</b></h2>
+    <p>Let’s deploy your A2A Agent on Mule CloudHub and explore it.</p>
+    <p>For this section we first deploy a MCP server on Mule CloudHub - and then deploy the A2A agent that calls that MCP server.</p>
+    <p>If you have completed Stage 2 you can skip the MCP server deployment - if not, it would only take a couple of minutes to deploy the MCP server.</p>
+
+    <p><b>Step 1: Deploy MCP server</b></p>
+    <p>Download the packaged JAR file (use chrome browser): <a href="https://drive.google.com/file/d/1l2-C_XnqlhPGHlFeY_98SxCC1x1MKysH/view?usp=drive_link" target="_blank">Download MCP Server JAR</a> </p>
+    <p>Typically it will download the file in the following locations inside the VM: <code>C:\Users\workshop\Downloads</code> </p>
+    <p>Go to <a href="http://MuleSoft.com" target="_blank">MuleSoft.com</a> (you need to sign in first) &rarr; Runtime Manager </p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-6.png" alt="Runtime Manager Deploy" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Click Deploy Application - select Sandbox.</p>
+    <p>Put in a descriptive name (e.g., <code>mas-mcp-server</code>) and choose file &rarr; upload file &rarr; select your downloaded file (<code>stage2_customer_mcp-server-v1.jar</code>) </p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-7.png" alt="Upload MCP Server JAR" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Press Deploy Application .<br>Click on Applications to go to the applications list and then click on your MCP server that you have just now deployed.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-8.png" alt="MCP Server Running" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>On the MCP server home page - when deployment completes it will show state as Running. Copy the Public Endpoint.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-9.png" alt="MCP Server Public Endpoint" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>This public endpoint becomes the <code>mcp.server.url</code> in your A2A agent deployment property.</p>
+    <p>Test your deployed MCP server using the following tester: <a href="https://mcp-client-tester-fa6774d469ee.herokuapp.com/" target="_blank">https://mcp-client-tester-fa6774d469ee.herokuapp.com/</a> </p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-10.png" alt="Tester UI MCP" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p><b>Step 2: Deploy A2A agent</b></p>
+    <p>Download the packaged JAR file (use chrome browser): <a href="https://drive.google.com/file/d/1PR_IRnUF1ZCZqQFMzPjvw0GVw2fGrZfx/view?usp=drive_link" target="_blank">Download A2A Agent JAR</a> </p>
+    <p>Typically it will download the file (<code>stage3-a2a-v2.jar</code>) in the following locations inside the VM: <code>C:\Users\workshop\Downloads</code> </p>
+    <p>Now click on Runtime Manager &rarr; Deploy Application to deploy your A2A agent.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-11.png" alt="Deploy A2A Agent in Runtime Manager" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Put in an appropriately descriptive name (e.g., <code>mas-workshop-a2a</code>).</p>
+    <p>Choose File &rarr; Upload File - select the JAR file you had downloaded for this stage (<code>stage3-a2a-v2.jar</code>).</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-12.png" alt="Upload A2A Agent JAR" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Click Properties tab and fill in the information as follows:</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><code>http.port=8081</code> </li>
+      <li><code>groq.api.key=</code><span class="w3-pale-yellow w3-padding-small">fill in your own api key</span> </li>
+      <li><code>groq.model=llama-3.3-70b-versatile</code> </li>
+      <li><code>groq.timeout=1200000</code> </li>
+      <li><code>groq.max.tokens=2000</code> </li>
+      <li><code>mcp.server.url=</code> <span class="w3-pale-yellow w3-padding-small">replace this with your mcp server url (without forward slash at the end) mcp server url on cloudhub is without /sse at the end.</span> e.g., correct url format: <code>https://mcp-server-v1-xyz-4.usa-e2.cloudhub.io</code> </li>
+      <li><code>mcp.timeout=120000</code> </li>
+    </ul>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-13.png" alt="A2A Agent Properties" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Press the Deploy Application button.</p>
+    <p>Now click on application in the left sidebar to go to the application list. Click on your newly deployed application to go to the application home page - and you will see the application state as Running (once deployment completes).</p>
+
+    <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow w3-padding">
+      <p><b>Gotcha:</b> Due to version constraints in the Anypoint Studio in the attendee VMs, you may not be able to deploy the A2A server locally. You would need to deploy on CloudHub to test. However if you have Anypoint Studio installed on your laptop (instead of VM) there should not be any issues.</p>
+    </div>
+
+    <div class="w3-panel w3-pale-yellow w3-leftbar w3-border-yellow w3-padding">
+      <p><b>Gotcha:</b> If you are not able to deploy from Anypoint Studio (possibly due to enhanced permissions requirements) - please do direct deployment from CloudHub. Go to <a href="http://mulesoft.com" target="_blank">mulesoft.com</a> (sign-in) &rarr; Runtime Manager &rarr; Deploy Application. Upload your Jar file, then choose the Properties tab and fill in the Property Values as above. Then Press Deploy Application.</p>
+    </div>
+
+    <p>Copy the public endpoint of the application.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-14.png" alt="A2A Agent Public Endpoint" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <h3><b>Step 3: Let’s interact with your A2A agent</b></h3>
+
+    <p><b>Option 1: Interact with A2A Server on CloudHub with CURL</b> </p>
+    <p>Replace the CloudHub url in the following curl with your own cloudhub url.</p>
+
+<pre><code>curl -X POST https://mas-workshop-a2a-stage3xyz7.usa-e2.cloudhub.io/ \
+-H "Content-Type: application/json" \
+-d '{
+"jsonrpc": "2.0",
+"method": "message/send",
+"id": "test-local",
+"params": {
+"message": {
+"kind": "message",
+"messageId": "msg-001",
+"contextId": "ctx-test",
+"role": "user",
+"parts": [
+{
+"kind": "text",
+"text": "Hello, can you introduce yourself?"
+}
+]
+}
+}
+}'</code></pre>
+
+    <p><b>Option 2: Interact with A2A Server on CloudHub with a thin client</b> </p>
+    <p>We have created a ‘A2A Protocol Tester + Chat App’ for this workshop.</p>
+    <p>Open this link a chrome browser: <a href="https://unofficial-a2a-inspector-9ed43077bb5e.herokuapp.com/" target="_blank">https://unofficial-a2a-inspector-9ed43077bb5e.herokuapp.com/</a> </p>
+    <p>Put in your A2A agent’s public endpoint in the ‘<b>A2A Protocol Tester + Chat App</b>.‘ <br>Please note the URL format - do not put <code>/</code> at the end of the public endpoint.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-15.png" alt="Protocol Tester Thin Client" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>When you press Fetch Agent Card button, the protocol tester app calls your A2A agent and retrieves the Agent Card.</p>
+    <p>Agent Card is a lightweight JSON contract that communicates an agent’s capabilities, identity, compliance tags, and Trust Score.</p>
+    <p>In the rollout of the A2A multi-agent interoperability protocol, Salesforce contributed the concept of an Agent Card. The Google product team adopted the concept in its A2A specification, citing Agent Card as the keystone for capability discovery and version negotiation.</p>
+    <p>When you wire your A2A agent with other agents and MCP servers in an orchestration service (e.g., MuleSoft Agent Fabric Broker), the orchestrator discovers the capabilities of your agent via the Agent Card. It then knows, for example, which tasks to route to this agent.</p>
+    <p>The <b>A2A Protocol Tester + Chat App</b> is also designed to work as a thin Gen AI app.</p>
+    <p>Scroll down and ask our Gen AI agent a general question: e.g., "Tell me a joke.“ </p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-16.png" alt="Tell me a joke prompt" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>Scroll down to see the response.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-17.png" alt="Tell me a joke response" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>The A2A agent in the above case does not call the MCP server.</p>
+    <p>However when you ask an engineering parts related question, the A2A agent gets this information from your MCP server.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-18.png" alt="Engineering question prompt" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-19.png" alt="Engineering question response" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>If you run into issues in testing - restart first your CloudHub deployed MCP server - wait for it to start. <i>And then</i> - restart your A2A server on CloudHub .<br>Test with CURL first to make sure its working and then test with the GUI tester.</p>
+
+    <p><b>Optional Challenge:</b> How can your determine whether the response came from MCP server or directly from LLM general knowledge?  What changes are needed in your application or callout so the response clearly indicates if the data in the MCP server was used by the LLM (e.g., the following screenshot)? </p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-20.png" alt="Challenge MCP highlighted output" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p><b>Tip for the challenge</b>: We have included some options for you to consider - please see the section in the appendix below - “A2A Response: Where Did That Answer Come From?”.  To see working version of the solution please download and import this JAR fille as a new project: <a href="https://drive.google.com/file/d/1Ss-Xapmxwtys-tTuOvpCixWwvahLs15S/view?usp=sharing" target="_blank">Download Challenge Solution JAR</a>  This JAR file contains all the steps in this lab plus the changes that identify if MCP was used.</p>
+
+    <h2><b>Summary</b></h2>
+    <p>In the context of this workshop, A2A encapsulates your agent's complex internal machinery (the Groq reasoning "brain" and MCP database "hands") behind a uniform interface, allowing any client to invoke these powerful capabilities using a standard message without needing to understand or integrate with the underlying tools.</p>
+    <p>Before A2A, connecting AI agents in a multi-agent configuration required custom integration code for every unique pair, creating a chaotic web of dependencies. A2A solves this by introducing a standardized communication layer—much like HTTP did for the web—that allows agents to publish "Agent Cards" for instant discoverability and interoperability.</p>
+  </div>
+
+  <hr>
+
+  <div class="w3-container" style="margin-top:30px; margin-bottom:30px;">
+    <h1><b>Appendix</b></h1>
+    
+    <h1><b>How Can You Build This (A2A+MCP) Mule Flow Yourself?</b></h1>
+    <p>At first glance this can seem overwhelmingly complex. How do you get started building this? </p>
+    <p>This is a completely normal reaction! When you see a finished flow with 15+ processors, it looks intimidating.</p>
+    <p><b>But the secret to building this—and any complex integration—is to build "Inside-Out."</b>  <b>You don't start with the Listener; you start with the Logic.</b> </p>
+    <p>Here is the 3-step recipe to demystify the build process:</p>
+
+    <h3><b>The "Inside-Out" Build Strategy</b></h3>
+
+    <h4><b>Step 1: Build the "Brain" First (The Sub-Flow)</b></h4>
+    <p>Ignore the A2A protocol for a moment. First, we just need a flow that takes a string (question) and returns a string (answer).</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b>Create a Sub-Flow:</b> Drag a <code>Sub-Flow</code> scope onto the canvas. Name it <code>agent-brain-logic-flow</code>.</li>
+      <li><b>Add the Intelligence:</b> Drag the <b><code>[MCP] Tooling</code></b> component in.
+        <ul>
+          <li><i>Config:</i> Point it to your Groq and MCP connections.</li>
+          <li><i>Instruction:</i> Tell it, "Use the tool for engineering questions and answer general questions by itself." </li>
+        </ul>
+      </li>
+      <li><b>Handle the Decision:</b> Drag a <b><code>Choice</code></b> router after the tooling component.
+        <ul>
+          <li><b>Path A (Tool Used):</b> If the AI found data, it returns raw JSON. We don't want to send raw JSON to a human. So, add a <b><code>[Chat] Completions</code></b> processor here to "Summarize this data into a nice sentence." </li>
+          <li><b>Path B (Default):</b> If the AI just chatted (no tool), simply pass that text through.</li>
+        </ul>
+      </li>
+    </ul>
+    <p>At this point, you have a working logic engine. You give it "Part 4417", and it gives you "The part is available." </p>
+
+    <h4><b>Step 2: Build the "Face" (The Main Flow)</b></h4>
+    <p>Now that the brain works, we need to give it a public address so other agents can find it.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b>Create a Flow:</b> Drag a standard <code>Flow</code> onto the canvas.</li>
+      <li><b>Add the Trigger:</b> Drag the <b><code>A2A Server - Task Listener</code></b> to the source.
+        <ul>
+          <li><i>Config:</i> Bind it to the <code>answer_question</code> skill defined in your Agent Card.</li>
+        </ul>
+      </li>
+      <li><b>Extract the Prompt:</b> The listener gives you a huge JSON envelope. Use a <b><code>Set Variable</code></b> to pluck out just the user's text (<code>payload.message.parts[0].text</code>).</li>
+      <li><b>Connect to the Brain:</b> Drag a <b><code>Flow Reference</code></b> and point it to the sub-flow you built in Step 1. <b>How to “point it” to the sub-flow</b>: Unlike other tools that use drag-and-drop arrows to connect logic, Anypoint Studio uses configuration settings to link flows. To connect your 'Face' (Main Flow) to your 'Brain' (Sub-Flow), click the Flow Reference component you just placed. In the <b>Properties</b> window at the bottom of your screen, locate the Flow Name field and use the dropdown menu to select <code>agent-brain-logic-flow</code>. This creates the internal link that passes the user's prompt to your logic engine and waits for the answer.</li>
+      <li><b>Wrap the Response:</b> The Brain returns plain text, but A2A demands a strict JSON format. Add a <b><code>Transform Message</code></b> at the end to package the answer into the official A2A JSON-RPC structure.</li>
+    </ul>
+
+    <h4><b>Step 3: Define the Identity (Global Config)</b></h4>
+    <p>Finally, you give your agent a name.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li><b>Global Elements:</b> Open the A2A Config.</li>
+      <li><b>Agent Card:</b> Paste the JSON that defines who you are: <i>"I am the Stage3Agent, and I have a skill called <code>answer_question</code>."</i> </li>
+    </ul>
+
+    <p><b>Summary:</b> You don't build this left-to-right. You build the <b>Logic</b> (Sub-flow) to make it smart, then you build the <b>Listener</b> (Main flow) to make it accessible. The connectors do all the heavy lifting; you're just wiring the 'Brain' to the 'Mouth'.</p>
+    <p><b>How Stage 3 ties in with Stage 2:</b> In Stage 2, you successfully built the 'Brain' of your agent—an orchestration engine that uses an LLM for reasoning and MCP to fetch real-time data. In this stage, we are simply wrapping that existing logic inside the <b>A2A (Agent-to-Agent) Protocol</b>. We are not rewriting your core intelligence; instead, we are attaching an <b>A2A Task Listener</b> to the front (to receive tasks) and a <b>Transform Message</b> component (a A2A protocol wrapper using a simple DataWeave script) to the back (to format the protocol response), instantly transforming your private, standalone tool into a discoverable, network-ready service that other agents can find and trust. The A2A Task Listener element is the key part of the Mule A2A connector in this application.</p>
+    <p>Before actually building out the flows in Mule you could also consider a quick sketch to plan the flow. We have included an example below.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-21.png" alt="Whiteboard logic sketch" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p>We hope this demystifies the steps in the design process.</p>
+
+    <h1><b>From API-Led Connectivity to Agent-Led Integration</b></h1>
+    <p>In traditional integration, the design process begins with a rigid RAML or OpenAPI specification that strictly defines resources, data types, and endpoints (e.g., <code>GET /inventory</code>).</p>
+    <p>In this Agent architecture, that technical contract is replaced by an <b>Agent Card</b>. Instead of documenting static inputs and outputs, the Agent Card declares semantic <b>Skills</b> (such as <code>answer_question</code>) and <b>Intents</b>.</p>
+    <p>This shifts the interface definition from describing <i>how</i> to connect (syntax) to describing <i>what</i> the service is capable of doing (capability), allowing other agents in the network to discover and invoke the service without requiring a pre-generated client SDK.</p>
+    <p>However, the traditional API specifications do not disappear; they simply move deeper into the stack.</p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>The Agent you are building acts as a dynamic consumer of your existing enterprise APIs.</li>
+      <li>Through the <b>MCP (Model Context Protocol)</b> integration, your agent connects to established System and Process APIs—which are still governed by their own rigorous RAML/OAS specs—to fetch authoritative data.</li>
+      <li>The agent sits on top of your existing application network, orchestrating calls to these underlying services based on real-time reasoning rather than hard-coded orchestration flows.</li>
+    </ul>
+    <p>This architecture changes the routing mechanism from static to dynamic. In a standard Mule application, you use APIkit to deterministically route URL paths to specific flows based on the spec. In this A2A architecture, the <b>A2A Task Listener</b> replaces the APIkit router. It receives standardized task objects and routes them based on the requested <b>Skill ID</b>.</p>
+    <p>This moves the integration logic from "Design-Time" (where developers manually map field A to field B) to "Run-Time" (where the A2A protocol handles the handshake and the AI model dynamically interprets the data structure), reducing the need for constant contract versioning when underlying data shapes evolve, as the AI model can dynamically interpret variations in structure rather than requiring strict field-level mapping for every change.</p>
+    <p>In practical terms, this does not eliminate full-cycle API development—it repositions it. The foundational disciplines of API-led connectivity remain intact: RAML and OpenAPI specifications still govern System and Process APIs, API gateways still enforce security, schema validation, and SLAs, and Mule runtimes still provide deployment, observability, and operational control. What changes is the <i>entry point</i> into the integration network. Instead of a UI or Experience API deterministically invoking a predefined endpoint via APIkit routing, an agent becomes the primary consumer, dynamically selecting which underlying APIs to call at runtime based on intent, context, and reasoning.</p>
+    <p>Mule shifts from being purely a design-time orchestration engine to a <b>governed execution fabric</b>, where traditional APIs continue to provide stable, contract-driven access to enterprise systems, while agent-level constructs (Agent Cards, Skills, MCP tools, and A2A task routing) sit above them, enabling adaptive orchestration without breaking the underlying API contracts. This preserves the safety, governance, and resilience of full-cycle API development while allowing integration logic to move from static, version-bound flows to dynamic, agent-driven decisioning.</p>
+    <p>Note: We have discussed this topic extensively in the Appendix in our Stage 1 lab (Stage 1: Enterprise-Grade LLM Activation with Mule Inference Connector) if you are interested in the specifics of mapping full-cycle API development concepts to our lab modules.</p>
+  </div>
+
+  <hr>
+
+  <div class="w3-container" style="margin-top:30px; margin-bottom:30px;">
+    <h1><b>Optional Challenges/Exercises</b></h1>
+    
+    <h2>Optional Exercise: <b>Test A2A Server on CloudHub with Postman</b></h2>
+    <p><b>Steps in Postman:</b></p>
+    <ul class="w3-ul w3-border w3-margin-bottom">
+      <li>Create new request </li>
+      <li>Change method to <code>POST</code> </li>
+      <li>Paste URL </li>
+      <li>Go to "Headers" tab &rarr; Add <code>Content-Type: application/json</code> </li>
+      <li>Go to "Body" tab &rarr; Select "raw" &rarr; Select "JSON" from dropdown </li>
+      <li>Paste the JSON above </li>
+      <li>Click "Send" </li>
+    </ul>
+
+    <p>Following is an example for using Postman.</p>
+    <p><b>Method:</b> <code>POST</code><br><b>URL:</b> <code>https://stage3-a2a-l0r843.5sc6y6-3.usa-e2.cloudhub.io/</code><br><b>Headers:</b> <code>Content-Type: application/json</code><br><b>Body:</b> (Select "raw" and "JSON")</p>
+
+<pre><code>{
+"jsonrpc": "2.0",
+"method": "message/send",
+"id": "test-cloudhub",
+"params": {
+"message": {
+"kind": "message",
+"messageId": "msg-123",
+"contextId": "ctx-test",
+"role": "user",
+"parts": [
+{
+"kind": "text",
+"text": "What is the status of component 4417-K?"
+}
+]
+}
+}
+}</code></pre>
+
+    <p><b>Expected Response:</b> JSON with component 4417-K status.</p>
+
+    <hr>
+
+    <h1><b>A2A Response: Where Did That Answer Come From?</b></h1>
+    <p><b>How can we determine whether response is coming from MCP server or general LLM knowledge.</b> </p>
+    
+    <h2><b>Option 1: Client side instrumentation</b></h2>
+    <p>In your client program (e.g., CURL) check the response and if there are parts related information, classify it as MCP response in your output.</p>
+    <p>However this (pattern matching on keywords) would be primarily visual formatting. It won’t be reliable.</p>
+    
+    <h2><b>Option 2: Server side instrumentation</b></h2>
+    <p>A deterministic way to confirm whether the response included data sent back from MCP server would require either changing the LLM instructions or A2A server response metadata.</p>
+
+    <h3><b>Option 2A: LLM prompt engineering</b></h3>
+    <p>Add in the following system prompt to LLM instructions.</p>
+
+<pre><code>System_prompt = """
+You are an engineering assistant with access to real-time data.
+
+IMPORTANT: When responding:
+Clearly distinguish between your general knowledge and MCP tool results
+Use this format:
+For MCP data: Start with "[MCP SOURCE]" 
+For general knowledge: Start with "[GENERAL]" 
+Always cite when information comes from the MCP tool call. 
+"""</code></pre>
+
+    <p>The above instructions can be added to the LLM as in the following screenshot in Mule flow .<br>Note you would may need to format the instructions appropriately.</p>
+
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-22.png" alt="Adding System Prompt to Flow" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <h3><b>Option 2B: Add metadata to response parts</b></h3>
+    <p>Modify your agent to include metadata in each response part. You need to modify the Mule (DataWeave) script in your A2A response element in your field.</p>
+    <p>Modify the A2A Response (Transform Message) element in the top flow.</p>
+
+    <p><b>Current response</b></p>
+    <div class="w3-center w3-margin-bottom w3-padding">
+      <img src="images/3-23.png" alt="Current Transform Message script" class="w3-image w3-border" style="max-width: 100%;">
+    </div>
+
+    <p><b>Modify the above script to include metadata fields.</b></p>
+
+<pre><code>"parts": [{
+    "kind": "text",
+    "text": vars.finalAnswer default "I am unable to retrieve that information",
+    "metadata": {
+        "source": if (vars.toolResult != null) "mcp_tool" else "llm_general",
+        "tool_name": if (vars.toolResult != null) "get_authoritative_live_reference" else null
+    }
+}]</code></pre>
+
+    <p>You can also change the response text so it has clearly labeled sections.</p>
+
+<pre><code>"parts": [{
+    "kind": "text",
+    "text": if (vars.toolResult != null) 
+            "**MCP Data Source (Authoritative):**\n" ++ (vars.finalAnswer default "I am unable to retrieve that information")
+            else 
+            "**General Information:**\n" ++ (vars.finalAnswer default "I am unable to retrieve that information")
+}]</code></pre>
+
+    <p>Option 2B is a more authoritative approach because it reads directly from the MuleSoft flow's execution state (<code>vars.toolResult</code>) rather than relying on LLM behavior or text pattern matching. When the MCP client successfully calls the MCP server, MuleSoft stores the result in <code>vars.toolResult</code>, and the Transform Message component checks this variable to deterministically set the metadata - meaning the source attribution reflects what actually happened in the infrastructure, not what the LLM claims or what patterns appear in the text. This provides programmatically-verifiable proof of whether MCP data was used.</p>
+  </div>
+
+  <hr>
+
+  <div class="w3-container w3-padding-32">
+    <h1><b>Thank You</b></h1>
+  </div>
+</div>
+
+<script>
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>
