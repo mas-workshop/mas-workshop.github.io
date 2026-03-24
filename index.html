@@ -134,13 +134,18 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
 <div class="w3-main" style="margin-left:300px; border-left: 1px solid #000000;">
   
-  <header>
+  <header class="w3-container">
     <span class="w3-button w3-hide-large w3-xxlarge w3-hover-text-grey" onclick="w3_open()"><i class="fa fa-bars"></i></span>
-    <div class="w3-container w3-padding-16">
-      </div>
   </header>
 
-  <div id="overview" class="w3-container" style="margin-top:30px; margin-bottom:30px;"> 
+  <div id="overview" class="w3-container" style="margin-top:10px; margin-bottom:30px;"> 
+    
+    <div class="w3-panel w3-leftbar w3-border-blue w3-light-grey w3-padding-16" style="margin-bottom:32px;">
+        <p class="w3-large">
+          <i>"This workshop provides a strategic blueprint for architecting a future-ready <b>Enterprise AI Roadmap</b>, bridging the gap between bespoke innovation and native scalability. Attendees will first master <b>Custom Agent Extensibility</b>, leveraging open standards like <b>Model Context Protocol (MCP)</b> and <b>Agent-to-Agent (A2A)</b> protocol to ground AI reasoning in real-time data across any external ecosystem. This is followed by the building of a <b>Salesforce Agentforce Agent</b>, utilizing out-of-the-box, context-aware automation to natively simplify CRM workflows. Finally, the roadmap culminates in a unified system, where <b>MuleSoft Agent Fabric</b> acts as the intelligent broker to orchestrate, discover, and secure end-to-end multi-agent systems. By participating, you will move beyond conceptual AI to a practical, multi-pillar strategy that is both  extensible and enterprise-grade."</i>
+        </p>
+    </div>
+
     <h1><b>Overview</b></h1>
     <p>This guided hands-on workshop walks attendees through the key stages of building enterprise-grade AI systems—starting with foundational LLMs and progressing toward enterprise-aware, interoperable, and orchestrated multi-agent architectures.</p>
     <p>In enterprises, multi-agent does not automatically mean that agents are wired together or coordinated by a broker. Multiple agents can exist independently, serve different purposes, and never interact—and this is still a valid, and often desirable, multi-agent design. Orchestration is a later-stage choice, introduced only when agents must collaborate to solve a shared problem or workflow.</p>
@@ -163,22 +168,22 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
 
     <div class="w3-margin-top">
       <h3><b>Stage 0: Foundational Gen AI App:</b></h3>
-      <p>Build and deploy a foundational Gen AI app that talks directly to a raw LLM, with no grounding, memory, or enterprise controls. This stage clarifies what an LLM can do on its own—and, just as importantly, what it cannot. You will develop a clean mental model of <b>where “pure GenAI” ends and where real applications & platforms must begin</b>.</p>
+      <p>Build and deploy a live foundational Gen AI app with open source technologies. Build and deploy a foundational Gen AI app that talks directly to a raw LLM, with no grounding, memory, or enterprise controls. This stage clarifies what an LLM can do on its own—and, just as importantly, what it cannot. You will develop a clean mental model of <b>where “pure GenAI” ends and where real applications & platforms must begin</b>.</p>
 
       <h3><b>Stage 1: From LLM call into an enterprise AI capability with Mule Inference Connector</b></h3>
-      <p>Build and deploy a real, production-style LLM inference endpoint in Mule, exposed as a stable HTTP API and running on CloudHub. You will see <b>how AI execution gains security, isolation, observability, and managed scaling</b> the moment it is centralized behind the platform. You leave with the steps for creating reusable enterprise inference service that any application—or future agent—can safely consume without rework.</p>
+      <p>From LLM call to an enterprise AI capability with Mule Inference Connector. Build and deploy a real, production-style LLM inference endpoint in Mule, exposed as a stable HTTP API and running on CloudHub. You will see <b>how AI execution gains security, isolation, observability, and managed scaling</b> the moment it is centralized behind the platform. You leave with the steps for creating reusable enterprise inference service that any application—or future agent—can safely consume without rework.</p>
 
       <h3><b>Stage 2: From Inference to Enterprise-Aware AI with Mule & MCP</b></h3>
-      <p>Extend the Mule-hosted inference capability so the system can <b>consult authoritative enterprise data at runtime instead of guessing</b>. You build an MCP server as a live source of truth and connect it to the LLM, making responses <b>fact-grounded, explainable, and controllable</b>. You leave with a true agent foundation—where intelligence is separated from knowledge and access is governed by the platform, not prompts.</p>
+      <p>From Inference to Enterprise Aware AI with Mule & MCP. Extend the Mule-hosted inference capability so the system can <b>consult authoritative enterprise data at runtime instead of guessing</b>. You build an MCP server as a live source of truth and connect it to the LLM, making responses <b>fact-grounded, explainable, and controllable</b>. You leave with a true agent foundation—where intelligence is separated from knowledge and access is governed by the platform, not prompts.</p>
 
       <h3><b>Stage 3: From Enterprise-Aware AI to Discoverable AI Agents (A2A + MCP)</b></h3>
-      <p>Wrap your enterprise-aware AI capability in the <b>Agent-to-Agent (A2A) protocol</b>, turning it into a standardized, discoverable service that other machines—not just humans—can call. You deploy a real A2A server on CloudHub that exposes skills via an Agent Card while hiding internal reasoning, tools, and data access. You leave with a clear mental model of how <b>AI capabilities are exposed machine-to-machine, how discovery and interoperability work</b> without tight coupling.</p>
+      <p>From Enterprise-Aware AI to Discoverable AI Agents (A2A+MCP). Wrap your enterprise-aware AI capability in the <b>Agent-to-Agent (A2A) protocol</b>, turning it into a standardized, discoverable service that other machines—not just humans—can call. You deploy a real A2A server on CloudHub that exposes skills via an Agent Card while hiding internal reasoning, tools, and data access. You leave with a clear mental model of how <b>AI capabilities are exposed machine-to-machine, how discovery and interoperability work</b> without tight coupling.</p>
 
       <h3><b>Stage 4: Data Driven AI Agents with Data360 & Agentforce360</b></h3>
-      <p>Leverage Data360 to power <b>Salesforce Agentforce within real employee and customer workflows.</b> You see how enterprise agents operate with data, identity, and guardrails in place—and leave with a repeatable blueprint for embedding AI agents into Salesforce business processes.</p>
+      <p>Data Driven AI Agents with Salesforce Data360 & Agentforce360. Leverage Data360 to power <b>Salesforce Agentforce within real employee and customer workflows.</b> You see how enterprise agents operate with data, identity, and guardrails in place—and leave with a repeatable blueprint for embedding AI agents into Salesforce business processes.</p>
 
       <h3><b>Stage 5: Orchestrating Multi-Agent Systems with Mule Agent Fabric Broker</b></h3>
-      <p>Explore <b>Mule Agent Fabric Broker</b> to centrally discover, govern, and orchestrate multiple specialized agents across the enterprise. You explore how routing, coordination, and policy enforcement are defined declaratively—without hardcoding agent-to-agent links. You leave with a clear model for <b>scaling from single agents to governed multi-agent systems</b> without creating agent sprawl.</p>
+      <p>Orchestrating Multi-Agent Systems with Mule Agent Fabric Broker. Explore <b>Mule Agent Fabric Broker</b> to centrally discover, govern, and orchestrate multiple specialized agents across the enterprise. You explore how routing, coordination, and policy enforcement are defined declaratively—without hardcoding agent-to-agent links. You leave with a clear model for <b>scaling from single agents to governed multi-agent systems</b> without creating agent sprawl.</p>
     </div>
   </div>
 
